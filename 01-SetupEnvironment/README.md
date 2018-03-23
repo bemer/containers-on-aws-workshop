@@ -65,7 +65,6 @@ The output should look like:
     For more examples and ideas, visit:
      https://docs.docker.com/engine/userguide/
 
-If so, you are good to go.
 
 ## Install and configure AWS CLI
 
