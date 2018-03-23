@@ -6,7 +6,7 @@ Hello and welcome to the Containers On AWS Workshop! Please, read the instructio
 
 ## 1) It's all about containers!
 
-We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS.
+We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS services like Elastic Containers Services (ECS).
 
 ## 2) If you are using a Windows machine
 
