@@ -1,22 +1,22 @@
 # Creating your Docker image
 
-![container](https://github.com/bemer/lts-workshop/blob/master/02-CreatingDockerImage/images/container.png)
+![container](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/container.png)
 
 
 **Quick jump:**
 
-* [1. Tutorial overview](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#tutorial-overview)
-* [2. Creating your first image](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#creating-your-first-image)
-* [3. Setting up the IAM Roles](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#setting-up-the-iam-roles)
-* [4. Configuring the AWS CLI](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#configuring-the-aws-cli)
-* [5. Creating the Container registries with ECR](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#creating-the-container-registries-with-ecr)
-* [6. Pushing our tested images to ECR](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage#pushing-our-tested-images-to-ecr)
+* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#tutorial-overview)
+* [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#creating-your-first-image)
+* [3. Setting up the IAM Roles](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#setting-up-the-iam-roles)
+* [4. Configuring the AWS CLI](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#configuring-the-aws-cli)
+* [5. Creating the Container registries with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#creating-the-container-registries-with-ecr)
+* [6. Pushing our tested images to ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
 
 This tutorial is going to drive you through the process of creating your first Docker image, running a Docker image locally and pushing it to a image repository.
 
-In this tutorial, we assume that you completed the "[Setup Environment](https://github.com/bemer/lts-workshop/tree/master/01-SetupEnvironment)" tutorial and:
+In this tutorial, we assume that you completed the "[Setup Environment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)" tutorial and:
 
 * [Have a working AWS account](<https://aws.amazon.com>)
 * [Have a working Github account](<https://www.github.com>)
@@ -29,40 +29,40 @@ To check if you have the AWS CLI installed and configured:
 This should return something like:
 
     $ aws --version
-    aws-cli/1.14.7 Python/2.7.12 Darwin/15.6.0 botocore/1.8.11
+    aws-cli/1.14.9 Python/2.7.13 Linux/4.9.81-35.56.amzn1.x86_64 botocore/1.8.13
 
 > Note that to run this tutorial, you need to have the most recent version of AWS CLI installed.
 
 To check if you have Docker installed:
 
-    $  which docker
+    $  docker -v
 
 This should return something like:
 
-    $ which docker
-    /usr/bin/docker
+    Docker version 17.12.0-ce, build 3dfb8343b139d6342acfd9975d7f1068b5b1c3d3
+
+>If you after running the `docker -v` command you don't get this output, please follow the install instructions in [this link](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment#install-docker).
 
 If you have completed these steps, you are good to go!
 
 ## 2. Creating your first image
 
-Clone this repository:
+If you haven't executed the `git clone` command present in the [Setup Environment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment#install-git) chapter, do it now using the following command:
 
-    $ git clone https://github.com/bemer/lts-workshop.git
+    $ git clone https://github.com/bemer/containers-on-aws-workshop.git
 
 Now we are going to build and test our containers locally.  If you've never worked with Docker before, there are a few basic commands that we'll use in this workshop, but you can find a more thorough list in the [Docker "Getting Started" documentation](https://docs.docker.com/engine/getstarted/).
 
 To start your first container, go to the `app` directory in the project:
 
-    $ cd <path/to/project>/02-CreatingDockerImage/app
+    $ cd containers-on-aws-workshop/02-CreatingDockerImage/app
 
 And run the following command to build your image:
 
-    $ docker build -t lts-demo-app .
+    $ docker build -t workshop-app .
 
 This should output steps that look something like this:
 
-    $ docker build -t lts-demo-app .
     Sending build context to Docker daemon  4.608kB
     Step 1/9 : FROM ubuntu:latest
      ---> 20c44cd7596f
@@ -80,7 +80,7 @@ If the container builds successfully, the output should end with something like 
 
 To run your container:
 
-     $  docker run -d -p 3000:3000 lts-demo-app
+     $  docker run -d -p 3000:3000 workshop-app
 
 To check if your container is running:
 
@@ -88,27 +88,34 @@ To check if your container is running:
 
 This should return a list of all the currently running containers.  In this example,  it should just return a single container, the one that we just started:
 
-    CONTAINER ID        IMAGE                 COMMAND             CREATED              STATUS              PORTS                              NAMES
-    fa922a2376d5        lts-demo-app:latest   "python app.py"     About a minute ago   Up About a minute   3000/tcp,    0.0.0.0:3000->3000/tcp   clever_shockley   
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+    71f2f6b9fa68        workshop-app        "python app.py"     5 seconds ago       Up 4 seconds        0.0.0.0:3000->3000/tcp   happy_galileo
 
-To test the actual container output, access the following URL in your web browser:
 
-     http://localhost:3000/app
+To test the actual container output, we can use the `curl` command:
+
+    $ curl localhost:3000/app;echo
+
+If everything went fine, you should see your application HTML code:
+
+    Hello! You have created your first container. <br/> <br/> This is the first step in your world domination
+
+>NOTE: If you are running the workshop on your computer, you can just open the URL http://localhost:3000/app in your web browser to access the application.
 
 
 ## 3. Setting up the IAM roles
 
 In order to work with the AWS CLI, you'll need an IAM role with the proper permissions set up.  To do this, we'll create both an IAM Group, and an IAM user.
 
-To create the group, navigate to the IAM console, and select **Groups** > **Create New Group**.  Name the group "**lts-workshop**".  From the list of managed policies, add the following policies:
+To create the group, navigate to the IAM console, and select **Groups** > **Create New Group**.  Name the group "**containers-on-aws-workshop**".  From the list of managed policies, add the following policies:
 
-![add IAM group](https://github.com/bemer/lts-workshop/blob/master/02-CreatingDockerImage/images/iam-group-permissions.png)
+![add IAM group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/iam-group-permissions.png)
 
 Once you've created your group, you need to attach it to a user.  If you already have an existing user, you can add it to the lts-workshop group.  If you don't have a user, or need to create a new one, you can do so by going to **Users** > **Add User**.
 
 If you are creating a new user, name it to something like "**lts-workshop-user**", so it is going to be easy delete all the assets used in this lab later. In the wizard, add your user to the "**lts-workshop**" group that we created in the previous step:
 
-![add user to group](https://github.com/bemer/lts-workshop/blob/master/02-CreatingDockerImage/images/add_user_to_group.png)
+![add user to group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/add_user_to_group.png)
 
 
 When the wizard finishes, make sure to copy or download your access key and secret key.  You'll need them in the next step.
@@ -175,11 +182,11 @@ To create a repository, navigate to the ECS console, and select **Repositories**
 
 Name your first repository **lts-demo-app**:
 
-![create ecr repository](https://github.com/bemer/lts-workshop/blob/master/02-CreatingDockerImage/images/creating_repository.png)
+![create ecr repository](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_repository.png)
 
 Once you've created the repository, it will display the push commands.  Take note of these, as you'll need them in the next step.  The push commands should like something like this:
 
-![push commands](https://github.com/bemer/lts-workshop/blob/master/02-CreatingDockerImage/images/push_commands.png)
+![push commands](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/push_commands.png)
 
 ## 6. Pushing our tested images to ECR
 
