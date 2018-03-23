@@ -42,7 +42,7 @@ After running this command, you will need to log out and log in again in your in
 
     $ docker run hello-world
 
-It will output something like:
+The output of this command will be like the following:
 
     Hello from Docker!
     This message shows that your installation appears to be working correctly.
