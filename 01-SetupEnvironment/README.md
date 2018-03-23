@@ -44,8 +44,8 @@ After running this command, you will need to log out and log in again in your in
 
 It will output something like:
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
 
     To generate this message, Docker took the following steps:
      1. The Docker client contacted the Docker daemon.
