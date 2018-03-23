@@ -66,13 +66,12 @@ The output should look like:
      https://docs.docker.com/engine/userguide/
 
 
-## Install and configure AWS CLI
+## Install AWS CLI
 
 During this workshop we will interact with some AWS API's. Having the latest version of the AWS CLI in your computer is appropriated.
 
 Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
 
-After installing the AWS CLI, please don't forget to configure it. You will find all the steps in this URL: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration
 
 ## Install git
 

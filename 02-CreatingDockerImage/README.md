@@ -109,20 +109,35 @@ In order to work with the AWS CLI, you'll need an IAM role with the proper permi
 
 To create the group, navigate to the IAM console, and select **Groups** > **Create New Group**.  Name the group "**containers-on-aws-workshop**".  From the list of managed policies, add the following policies:
 
+
+* AmazonEC2ContainerRegistryFullAccess
+* AmazonEC2ContainerServiceFullAccess
+
+This is how your group permissions should like after the creation:
+
 ![add IAM group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/iam-group-permissions.png)
 
-Once you've created your group, you need to attach it to a user.  If you already have an existing user, you can add it to the lts-workshop group.  If you don't have a user, or need to create a new one, you can do so by going to **Users** > **Add User**.
+Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and them click in the button **Add user**.
 
-If you are creating a new user, name it to something like "**lts-workshop-user**", so it is going to be easy delete all the assets used in this lab later. In the wizard, add your user to the "**lts-workshop**" group that we created in the previous step:
+The user name will be **workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
+
+![creating user](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_user.png)
+
+Now, click in **Next: permissions** and in the **Add user to group** screen, select the group **containers-on-aws-workshop** that we created before:
 
 ![add user to group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/add_user_to_group.png)
 
+Click in **Next: Review** and check if is everything fine with your user creation. The screen should be similar to this one:
+
+![review user creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/review_user_creation.png)
+
+In this screen, click in **Create user**.
 
 When the wizard finishes, make sure to copy or download your access key and secret key.  You'll need them in the next step.
 
 ## 4. Configuring the AWS CLI
 
-If you've never configured the AWS CLI, the easiest way is by running:
+If you've never configured the AWS CLI, the easiest way is by running the command:
 
     $ aws configure
 
