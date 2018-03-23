@@ -16,6 +16,8 @@
 
 This tutorial is going to drive you through the process of creating your first Docker image, running a Docker image locally and pushing it to a image repository.
 
+>This Docker image will have a very simple web application written in Python that you can find in the `/app` directory.
+
 In this tutorial, we assume that you completed the [Setup Environment tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment) and:
 
 * [Have a working AWS account](<https://aws.amazon.com>)
