@@ -20,23 +20,23 @@ This tutorial will guide you through the creation of an AWS ECS Cluster and the 
 
 In order to run this tutorial, you must have completed the following steps:
 
-* [Setup Environment](https://github.com/bemer/lts-workshop/tree/master/01-SetupEnvironment)
-* [Creating your Docker image](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage)
+* [Setup Environment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)
+* [Creating your Docker image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
 
 
 ## 2. Creating the Cluster
 
-Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface. If this is your fist time using this service, you will see the "*Clusters*" screen without any clusters in it:
+Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the "*Clusters*" screen without any clusters in it:
 
-![clusters screen](https://github.com/bemer/lts-workshop/blob/master/03-DeployEcsCluster/images/clusters_screen.png)
+![clusters screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-DeployEcsCluster/images/clusters_screen.png)
 
-Let's them create our first ECS Cluster. Click in the button **Create cluster** and in the following screen select the **EC2 Linux + Networking** cluster template:
+Let's create our first ECS Cluster. Click in the button **Create cluster** and then select the **EC2 Linux + Networking** cluster template:
 
-![cluster template](https://github.com/bemer/lts-workshop/blob/master/03-DeployEcsCluster/images/cluster_template.png)
+![cluster template](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-DeployEcsCluster/images/cluster_template.png)
 
-You will them be asked to input information about your new cluster. Fill the fields in the *Configure cluster* screen and note that here you can create a new VPC or select a existing one. We recommend you to create a new VPC using the wizard, so it is going to be easy clean up your account after the event.
+You will then be asked to input information about your new cluster. Fill the fields in the *Configure cluster* screen. Your cluster should run preferably on private subnets. So please, select the subnets accordingly.
 
-Remember to select your keypair, so you will be able to access the EC2 instances in your cluster in order to perform any kind of troubleshooting later.
+For troubleshooting purposes, remember to select the correct keypair. It will enable you accessing the EC2 instances registered in the ECS cluster.
 
 Note that this wizard is also going to create a security group for you allowing access in the port 80 (TCP).
 
@@ -44,7 +44,7 @@ Click in **Create**.
 
 When the creation process finishes, you will see the following screen:
 
-![cluster created](https://github.com/bemer/lts-workshop/blob/master/03-DeployEcsCluster/images/cluster_created.png)
+![cluster created](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-DeployEcsCluster/images/cluster_created.png)
 
 You can them click in the button **View Cluster** to see your cluster.
 

@@ -21,6 +21,8 @@ We are working on a content for running this workshop using a Windows machine. M
 
 * [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
 
-* [3. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-DeployEcsCluster)
+* [3. Creating A VPC for the Workshop](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
 
-* [4. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployFargate)
+* [4. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster)
+
+* [5. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate)
