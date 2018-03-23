@@ -3,7 +3,7 @@
 ![container](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/container.png)
 
 
-**Quick jump:**
+##Quick jump:
 
 * [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#1-tutorial-overview)
 * [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#2-creating-your-first-image)
