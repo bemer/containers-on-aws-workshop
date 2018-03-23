@@ -1,26 +1,21 @@
-![lts logo](https://github.com/bemer/lts-workshop/blob/master/images/lts_logo.png)
+![workshop logo](https://github.com/bemer/containers-on-aws-workshop/blob/master/images/containers-on-aws-worshop-logo.jpg)
 
-# Welcome to the LTS Container Track
+# Welcome to the Containers On AWS Workshop
 
-Hello and welcome to the Latam Tech Summit 2017 - Container Track day! This is obviously the most awaited day of the event. We know it... So here are a few things that you should know before you start:
+Hello and welcome to the Containers On AWS Workshop! Please, read the instructions bellow carefully. This is obviously the most awaited day of the event. We know it... So here are a few things that you should know before you start:
 
 ## 1) It's all about containers!
 
-We will walk you through the very basics of containers: from installing and configuring Docker in your machine, running containers locally, till finally deploying them in AWS.
+We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS.
 
-## 2) If you are using a Windows machine (srsly?)
+## 2) If you are using a Windows machine
 
-We strongly recommend you to spin up a Linux EC2 instance. None of these labs were even tested in Windows environments.
+We are working on a content for installing and configuring Docker for Windows. Meanwhile, please, we strongly recommend you spinning up a Linux EC2 instance. The following links will guide you through the instance creation process and how to access it:
 
-## 3) This is not everything we have for today. There's more!
+* [A. Creating a Linux EC2 instance] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+* [B. Accessing a Linux EC2 instance from a Windows machine] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
-You know that thing called Kubernetes? I bet you kow. Be ready, because there's also an amazing lab waiting for you. This lab will start at 3PM and it's going to be nuts!
-
-## 4) Enough of jibber jabber...
-
-Go sharp your Container skills and take over the world.
-
-## 5) Please, run this lab in the exactly order as follows:
+## 5) We strongly recommend you running this workshop in the following order:
 
 * [1. Setup Environments](https://github.com/bemer/lts-workshop/tree/master/01-SetupEnvironment)
 
