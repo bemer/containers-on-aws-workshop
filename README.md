@@ -15,7 +15,7 @@ We are working on a content for running this workshop using a Windows machine. M
 * [Creating a Linux EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 * [Accessing a Linux EC2 instance from a Windows machine](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
-## 5) We strongly recommend you running this workshop in the following order:
+## 3) We strongly recommend you running this workshop in the following order:
 
 * [1. Setup Environments](https://github.com/bemer/lts-workshop/tree/master/01-SetupEnvironment)
 
