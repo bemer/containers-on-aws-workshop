@@ -6,7 +6,7 @@ Hello and welcome to the Containers On AWS Workshop! Please, read the instructio
 
 ## 1) It's all about containers!
 
-We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS services like Elastic Containers Services (ECS).
+We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS container services like Elastic Container Services (ECS).
 
 ## 2) If you are using a Windows machine
 
@@ -17,10 +17,10 @@ We are working on a content for running this workshop using a Windows machine. M
 
 ## 3) We strongly recommend you running this workshop in the following order:
 
-* [1. Setup Environments](https://github.com/bemer/lts-workshop/tree/master/01-SetupEnvironment)
+* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)
 
-* [2. Creating Your Docker Image](https://github.com/bemer/lts-workshop/tree/master/02-CreatingDockerImage)
+* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
 
-* [3. Running An ECS Cluster](https://github.com/bemer/lts-workshop/tree/master/03-DeployEcsCluster)
+* [3. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-DeployEcsCluster)
 
-* [4. Deploying An Application with AWS Fargate](https://github.com/bemer/lts-workshop/tree/master/04-DeployFargate)
+* [4. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployFargate)
