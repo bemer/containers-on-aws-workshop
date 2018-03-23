@@ -1,0 +1,271 @@
+/*
+ * Pages
+ */
+
+.page {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.page-header {
+  font-size: 2em;
+}
+
+.section-header {
+  font-size: 1.5em;
+}
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #fff;
+}
+body {
+  color: #000;
+  text-align: center;
+}
+
+a {
+  font-weight: bold;
+  color: #FF851B;
+  outline: none;
+  text-decoration: none;
+}
+
+a:active, a:hover, a:focus {
+  color: #D26506;
+}
+
+#scorekeep-anchor {
+  color: #000;
+  outline: none;
+  text-decoration: none;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+}
+.site-wrapper-inner {
+  display: table-cell;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 75px;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 2rem;
+}
+
+/*
+ * Header
+ */
+
+.masthead {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  background-color: #fff;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #000;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: bold;
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 40em) {
+  /* Pull out the header */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  /* Handle the widths */
+  .masthead,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 62em) {
+  .masthead,
+  .cover-container {
+    width: 42rem;
+  }
+}
+/* Main page */
+#instructions {
+  display: none;
+  margin-top: 75px;
+}
+#main, #session, #game {
+  text-align: center;
+  width: 350px;
+  padding: 10px;
+  margin: auto;
+}
+.session-game {
+  text-align: left;
+  padding: 15px;
+}
+#main-user {
+  height: 120px;
+  padding: 15px;
+}
+.sub-header {
+  font-size: 16px;
+  text-align: left;
+  padding: 10px;
+}
+#main-session {
+  height: 230px;
+  padding: 15px;
+}
+.field {
+  padding: 10px;
+}
+.button {
+  background-color: #f39c12;
+  width: 100px;
+  margin-left: 176px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #FF4136;
+  border-style: inset;
+}
+.button:hover {
+  background-color: #FF4136;
+}
+.button:active {
+  background-color: #85144b;
+}
+.startgame-button {
+  float: right;
+  background-color: #f1c40f;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #FF851B;
+  border-style: inset;
+}
+.startgame-button:hover {
+  background-color: #FF851B;
+}
+.startgame-button:active {
+  background-color: #FF4136;
+}
+input {
+  width: 90%;
+  height: 30px;
+  border: 1px solid #f39c12;
+  border-radius: 2px;
+  padding-left: 10px;
+}
+
+/* session */
+.session-header {
+  font-size: 20px;
+  text-align: left;
+}
+#session-id {
+  width: auto;
+  text-align: left;
+  padding-left: 10px;
+}
+#user {
+  float: right;
+}
+#rules-select {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  padding: 15px;
+}
+.id, .batsu, .game-name {
+  display: inline-block;
+  vertical-align: text-top;
+}
+.batsu {
+  width: 15px;
+  height: 15px;
+}
+.id {
+  width: 75px;
+  font-family: monospace;
+}
+.game-description {
+  padding-left: 15px;
+  display: none;
+}
+.gameboard {
+  margin: 15px;
+}
+.row {
+  height: 100px;
+}
+.square {
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: -3px;
+  background-color: #FF851B;
+  font-size: 40px;
+  border: 1px solid #d35400;
+  border-radius: 1px;
+  color: #871d08;
+}
+.square:hover {
+  background-color: #FF4136;
+}
+.square:active {
+  background-color: #85144b;
+}
