@@ -16,7 +16,7 @@
 
 ## 1. Tutorial overview
 
-This tutorial will guide you through the creation of an AWS ECS Cluster and the deployment of a container with a simple Python application created in the previous lab.
+This tutorial will guide you through the creation of an ECS Cluster and the deployment of the container with a simple Python application created in the previous lab.
 
 In order to run this tutorial, you must have completed the following steps:
 
@@ -26,7 +26,7 @@ In order to run this tutorial, you must have completed the following steps:
 
 ## 2. Creating the Cluster
 
-Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the "*Clusters*" screen without any clusters in it:
+Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
 
 ![clusters screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/clusters_screen.png)
 
@@ -34,19 +34,34 @@ Let's create our first ECS Cluster. Click in the button **Create cluster** and t
 
 ![cluster template](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_template.png)
 
-You will then be asked to input information about your new cluster. Fill the fields in the *Configure cluster* screen. Your cluster should run preferably on private subnets. So please, select the subnets accordingly.
+You will then be asked to input information about your new cluster. In the *Configure cluster* screen, keep the default values to the fields, changing just these ones:
 
-For troubleshooting purposes, remember to select the correct keypair. It will enable you accessing the EC2 instances registered in the ECS cluster.
+### Configure cluster
+* Cluster name: `workshop-ecs-cluster`
+
+### Instance configuration
+* EC2 instance type: `t2.micro`
+
+### Networking
+* VPC: Select the VPC created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
+* Subnets: Select the `private` subnet in your VPC
+
+And them click in **Create**.
+
+>In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and them select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 
 Note that this wizard is also going to create a security group for you allowing access in the port 80 (TCP).
 
-Click in **Create**.
+After changing all these parameters and putting the needed information, click in the button **Create** in the end of the screen.
 
 When the creation process finishes, you will see the following screen:
 
 ![cluster created](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_created.png)
 
-You can them click in the button **View Cluster** to see your cluster.
+You can them click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
+
+![cluster screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_screen.png)
+
 
 ## 3. Creating the ALB
 
@@ -54,31 +69,40 @@ Now that we've created our cluster, we need an [Application Load Balancer (ALB)]
 
 To create the ALB:
 
-Navigate to the **EC2 Service Console**, and select **Load Balancers** from the left-hand menu.  Choose **Create Load Balancer**:
+Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1), and select **Load Balancers** from the left-hand menu.  Click in **Create Load Balancer**. Inside the `Application Load Balancer`, click in **Create**:
 
 ![choose ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/select_alb.png)
 
-Name your ALB **lts-workshop** and add an HTTP listener on port 80:
+Name your ALB **alb-workshop** and add an HTTP listener on port 80:
 
 ![name ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb.png)
 
-> In a production environment, you should also have a secure listener on port 443.  This will require an SSL certificate, which can be obtained from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/), or from your registrar/any CA.  For the purposes of this demo, we will only create the insecure HTTP listener. DO NOT RUN THIS IN PRODUCTION.
+Next, select the VPC previously created and add at the private subnet. If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
 
-Next, select your VPC and add at least two subnets for high availability.  Make sure to choose the VPC that we created with the ECS wizard.  If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
+After adding the information about your VPC, click in **Next: Configure Security Settings**.
 
-![add VPC](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb.png)
+When clicking in next, you should see a message saying that your load balancer is not using any secure listener. We can just skip this screen, clicking in **Next: Configure Security Groups**.
 
-Next, add a security group.  Here, let's create a security group to be used by your ALB. Change the **Security group name** to `lts-workshop-alb-sg` and create a rule allowing all traffic in the port `80`:
+>NOTE: In a production environment, you should also have a secure listener on port 443.  This will require an SSL certificate, which can be obtained from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/), or from your registrar/any CA.  For the purposes of this workshop, we will only create the insecure HTTP listener. DO NOT RUN THIS IN PRODUCTION.
+
+Let's now create a security group to be used by your ALB. In the *Step 3: Configure Security Groups* screen, let's select the option `Create a new security group`. Change the **Security group name** to `workshop-alb-sg` and create a rule allowing all traffic in the port `80`:
 
 ![create alb security group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb_sg.png)
 
+Them, click in **Next: Configure Routing**.
 
-
-Choose the security group, and continue to the next step:  adding routing.  For this initial setup, we're just adding a dummy healthcheck on `/`.  We'll add specific healthchecks for our service endpoint when we register it with the ALB.
+During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change onlye the the **Name** to `dummy`:
 
 ![add routing](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb_routing.png)
 
-Finally, skip the "Register targets" step, and continue to review. If your values look correct, click **Create**.
+Click in **Next: Register Targets** and them in **Review**. If your values look correct, click **Create**:
+
+![alb creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/alb_creation.png)
+
+
+
+# CONTINUAR DAQUI
+
 
 After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. If you ran the ECS wizard to provision your cluster, you should have an existing group called something like **EC2ContainerService-lts-workshop-EcsSecurityGroup** listed under **VPC** > **Security Groups** - note that you can select your VPC in the top left corner of the VPC screen. Select your security group from the list, click in **Inbound** > **Edit** and add a rule to allow your ALB to access the port range for ECS (0-65535).  The final rules should look like this (note the ALB security group ID):
 
