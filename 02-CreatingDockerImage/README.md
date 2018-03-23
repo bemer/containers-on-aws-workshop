@@ -14,7 +14,7 @@
 
 ## 1. Tutorial overview
 
-This tutorial is going to drive you through the process of creating your first Docker image, running a Docker image locally and pushing it to a image repository.
+This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository.
 
 >This Docker image will have a very simple web application written in Python that you can find in the `/app` directory.
 
