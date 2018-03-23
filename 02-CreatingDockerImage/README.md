@@ -5,12 +5,12 @@
 
 **Quick jump:**
 
-* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#tutorial-overview)
-* [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#creating-your-first-image)
-* [3. Setting up the IAM Roles](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#setting-up-the-iam-roles)
-* [4. Configuring the AWS CLI](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#configuring-the-aws-cli)
-* [5. Creating the Container registries with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#creating-the-container-registries-with-ecr)
-* [6. Pushing our tested images to ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#pushing-our-tested-images-to-ecr)
+* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#1-tutorial-overview)
+* [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#2-creating-your-first-image)
+* [3. Setting up the IAM Roles](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#3-setting-up-the-iam-roles)
+* [4. Configuring the AWS CLI](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#4-configuring-the-aws-cli)
+* [5. Creating the Container registries with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#5-creating-the-container-registries-with-ecr)
+* [6. Pushing our tested images to ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#6-pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
 
