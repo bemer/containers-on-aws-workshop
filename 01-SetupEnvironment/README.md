@@ -26,7 +26,7 @@ This will install the Docker on your instance. Now, to check if your installatio
 
     $ docker -v
 
-It will output something like:
+The output should look like:
 
     Docker version 17.12.0-ce, build 3dfb8343b139d6342acfd9975d7f1068b5b1c3d3
 
@@ -42,7 +42,7 @@ After running this command, you will need to log out and log in again in your in
 
     $ docker run hello-world
 
-The output of this command will be like the following:
+The output should look like:
 
     Hello from Docker!
     This message shows that your installation appears to be working correctly.
