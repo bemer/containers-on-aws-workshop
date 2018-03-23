@@ -2,7 +2,7 @@
 
 For this workshop, we are going to use a VPC with public and private subnets. All EC2 instances and Fargate tasks should run on private subnets. All Load Balancers should run on public subnets.
 
-> NOTE: If you are running this workshop on a large group of people, you can optionally create just one VPC for the entire workshop, instead of one VPC per workshop participant. This is just to prevent you hitting VPC limits for the AWS account.
+> NOTE: If you are running this workshop on a large group of people, you can optionally create just one VPC for the entire workshop, instead of one VPC per workshop participant. This is just to prevent you hitting some VPC limits for the your AWS account, like number of VPCs per region and number of Elastic IPs per region.
 
 ![VPC structure](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-CreateVPC/images/containers-on-aws-workshop-vpc.png)
 
@@ -20,6 +20,6 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ![VPC structure](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-CreateVPC/images/containers-on-aws-workshop-vpc-1.png)
 
-6. You can leave everything with the default configurations. The only fields that you must edit are *VPC name*, where you choose a name like containers-workshop and *Elastic IP Allocation ID*, where you must select your newly allocated Elastic IP. After that, click in **Create**.
+6. You can leave everything with the default configurations. The only fields that you must edit are *VPC name*, where you choose a name like containers-workshop and *Elastic IP Allocation ID*, where you must select your newly allocated Elastic IP. After that, click in **Create VPC**. it will take around 5 minutes for everything to be created.
 
 ![VPC wizard](https://github.com/bemer/containers-on-aws-workshop/blob/master/03-CreateVPC/images/containers-on-aws-workshop-vpc-2.png)
