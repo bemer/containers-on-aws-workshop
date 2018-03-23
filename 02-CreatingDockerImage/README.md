@@ -16,7 +16,7 @@
 
 This tutorial is going to drive you through the process of creating your first Docker image, running a Docker image locally and pushing it to a image repository.
 
-In this tutorial, we assume that you completed the "[Setup Environment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)" tutorial and:
+In this tutorial, we assume that you completed the [Setup Environment tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment) and:
 
 * [Have a working AWS account](<https://aws.amazon.com>)
 * [Have a working Github account](<https://www.github.com>)
