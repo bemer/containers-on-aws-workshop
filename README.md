@@ -2,7 +2,7 @@
 
 # Welcome to the Containers On AWS Workshop
 
-Hello and welcome to the Containers On AWS Workshop! Please, read the instructions bellow carefully. This is obviously the most awaited day of the event. We know it... So here are a few things that you should know before you start:
+Hello and welcome to the Containers On AWS Workshop! Please, read the instructions bellow carefully.
 
 ## 1) It's all about containers!
 
