@@ -10,7 +10,7 @@ We will walk you through the very basics of containers: from installing and conf
 
 ## 2) If you are using a Windows machine
 
-We are working on a content for running this workshop using Windows. Meanwhile, please, we strongly recommend you spinning up a Linux EC2 instance. The following links will guide you through the instance creation process and how to access it:
+We are working on a content for running this workshop using a Windows machine. Meanwhile, please, we strongly recommend you spinning up a Linux EC2 instance. The following links will guide you through the instance creation process and how to access it:
 
 * [Creating a Linux EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 * [Accessing a Linux EC2 instance from a Windows machine](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
