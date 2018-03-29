@@ -9,7 +9,7 @@
 * [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#2-creating-your-first-image)
 * [3. Setting up the IAM Roles](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#3-setting-up-the-iam-roles)
 * [4. Configuring the AWS CLI](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#4-configuring-the-aws-cli)
-* [5. Creating the Container registries with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#5-creating-the-container-registries-with-ecr)
+* [5. Creating the image repository with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)
 * [6. Pushing our tested images to ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#6-pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
@@ -164,7 +164,7 @@ If you already have a profile setup with the AWS CLI, you can also add a new pro
     aws_secret_access_key = CAFESECRETACCESSKEYEXAMPLE002
 
 
-You can test that your IAM user has the correct permissions, and that your CLI is setup to connect to your AWS account by running the command to obtain an ECR authentication token.  This will allow us to pull our registries in the next step:
+You can test that your IAM user has the correct permissions, and that your CLI is setup to connect to your AWS account by running the command to obtain an ECR authentication token.  This will allow us to pull the Docker image to our repository in the next step:
 
     $ aws ecr get-login --region us-east-1 --no-include-email
 
@@ -186,9 +186,9 @@ This should output something like:
 >NOTE: If you already had the credentials file and just added a new profile in it, don't forget to use the `--profile container-workshop` in the end of the command. This is needed because every time that you run a command using the awscli, it is going to use the `default` profile, so if we want to use a different one, we need to specify when running the command.
 
 
-## 5. Creating the container registries with ECR
+## 5. Creating the image repository with ECR
 
-Before we can build and push our images, we need somewhere to push them to.  In this case, we're going to create two repositories in [ECR](https://aws.amazon.com/ecr/).
+Before we can build and push our images, we need somewhere to push them to.  In this case, we're going to create just one repository in [ECR](https://aws.amazon.com/ecr/).
 
 To create a repository, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1), and select **Repositories**.  From there, click in the **Get Started**.
 
@@ -204,7 +204,7 @@ Once you've created the repository, it will display a list of commands that you 
 
 Now that we've tested our images locally, we need to tag them again, and push them to ECR.  This will allow us to use them in `Task definitions` that can be deployed to an ECS cluster.  
 
-You'll need your push commands that you saw during registry creation.  If you've misplaced your push commands, you can find them again by going back to the repository (**ECS Console** > **Repositories** > Select the Repository you want to see the commands for > **View Push Commands**.
+You'll need your push commands that you saw during registry creation.  If you've misplaced your push commands, you can find them again by going back to the repository (**ECS Console** > **Repositories** > Select the repository you want to see the commands for > **View Push Commands**.
 
 The first thing that we need to do, is authenticate our Docker client to the ECR. To do this, we need get the `docker login` command with the repository informations. To get this informations, run the following command:
 
@@ -224,7 +224,7 @@ To login to ECR, copy this output and execute it as a linux command. The output 
 
 If you are unable to login to ECR, check your IAM user group permissions.
 
-Now, let's tag our image locally and them push our image to the ECR repository. Let's use the following commands:
+Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
 
     $ docker tag workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
     $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
@@ -245,7 +245,7 @@ This step will take some minutes. When the command finishes, you should see some
     b3968bc26fbd: Pushed
     aa4e47c45116: Pushed
     788ce2310e2f: Pushed
-    latest: digest: sha256:38588bb240b57d123522ab3d23107cec642907a99f1379445fbea27dafc58608 size: 1988
+    latest: digest: sha256:38588bb240b57d123522ab3d23cec642907a99f1379445fbea27dafc58608 size: 1988
 
 
 You can see your pushed images by viewing the repository in the AWS Console.  Alternatively, you can use the CLI:

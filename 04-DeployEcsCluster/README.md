@@ -16,7 +16,7 @@
 
 ## 1. Tutorial overview
 
-This tutorial will guide you through the creation of an AWS ECS Cluster and the deployment of a container with a simple Python application created in the previous lab.
+This tutorial will guide you through the creation of an ECS Cluster and the deployment of the container with a simple Python application created in the previous lab.
 
 In order to run this tutorial, you must have completed the following steps:
 
@@ -26,7 +26,7 @@ In order to run this tutorial, you must have completed the following steps:
 
 ## 2. Creating the Cluster
 
-Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the "*Clusters*" screen without any clusters in it:
+Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
 
 ![clusters screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/clusters_screen.png)
 
@@ -34,69 +34,131 @@ Let's create our first ECS Cluster. Click in the button **Create cluster** and t
 
 ![cluster template](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_template.png)
 
-You will then be asked to input information about your new cluster. Fill the fields in the *Configure cluster* screen. Your cluster should run preferably on private subnets. So please, select the subnets accordingly.
+You will then be asked to input information about your new cluster. In the *Configure cluster* screen, keep the default values to the fields, changing just these ones:
 
-For troubleshooting purposes, remember to select the correct keypair. It will enable you accessing the EC2 instances registered in the ECS cluster.
+### Configure cluster
+* Cluster name: `workshop-ecs-cluster`
+
+### Instance configuration
+* EC2 instance type: `t2.micro`
+
+### Networking
+* VPC: Select the VPC created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
+* Subnets: Select the `private` subnet in your VPC
+
+And them click in **Create**.
+
+>In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and them select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 
 Note that this wizard is also going to create a security group for you allowing access in the port 80 (TCP).
 
-Click in **Create**.
+After changing all these parameters and putting the needed information, click in the button **Create** in the end of the screen.
 
 When the creation process finishes, you will see the following screen:
 
 ![cluster created](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_created.png)
 
-You can them click in the button **View Cluster** to see your cluster.
+You can them click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
+
+![cluster screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_screen.png)
+
 
 ## 3. Creating the ALB
 
-Now that we've created our cluster, we need an [Application Load Balancer (ALB)][https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/] to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints.  In our example, we'll use the enpoint:  `/app`.
+Now that we've created our cluster, we need an [Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/) to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints.  In our example, we'll use the enpoint:  `/app`.
 
 To create the ALB:
 
-Navigate to the **EC2 Service Console**, and select **Load Balancers** from the left-hand menu.  Choose **Create Load Balancer**:
+Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1), and select **Load Balancers** from the left-hand menu.  Click in **Create Load Balancer**. Inside the `Application Load Balancer`, click in **Create**:
 
 ![choose ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/select_alb.png)
 
-Name your ALB **lts-workshop** and add an HTTP listener on port 80:
+Name your ALB **alb-workshop** and add an HTTP listener on port 80:
 
 ![name ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb.png)
 
-> In a production environment, you should also have a secure listener on port 443.  This will require an SSL certificate, which can be obtained from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/), or from your registrar/any CA.  For the purposes of this demo, we will only create the insecure HTTP listener. DO NOT RUN THIS IN PRODUCTION.
+Next, select the VPC previously created and add at the private subnet. If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
 
-Next, select your VPC and add at least two subnets for high availability.  Make sure to choose the VPC that we created with the ECS wizard.  If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
+After adding the information about your VPC, click in **Next: Configure Security Settings**.
 
-![add VPC](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb.png)
+When clicking in next, you should see a message saying that your load balancer is not using any secure listener. We can just skip this screen, clicking in **Next: Configure Security Groups**.
 
-Next, add a security group.  Here, let's create a security group to be used by your ALB. Change the **Security group name** to `lts-workshop-alb-sg` and create a rule allowing all traffic in the port `80`:
+>NOTE: In a production environment, you should also have a secure listener on port 443.  This will require an SSL certificate, which can be obtained from [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/), or from your registrar/any CA.  For the purposes of this workshop, we will only create the insecure HTTP listener. DO NOT RUN THIS IN PRODUCTION.
+
+Let's now create a security group to be used by your ALB. In the *Step 3: Configure Security Groups* screen, let's select the option `Create a new security group`. Change the **Security group name** to `workshop-alb-sg` and create a rule allowing all traffic in the port `80`:
 
 ![create alb security group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb_sg.png)
 
+Them, click in **Next: Configure Routing**.
 
-
-Choose the security group, and continue to the next step:  adding routing.  For this initial setup, we're just adding a dummy healthcheck on `/`.  We'll add specific healthchecks for our service endpoint when we register it with the ALB.
+During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change onlye the the **Name** to `dummy`:
 
 ![add routing](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb_routing.png)
 
-Finally, skip the "Register targets" step, and continue to review. If your values look correct, click **Create**.
+Click in **Next: Register Targets** and them in **Review**. If your values look correct, click **Create**:
 
-After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. If you ran the ECS wizard to provision your cluster, you should have an existing group called something like **EC2ContainerService-lts-workshop-EcsSecurityGroup** listed under **VPC** > **Security Groups** - note that you can select your VPC in the top left corner of the VPC screen. Select your security group from the list, click in **Inbound** > **Edit** and add a rule to allow your ALB to access the port range for ECS (0-65535).  The final rules should look like this (note the ALB security group ID):
+![alb creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/alb_creation.png)
 
-![ec2 sg configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/ec2_sg_configuration.png)
+
+After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. In order to identify what is the security group applied to your instances, you can access the ECS console, click in your cluster and them select the tab **ECS Instances**. You will see that you have one instance running. Them, click in the ECS Instance ID:
+
+![ecs instance](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/ecs_instance.png)
+
+>NOTE: in this screen, you will find two different ID's. One of them is related to the `Container Instance`, which will show you all the tasks running in this specific instance as well as some data from the EC2 Instance. The other ID is the `EC2 Instance` ID, that will redirect you to the EC2 console, where you can manage the EC2 instance.
+
+In the EC2 service dashboard, you will see all the information about your instance. In this screen, click in the security group name. This name is going to be similar to **EC2ContainerService-workshop-ecs-cluster-EcsSecurityGroup-1LAM6XQ29XWLU**:
+
+![ec2 security group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/ec2_security_group.png)
+
+You will be redirected to the security groups console. Take note of the `Group ID` of this security group:
+
+![security group ip](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/sg_id.png)
+
+Now, let's find the security group created to our Application Load Balancer. In order to find it, type `workshop-alb-sg` in the search field. It will show the security group used by our ALB. Again, copy the the `Group ID` of the security group used by the ALB.
+
+At this moment, you should have two Group ID's: the instance Security Group ID and the ALB Security Group ID. The next step is to create a rule in the Security Group used by the EC2 instance allowing all the traffic from the ALB security group. In order to proceed, let's get back to the instance Security Group. You can do this by searching for the ID that you have. In the instance Security Group, let's now create a new rule.
+
+Select the instance Security Group and click in **Inbound** and them in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and add the ALB Security Group ID in the field `Source`. Finally, let's add a description about this rule, so we will be able to understand what is this rule later. To change the rule, click in **Save**:
+
+![security group configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/sg_configuration.png)
+
+The final rules in your instance Security Group should look like this:
+
+![final sg configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/final_sg_configuration.png)
+
+
+At this point, your EC2 instances will be able to receive traffic from the ALB.
+
+>NOTE: When creating this rule we are allowing all the traffic from the ALB to the instances. We are doing that because when working with ECS we can use a dynamic port mapping feature in order to run more containers with the same image in the same EC2 instance, so when starting our task, we will not specify any port to run our application and the ECS will do it for us. Since we don't know what is the port that the Docker daemon will expose, we need to allow all traffic to have our application accessible by the ALB.
 
 
 
 ## 4. Creating the Task Definition
 
-Before you can register a container to a service, it needs be a part of a Task Definition. Task Definitions define things like environment variables, the container image you wish to use, and the resources you want to allocate to the service (port, memory, CPU).  To create a Task Definition, choose **Task Definitions** from the ECS console menu.  Then, choose **Create new Task Definition**. Select EC2 as the *Launch type compatibility*:
+When working with ECS to run our applications, there are a few concepts that we need to understand. The first of these concepts is about what is a `Task`. Basically, a task is a subset of containers that we need to execute to have our application running. The `Tasks` are defined in a configuration called `Task Definition`.
+
+A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports needs to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
+
+The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage) tutorial. To get the image URI, navigate to the [ECR page](https://console.aws.amazon.com/ecs/home?region=us-east-1#/repositories). You will see the repository named `workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
+
+![image uri](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/image_uri.png)
+
+
+To create a Task Definition, in the [Task Definitions](https://console.aws.amazon.com/ecs/home?region=us-east-1#/taskDefinitions) screen on the ECS console menu, click in **Create new Task Definition**. Select EC2 as the *Launch type compatibility* and click in **Next step**:
 
 ![type compatibility](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/task_compatibility.png)
 
-And them click in **Next Step**. Name your task **lts-demo-app**:
+Let's add now the information about this task definition. Name your task **ecs-workshop-app**:
 
 ![create task def](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_task_def.png)
 
-Continue to adding a container definition. Click in **Add container**. Now we will add the informations about the image that we created in the previous tutorial. The name of our container will be `lts-demo-app`. In the *Image* field, we need to add the URI from our repository. You can get this URI in the *Repositories* screen, by selecting the repository *lts-demo-app* created before.
+
+In the `Task execution IAM role` select `Create new role`:
+
+![create task iam](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_task_iam.png)
+
+
+The next step is to add the information about our container. Click in the **Add container** button, under `Container Definitions`. The name of the container will be `ecs-workshop-app`. In the *Image* field, add the URI that you got before, pointing to your image.
 
 Add `128` in the *Memory Limits* field and in *Port mapping* add `0` in the *Host port* field and `3000` in the *Container port*.
 
@@ -113,7 +175,7 @@ Once you've specified your Port Mappings, scroll down and add a log driver.  The
 
 ![aws log driver](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/setup_logdriver.png)
 
-Once you've added your log driver, add the Container Definition, and create the Task Definition.
+Once you've added your log driver, click in **Add** to add the container in your task definition, and finally click in **Create** in the `Task Definition` screen.
 
 
 ## 5. Creating the Service
