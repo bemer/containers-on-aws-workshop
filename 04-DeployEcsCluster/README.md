@@ -65,7 +65,7 @@ You can them click in the button **View Cluster** to see your cluster. The ECS C
 
 ## 3. Creating the ALB
 
-Now that we've created our cluster, we need an [Application Load Balancer \(ALB\)][https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/] to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints.  In our example, we'll use the enpoint:  `/app`.
+Now that we've created our cluster, we need an [Application Load Balancer - ALB][https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/] to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints.  In our example, we'll use the enpoint:  `/app`.
 
 To create the ALB:
 
