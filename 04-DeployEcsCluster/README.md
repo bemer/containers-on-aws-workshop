@@ -180,11 +180,23 @@ Once you've added your log driver, click in **Add** to add the container in your
 
 ## 5. Creating the Service
 
-Navigate back to the ECS console, and choose the cluster that you created during the first run wizard.  This should be named **lts-workshop**.  If you don't have a cluster named **lts-workshop**, create one following the procedures in  [Creating the cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-cluster).
+Now that we have the description of everything we need to run our application in the `Task Definition`, the next step is to run our container using Amazon ECS. Let's do it by creating a `Service`.
 
-Next, you'll need to create your app service.  From the cluster detail page, choose **Services** > **Create**.
+In ECS, a `Service` allows you to run and maintain a specified number (the "desired count") of instances of a task definition simultaneously in an Amazon ECS cluster. If any of your tasks should fail or stop for any reason, the Amazon ECS service scheduler launches another instance of your task definition to replace it and maintain the desired count of tasks in the service. You can find more information about ECS Services in the [ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
-Select `EC2` as the *Launch Type* choose the Task Definition you created in the previous section. For the purposes of this demo, we'll only start one copy of this task.  In a production environment, you will always want more than one copy of each task running for reliability and availability.
+Navigate back to the [Clusters screen](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters) on the ECS console, and click in the cluster name **workshop-ecs-cluster** created during the first run wizard.
+
+>If you don't have a cluster named **workshop-ecs-cluster**, create one following the procedures in  [Creating the cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#2-creating-the-cluster).
+
+In the **workshop-ecs-cluster** cluster details page, click in the button **Create**, in the `Services` tab:
+
+![service creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/service_creation.png)
+
+Select `EC2` as the `Launch Type`, and choose the Task Definition created in the previous section. For the purposes of this demo, we'll only start one copy of this task.  
+
+>In a production environment, you will always want more than one copy of each task running for reliability and availability.
+
+Name your service `ecs-service`.
 
 You can keep the default **AZ Balanced Spread** for the Task Placement Policy.  To learn more about the different Task Placement Policies, see the [documentation](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html), or this [blog post](https://aws.amazon.com/blogs/compute/introducing-amazon-ecs-task-placement-policies/).
 
@@ -192,11 +204,11 @@ You can keep the default **AZ Balanced Spread** for the Task Placement Policy.  
 
 Click in **Next**.
 
-Under **Load balancing**, select **Application Load Balancer**. Under *Container to load balance*, select the container "*lts-workshop*" and click in **Add to load balancer**:
+Now, under `Load balancing`, select `Application Load Balancer`. Let's configure the integration between the ECS Service and the Application Load Balancer, so we will be able to access the application using the ALB. Select `Create new role` under `Service IAM role` and under`Container to load balance`, select the container `ecs-workshop-app:0:3000`. Click in **Add to load balancer**:
 
 ![add to ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/add_container_to_alb.png)
 
-This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like **lts-demo-app**.  For **Path Pattern**, the value should be **`/app*`**.  This is the route that we specified in our Python application. In the **Evaluation order**, add the number `1`.
+This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like **ecs-workshop**.  For **Path Pattern**, the value should be **`/app*`**.  This is the route that we specified in our Python application. In the **Evaluation order**, add the number `1`.
 
 Finally, **Health check path**, use the value `/app`.
 
@@ -204,8 +216,10 @@ Finally, **Health check path**, use the value `/app`.
 
 If the values look correct, click **Next Step**.
 
-Since we will not use Auto Scaling in this tutorial, in the **Set Auto Scaling** screen, just click in **Next Step** and after reviewing your configurations, click in **Create Service**.
+Since we will not use Auto Scaling in this tutorial, in the `Set Auto Scaling` screen, just click in **Next Step** and after reviewing your configurations, click in **Create Service**.
 
+
+# Continuar daqui
 
 ## 6. Testing our service deployments from the console and the ALB
 
