@@ -4,14 +4,14 @@
 
 **Quick jump:**
 
-* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#tutorial-overview)
-* [2. Creating the Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-cluster)
-* [3. Creating the ALB](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-alb)
-* [4. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-task-definition)
-* [5. Creating the Service](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-service)
-* [6. Testing our service deployments from the console and the ALB](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#testing-our-service-deployments-from-the-console-and-the-alb)
-* [7. More in-depth logging with CloudWatch](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#more-in-depth-logging-with-cloudwatch)
-* [8. That's a wrap!](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#thats-a-wrap)
+* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#1-tutorial-overview)
+* [2. Creating the Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#2-creating-the-cluster)
+* [3. Creating the ALB](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#3-creating-the-alb)
+* [4. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#4-creating-the-task-definition)
+* [5. Creating the Service](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#5-creating-the-service)
+* [6. Testing our service deployments from the console and the ALB](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb)
+* [7. More in-depth logging with CloudWatch](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#7-more-in-depth-logging-with-cloudwatch)
+* [8. That's a wrap!](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#8-thats-a-wrap)
 
 
 ## 1. Tutorial overview
