@@ -10,7 +10,7 @@
 * [4. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-task-definition)
 * [5. Creating the Service](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#creating-the-service)
 * [6. Testing our service deployments from the console and the ALB](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#testing-our-service-deployments-from-the-console-and-the-alb)
-* [7. More in-depth logging with Cloudwatch](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#more-in-depth-logging-with-cloudwatch)
+* [7. More in-depth logging with CloudWatch](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#more-in-depth-logging-with-cloudwatch)
 * [8. That's a wrap!](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster#thats-a-wrap)
 
 
@@ -77,7 +77,7 @@ Name your ALB **alb-workshop** and add an HTTP listener on port 80:
 
 ![name ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb.png)
 
-Next, select the VPC previously created and add at the private subnet. If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
+Next, select the VPC previously created and add at the private subnet created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC). If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
 
 After adding the information about your VPC, click in **Next: Configure Security Settings**.
 
@@ -91,7 +91,7 @@ Let's now create a security group to be used by your ALB. In the *Step 3: Config
 
 Them, click in **Next: Configure Routing**.
 
-During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change onlye the the **Name** to `dummy`:
+During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change only the the **Name** to `dummy`:
 
 ![add routing](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb_routing.png)
 
@@ -208,7 +208,7 @@ Now, under `Load balancing`, select `Application Load Balancer`. Let's configure
 
 ![add to ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/add_container_to_alb.png)
 
-This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like **ecs-workshop**.  For **Path Pattern**, the value should be **`/app*`**.  This is the route that we specified in our Python application. In the **Evaluation order**, add the number `1`.
+This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like **ecs-service**.  For **Path Pattern**, the value should be **`/app*`**.  This is the route that we specified in our Python application. In the **Evaluation order**, add the number `1`.
 
 Finally, **Health check path**, use the value `/app`.
 
@@ -218,8 +218,6 @@ If the values look correct, click **Next Step**.
 
 Since we will not use Auto Scaling in this tutorial, in the `Set Auto Scaling` screen, just click in **Next Step** and after reviewing your configurations, click in **Create Service**.
 
-
-# Continuar daqui
 
 ## 6. Testing our service deployments from the console and the ALB
 
@@ -231,19 +229,26 @@ We can also test from the ALB itself.  To find the DNS A record for your ALB, na
 
 ![alb web test](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/alb_app_response.png)
 
-You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container:  `/app*/` requests go to our app service.
+You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container:  `/app` requests go to our app service.
 
 
-## 7. More in-depth logging with Cloudwatch
+## 7. More in-depth logging with CloudWatch
 
-When we created our Container Definitions, we also added the awslogs driver, which sends logs to [Cloudwatch](https://aws.amazon.com/cloudwatch/).  You can see more details logs for your service by going to the Cloudwatch console, and selecting first our log group:
+When we created our Container Definitions, we also added the awslogs driver, which sends logs to the [Cloudwatch](https://aws.amazon.com/cloudwatch/). By default, when using the `awslogs`driver, all the `stdout` will be redirected to CloudWatch. Now, let's navigate to the CloudWatch Logs interface to see the logs generated by our application.
 
-![log group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/loggroup.png)
+In order to access the CloudWatch logs, access the ECS Console, navigate to the the cluster `workshop-ecs-cluster` and click in the tab `Tasks`. Here, we will see all the tasks running in our cluster. At this moment, you will need to have just one task running. In this tab, click in the task ID, under `Task`:
 
-And then choosing an individual stream:
+![task id](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/task_id.png)
 
-![event streams](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/event_streams.png)
+You will access a screen with all the information about the task that is running. Now, under `Containers`, expand the container `ecs-workshop-app`. You will see that under `Log Configuration` exists the option `View logs in CloudWatch`. Click in this link:
+
+![view in cloudwatch](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/view_in_cloudwatch.png)
+
+You will be able to see the logs generated by your container:
+
+![container logs](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/container_logs.png)
+
 
 ## 8. That's a wrap!
 
-Congratulations!  You've deployed an ECS Cluster with two working endpoints.  
+Congratulations!  You've deployed an ECS Cluster with a working endpoints.  
