@@ -73,7 +73,7 @@ For *Cluster VPC* select the VPC that you created in the step 03-CreateVPC. For 
 
 After running your task, go back to the ECS Console. Select the cluster and click on the Tasks tab. You'll see a task in the `PENDING` status. 
 
-![pending task](https://github.com/bemer/containers-on-aws-sworkshop/blob/master/05-DeployFargate/images/pending_task.png)
+![pending task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/pending_task.png)
 
 A Fargate task can take around 30 seconds to a minute before changing its status to `RUNNING`. That's because, for each new task, an ENI is created in your VPC with an IP from the subnet you chose, and then, it's attached to the Fargate task.
 
