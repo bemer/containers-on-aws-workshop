@@ -6,11 +6,11 @@
 **Quick jump:**
 
 * [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#1-tutorial-overview)
-* [2. Creating the Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#5-creating-the-cluster)
-* [3. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#6-creating-the-task-definition)
-* [4. Deploying the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#7-deploying-the-application)
-* [5. Accessing the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#8-accessing-the-application)
-* [6. Conclusion](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#9-conclusion)
+* [2. Creating the Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#2-creating-the-cluster)
+* [3. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#3-creating-the-task-definition)
+* [4. Deploying the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#4-deploying-the-application)
+* [5. Accessing the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#5-accessing-the-application)
+* [6. Conclusion](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#6-conclusion)
 
 
 ## 1. Tutorial overview
