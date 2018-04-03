@@ -87,11 +87,11 @@ In the Security Groups, click in the Security Group with a name `fargat-somethin
 
 ![SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_fargate.png)
 
-Click in the tab **Inbound** and click in **Edit**. First remove any rule that was already created by Fargate. Now we will add our rule. For **Type** select `Custom TCP Rule`. For **Port Range** type `3000`. For **Source** select `Anywhere`. Click in **Save**.
+Click in the **Inbound** tab and click in **Edit**. First remove any rule that was already created by Fargate. Now we will add our rule. For **Type** select `Custom TCP Rule`. For **Port Range** type `3000`. For **Source** select `Anywhere`. Click in **Save**.
 
 ![rules SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_rules_fargate.png)
 
-To test your app go back to the Task and find the **Public IP**. Copy and paste it your browser, and add `:3000/app` to the URL. The final URL should look like this: http://34.232.64.118:3000/app
+To test your app go back to the Task and find the **Public IP**. Copy and paste it in your browser, and add `:3000/app` to the URL. The final URL should look like this: http://34.232.64.118:3000/app
 
 ![final Fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/final_fargate.png)
 
