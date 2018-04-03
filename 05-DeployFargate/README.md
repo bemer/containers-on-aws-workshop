@@ -79,7 +79,21 @@ A Fargate task can take around 30 seconds to a minute before changing its status
 
 ![running task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/running_task.png)
 
-Click in the task and copy the *Public IP*. Paste it in any broswer. That's it! You have a conteinerazed application running without any servers to manage.
+The last step to test our app is to change its security group. Click in the task that is currently running. In the Network section, find the **ENI Id** and click in the ENI. 
+
+![task eni](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/eni_fargate.png)
+
+In the Security Groups, click in the Security Group with a name `fargat-something`. 
+
+![SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_fargate.png)
+
+Click in the tab **Inbound** and click in **Edit**. First remove any rule that was already created by Fargate. Now we will add our rule. For **Type** select `Custom TCP Rule`. For **Port Range** type `3000`. For **Source** select `Anywhere`. Click in **Save**.
+
+![rules SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_rules_fargate.png)
+
+To test your app go back to the Task and find the **Public IP**. Copy and paste it your browser, and add `:3000/app` to the URL. The final URL should look like this: http://34.232.64.118:3000/app
+
+![final Fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/final_fargate.png)
 
 ## 6. Conclusion
 
