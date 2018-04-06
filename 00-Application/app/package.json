@@ -27,8 +27,10 @@
     },
     "dependencies": {
         "bootstrap": "4.0.0",
+        "connect": "^3.6.6",
         "font-awesome": "4.7.0",
         "jquery": "3.3.1",
+        "serve-static": "^1.13.2",
         "vide": "^0.5.1"
     },
     "devDependencies": {
@@ -39,5 +41,6 @@
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^3.1.0",
         "gulp-uglify": "3.0.0"
+	
     }
 }
