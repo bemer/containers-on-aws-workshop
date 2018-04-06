@@ -91,8 +91,9 @@ To check if your container is running:
 
 This should return a list of all the currently running containers.  In this example,  it should just return a single container, the one that we just started:
 
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                          NAMES
-    051fda8b734f        ecs-app             "node server.js"    2 minutes ago       Up 2 minutes        0.0.0.0:80->80/tcp, 8080/tcp   modest_thompson
+    CONTAINER ID        IMAGE                     COMMAND             CREATED                  STATUS              PORTS                          NAMES
+    1255ca3087f5        containers-workshop-app   "node server.js"    Less than a second ago   Up 1 second         0.0.0.0:80->80/tcp, 8080/tcp   nifty_snyder
+
 
 
 To test the actual container output, you can access it using your web browser with the following address:
@@ -101,7 +102,8 @@ To test the actual container output, you can access it using your web browser wi
 
 If everything went fine, you should see your web application:
 
-![web application](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/web_application.png)
+!![web application](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/web_application.png)
+
 
 
 ## 3. Setting up the IAM roles
