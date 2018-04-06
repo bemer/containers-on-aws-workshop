@@ -55,34 +55,35 @@ If you haven't executed the `git clone` command present in the [Setup Environmen
 
 Now we are going to build and test our containers locally.  If you've never worked with Docker before, there are a few basic commands that we'll use in this workshop, but you can find a more thorough list in the [Docker "Getting Started" documentation](https://docs.docker.com/engine/getstarted/).
 
-To start your first container, go to the `app` directory in the project:
+In this step, we are going to build a *Docker image* with a simple web application. The application that we will be using is available on the directory `00-Application` inside the project folder. In this case, lets's navigate to the `00-Application` directory:
 
-    $ cd containers-on-aws-workshop/02-CreatingDockerImage/app
+    $ cd containers-on-aws-workshop/00-Application/
 
-And run the following command to build your image:
+Take a look on the contents of this directory. You will see that there is directory called `app/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `00-Application` directory:
 
-    $ docker build -t workshop-app .
+    $ docker build -t containers-containers-workshop-app .
 
 This should output steps that look something like this:
 
-    Sending build context to Docker daemon  4.608kB
-    Step 1/9 : FROM ubuntu:latest
-     ---> 20c44cd7596f
-    Step 2/9 : MAINTAINER brunemer@amazon.com
-     ---> Running in 2d3745e79c4f
-     ---> 06781c0980fb
-    Removing intermediate container 2d3745e79c4f
-    Step 3/9 : RUN apt-get update -y && apt-get install -y python-pip python-dev build-essential
-     ---> Running in 7e3bf79f03a2
+    Sending build context to Docker daemon  9.295MB
+    Step 1/9 : FROM node:alpine
+     ---> 5ce79d7a9aad
+    Step 2/9 : COPY app/ /app
+     ---> 5db182714408
+    Step 3/9 : WORKDIR /app
+    Removing intermediate container 0fed50590e13
+     ---> 8b89b65c5c67
+    Step 4/9 : RUN npm install --global gulp && npm install gulp
+     ---> Running in f86ae7a1e8bb
 
 If the container builds successfully, the output should end with something like this:
 
-     Removing intermediate container d2cd523c946a
-     Successfully built ec59b8b825de
+    Successfully built 0c50204fc662
+    Successfully tagged containers-containers-workshop-app:latest
 
 To run your container:
 
-     $  docker run -d -p 3000:3000 workshop-app
+     $  docker run -d -p 80:80 containers-workshop-app
 
 To check if your container is running:
 
@@ -90,27 +91,24 @@ To check if your container is running:
 
 This should return a list of all the currently running containers.  In this example,  it should just return a single container, the one that we just started:
 
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
-    71f2f6b9fa68        workshop-app        "python app.py"     5 seconds ago       Up 4 seconds        0.0.0.0:3000->3000/tcp   happy_galileo
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                          NAMES
+    051fda8b734f        ecs-app             "node server.js"    2 minutes ago       Up 2 minutes        0.0.0.0:80->80/tcp, 8080/tcp   modest_thompson
 
 
-To test the actual container output, we can use the `curl` command:
+To test the actual container output, you can access it using your web browser with the following address:
 
-    $ curl localhost:3000/app;echo
+    http://localhost/
 
-If everything went fine, you should see your application HTML code:
+If everything went fine, you should see your web application:
 
-    Hello! You have created your first container. <br/> <br/> This is the first step in your world domination
-
->NOTE: If you are running the workshop on your computer, you can just open the URL http://localhost:3000/app in your web browser to access the application.
+![web application](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/web_application.png)
 
 
 ## 3. Setting up the IAM roles
 
 In order to work with the AWS CLI, you'll need an IAM role with the proper permissions set up.  To do this, we'll create both an IAM Group, and an IAM user.
 
-To create the group, navigate to the IAM console, and select **Groups** > **Create New Group**.  Name the group "**workshop-group**".  From the list of managed policies, add the following policies:
-
+To create the group, navigate to the [IAM console](https://console.aws.amazon.com/iam/home?region=us-east-1#/home), and select **Groups** > **Create New Group**.  Name the group "**containers-workshop-group**".  From the list of managed policies, add the following policies:
 
 * AmazonEC2ContainerRegistryFullAccess
 * AmazonEC2ContainerServiceFullAccess
@@ -121,13 +119,15 @@ This is how your group permissions should like after the creation:
 
 Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and them click in the button **Add user**.
 
-The user name will be **workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
+The user name will be **containers-workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
 
 ![creating user](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_user.png)
 
-Now, click in **Next: permissions** and in the **Add user to group** screen, select the group `workshop-group` that we created before:
+Now, click in **Next: permissions** and in the **Add user to group** screen, select the group `containers-workshop-group` that we created before:
 
 ![add user to group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/add_user_to_group.png)
+
+>NOTE: If you already have more groups created in your account, you can use the `Search` on the IAM console to find the group that you created before, just like in the picture.
 
 Click in **Next: Review** and check if is everything fine with your user creation. The screen should be similar to this one:
 
@@ -137,7 +137,7 @@ In this screen, click in **Create user**.
 
 When the wizard finishes, make sure to download and save your access key and secret key.  You'll need them in the next step.
 
->NOTE: The Secret access key is presented only once, during the user creation. If you loose this information, you will need to create a new Access and Secret keys in order to authenticate again with the same user.
+>NOTE: The Secret access key is presented only once, during the user creation. If you loose this information, you will need to create a new Access and Secret keys in order to authenticate with this user.
 
 ## 4. Configuring the AWS CLI
 
@@ -153,13 +153,13 @@ This should drop you into a setup wizard. In this wizard, complete each field wi
     Default region name [us-east-1]:
     Default output format [json]:
 
-If you already have a profile setup with the AWS CLI, you can also add a new profile to your credentials file. In order to add another profile, edit your credentials (usually located in *~/.aws/credentials*) and add a new profile called "**container-workshop**". After adding this new profile, your credentials file will be like this:
+If you already have a profile setup with the AWS CLI, you can also add a new profile to your credentials file. In order to add another profile, edit your credentials (usually located in *~/.aws/credentials*) and add a new profile called "**containers-workshop**". After adding this new profile, your credentials file will be like this:
 
     [default]
     aws_access_key_id = AKIABCDMYKEYEXAMPLE1
     aws_secret_access_key = CAFESECRETACCESSKEYEXAMPLE001
 
-    [container-workshop]
+    [containers-workshop]
     aws_access_key_id = AKIABCDMYKEYEXAMPLE2
     aws_secret_access_key = CAFESECRETACCESSKEYEXAMPLE002
 
@@ -192,7 +192,7 @@ Before we can build and push our images, we need somewhere to push them to.  In 
 
 To create a repository, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1), and select **Repositories**.  From there, click in the **Get Started**.
 
-Name your first repository **workshop-app**:
+Name your first repository **containers-workshop-app**:
 
 ![create ecr repository](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_repository.png)
 
@@ -226,8 +226,8 @@ If you are unable to login to ECR, check your IAM user group permissions.
 
 Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
 
-    $ docker tag workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
-    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
+    $ docker tag containers-workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
+    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
 
 >NOTE: Remember to replace the `XXXXXXXXX` with your account ID. This information will be presented to you in the ECR screen with the Docker push commands.
 
@@ -236,7 +236,7 @@ Now, let's tag our image locally and them push our image to the ECR repository. 
 
 This step will take some minutes. When the command finishes, you should see something like this:
 
-    The push refers to a repository [XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app]
+    The push refers to a repository [XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app]
     9ef5219507db: Pushed
     b3d18e8f520f: Pushed
     a83b4d2ff3a0: Pushed
@@ -250,7 +250,7 @@ This step will take some minutes. When the command finishes, you should see some
 
 You can see your pushed images by viewing the repository in the AWS Console.  Alternatively, you can use the CLI:
 
-    $ aws ecr list-images --repository-name=workshop-app --region us-east-1
+    $ aws ecr list-images --repository-name=containers-workshop-app --region us-east-1
     {
         "imageIds": [
             {
