@@ -10,7 +10,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type `CloudFormation` and select **CloudFormation**;
 
-2. Select `Specify an Amazon S3 template template URL`;
+2. Select `Specify an Amazon S3 template URL`;
 
 3. Insert the following URL on the field: https://s3.us-east-2.amazonaws.com/containers-on-aws-workshop-vpc-template/vpc_pub_priv.yaml;
 
