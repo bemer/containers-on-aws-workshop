@@ -16,7 +16,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 4. Click **Next**;
 
-5. For Stack name, type a name like MyWorkshopVPC. For EnvironmentName, type a name like MyVPC. For everything else leave with the default values. Click **Next**;
+5. For *Stack name*, type a name like `MyWorkshopVPC`. For *EnvironmentName*, type a name like MyVPC. For everything else leave with the default values. Click **Next**;
 
 6. Leave everything as the default values and click **Next**;
 
