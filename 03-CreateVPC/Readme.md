@@ -8,7 +8,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 # VPC Setup
 
-1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type CloudFormation and select `CloudFormation`;
+1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type `CloudFormation` and select **CloudFormation**;
 
 2. Select `Specify an Amazon S3 template template URL`;
 
