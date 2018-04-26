@@ -12,7 +12,9 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 2. Select `Specify an Amazon S3 template URL`;
 
-3. Insert the following URL on the field: `https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`;
+3. Insert the following URL on the field: 
+
+`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`;
 
 4. Click **Next**;
 
