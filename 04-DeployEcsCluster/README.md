@@ -46,9 +46,9 @@ You will then be asked to input information about your new cluster. In the *Conf
 * VPC: Select the VPC created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
 * Subnets: Select the `private` subnet in your VPC
 
-And them click in **Create**.
+And then click in **Create**.
 
->In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and them select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
+>In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and then select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 
 Note that this wizard is also going to create a security group for you allowing access in the port 80 (TCP).
 
@@ -58,7 +58,7 @@ When the creation process finishes, you will see the following screen:
 
 ![cluster created](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_created.png)
 
-You can them click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
+You can then click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
 
 ![cluster screen](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/cluster_screen.png)
 
@@ -89,18 +89,18 @@ Let's now create a security group to be used by your ALB. In the *Step 3: Config
 
 ![create alb security group](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb_sg.png)
 
-Them, click in **Next: Configure Routing**.
+Then, click in **Next: Configure Routing**.
 
 During this initial setup, we're just adding a dummy health check on `/`.  We'll add specific health checks for our ECS service endpoint when registering it with the ALB. Let's change only the the **Name** to `dummy`:
 
 ![add routing](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/configure_alb_routing.png)
 
-Click in **Next: Register Targets** and them in **Review**. If your values look correct, click **Create**:
+Click in **Next: Register Targets** and then in **Review**. If your values look correct, click **Create**:
 
 ![alb creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/alb_creation.png)
 
 
-After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. In order to identify what is the security group applied to your instances, you can access the ECS console, click in your cluster and them select the tab **ECS Instances**. You will see that you have one instance running. Them, click in the ECS Instance ID:
+After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. In order to identify what is the security group applied to your instances, you can access the ECS console, click in your cluster and then select the tab **ECS Instances**. You will see that you have one instance running. Then, click in the ECS Instance ID:
 
 ![ecs instance](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/ecs_instance.png)
 
@@ -118,7 +118,7 @@ Now, let's find the security group created to our Application Load Balancer. In 
 
 At this moment, you should have two Group ID's: the instance Security Group ID and the ALB Security Group ID. The next step is to create a rule in the Security Group used by the EC2 instance allowing all the traffic from the ALB security group. In order to proceed, let's get back to the instance Security Group. You can do this by searching for the ID that you have. In the instance Security Group, let's now create a new rule.
 
-Select the instance Security Group and click in **Inbound** and them in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and add the ALB Security Group ID in the field `Source`. Finally, let's add a description about this rule, so we will be able to understand what is this rule later. To change the rule, click in **Save**:
+Select the instance Security Group and click in **Inbound** and then in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and add the ALB Security Group ID in the field `Source`. Finally, let's add a description about this rule, so we will be able to understand what is this rule later. To change the rule, click in **Save**:
 
 ![security group configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/sg_configuration.png)
 
