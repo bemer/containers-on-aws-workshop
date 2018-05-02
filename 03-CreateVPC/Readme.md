@@ -23,3 +23,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 6. Leave everything as the default values and click **Next**;
 
 7. Click **Create**;
+
+8. Wait for the **Status** to be *CREATE_COMPLETE*. This process may take 5 to 10 minutes to be completed;
+
+9. Click in the **Outputs** tab and take note of all the values in the **Value** colunm;
