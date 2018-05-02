@@ -44,7 +44,7 @@ You will then be asked to input information about your new cluster. In the *Conf
 
 ### Networking
 * VPC: Select the VPC created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
-* Subnets: Select the `private` subnet in your VPC
+* Subnets: Select the `public` subnets in your VPC
 
 And then click in **Create**.
 
@@ -77,7 +77,7 @@ Name your ALB **alb-workshop** and add an HTTP listener on port 80:
 
 ![name ALB](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_alb.png)
 
-Next, select the VPC previously created and add at the private subnet created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC). If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
+Next, select the VPC previously created and add at the public subnets created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC). If you have multiple VPC, and you're not sure which VPC is the correct one, you can find its ID from the VPC console.
 
 After adding the information about your VPC, click in **Next: Configure Security Settings**.
 
@@ -137,7 +137,7 @@ At this point, your EC2 instances will be able to receive traffic from the ALB.
 
 When working with ECS to run our applications, there are a few concepts that we need to understand. The first of these concepts is about what is a `Task`. Basically, a task is a subset of containers that we need to execute to have our application running. The `Tasks` are defined in a configuration called `Task Definition`.
 
-A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports needs to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
+A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports need to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
 
 The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage) tutorial. To get the image URI, navigate to the [ECR page](https://console.aws.amazon.com/ecs/home?region=us-east-1#/repositories). You will see the repository named `workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
 
