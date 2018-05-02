@@ -44,7 +44,7 @@ You will then be asked to input information about your new cluster. In the *Conf
 
 ### Networking
 * VPC: Select the VPC created in the [Create VPC tutorial](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
-* Subnets: Select the `public` subnets in your VPC
+* Subnets: Select the `private` subnets in your VPC
 
 And then click in **Create**.
 
