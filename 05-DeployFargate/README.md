@@ -47,7 +47,7 @@ For *Task execution role* choose `ecsTaskEcecutionRole`, if that role is not lis
 
 ![task size](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/task_size.png)
 
-For *Container name* type a name like `python-fargate`. For *Image* copy and paste the same ECR URL used in the previous tutorials. For *Port mappings* type `3000` and leave `tcp` as the protocol. Click in **Add**: 
+For *Container name* type a name like `python-fargate`. For *Image* copy and paste the same ECR URL used in the previous tutorials. For *Port mappings* type `3000` and leave `tcp` as the protocol. Click in **Add**:
 
 ![task container](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/fargate_container.png)
 
@@ -71,7 +71,7 @@ For *Cluster VPC* select the VPC that you created in the step 03-CreateVPC. For 
 
 ## 5. Accessing the application
 
-After running your task, go back to the ECS Console. Select the cluster and click on the Tasks tab. You'll see a task in the `PENDING` status. 
+After running your task, go back to the ECS Console. Select the cluster and click on the Tasks tab. You'll see a task in the `PENDING` status.
 
 ![pending task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/pending_task.png)
 
@@ -79,11 +79,11 @@ A Fargate task can take around 30 seconds to a minute before changing its status
 
 ![running task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/running_task.png)
 
-The last step to test our app is to change its Security Group. Click in the task that is currently running. In the Network section, find the **ENI Id** and click in the ENI. 
+The last step to test our app is to change its Security Group. Click in the task that is currently running. In the Network section, find the **ENI Id** and click in the ENI.
 
 ![task eni](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/eni_fargate.png)
 
-In the Security Groups, click in the Security Group with a name `fargat-something`. 
+In the Security Groups, click in the Security Group with a name `ecs-fa-...`
 
 ![SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_fargate.png)
 
