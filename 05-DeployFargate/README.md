@@ -83,7 +83,7 @@ The last step to test our app is to change its Security Group. Click in the task
 
 ![task eni](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/eni_fargate.png)
 
-In the Security Groups, click in the Security Group with a name `ecs-fa-...`
+In the Security Groups, click in the Security Group with a name `fargat-...`
 
 ![SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_fargate.png)
 
