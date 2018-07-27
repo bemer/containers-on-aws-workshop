@@ -18,7 +18,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 4. Click **Next**;
 
-5. For *Stack name*, type a name like `containers-workshop-insfrastructure`. For everything else leave with the default values. Click **Next**;
+5. For *Stack name*, use the name `containers-workshop-insfrastructure`. For everything else leave with the default values. Click **Next**;
 
 6. Leave everything as the default values and click **Next**;
 
