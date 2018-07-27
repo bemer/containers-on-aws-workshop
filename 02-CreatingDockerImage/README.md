@@ -102,7 +102,7 @@ To test the actual container output, you can access it using your web browser wi
 
 If everything went fine, you should see your web application:
 
-!![web application](https://github.com/bemer/containers-on-aws-workshop/blob/new-application/02-CreatingDockerImage/images/web_application.png)
+![web application](https://github.com/bemer/containers-on-aws-workshop/blob/new-application/02-CreatingDockerImage/images/web_application.png)
 
 
 
