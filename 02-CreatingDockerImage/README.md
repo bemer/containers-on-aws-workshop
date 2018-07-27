@@ -5,12 +5,12 @@
 
 ## Quick jump:
 
-* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#1-tutorial-overview)
-* [2. Creating your first image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#2-creating-your-first-image)
-* [3. Setting up the IAM Roles](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#3-setting-up-the-iam-roles)
-* [4. Configuring the AWS CLI](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#4-configuring-the-aws-cli)
-* [5. Creating the image repository with ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)
-* [6. Pushing our tested images to ECR](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage#6-pushing-our-tested-images-to-ecr)
+* [1. Tutorial overview](/02-CreatingDockerImage#1-tutorial-overview)
+* [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image)
+* [3. Setting up the IAM Roles](/02-CreatingDockerImage#3-setting-up-the-iam-roles)
+* [4. Configuring the AWS CLI](/02-CreatingDockerImage#4-configuring-the-aws-cli)
+* [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)
+* [6. Pushing our tested images to ECR](/02-CreatingDockerImage#6-pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
 
@@ -43,13 +43,13 @@ This should return something like:
 
     Docker version 17.12.0-ce, build 3dfb8343b139d6342acfd9975d7f1068b5b1c3d3
 
->If you after running the `docker -v` command you don't get this output, please follow the install instructions in [this link](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment#install-docker).
+>If you after running the `docker -v` command you don't get this output, please follow the install instructions in [this link](/01-SetupEnvironment#install-docker).
 
 If you have completed these steps, you are good to go!
 
 ## 2. Creating your first image
 
-If you haven't executed the `git clone` command present in the [Setup Environment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment#install-git) chapter, do it now using the following command:
+If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment#install-git) chapter, do it now using the following command:
 
     $ git clone https://github.com/bemer/containers-on-aws-workshop.git
 
