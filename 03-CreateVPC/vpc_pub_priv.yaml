@@ -96,7 +96,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-private-subnet-az1
+                  Value: containers-on-aws-private-subnet-az2
 
     NatGateway1EIP:
         Type: AWS::EC2::EIP

@@ -30,7 +30,7 @@ Once you've signed into your AWS account, navigate to the [ECS console](https://
 
 ![clusters screen](/04-DeployEcsCluster/images/clusters_screen.png)
 
-Let's create our first ECS Cluster. Click in the button **Create cluster** and then select the **EC2 Linux + Networking** cluster template:
+Let's create our first ECS Cluster. Click in the button **Create cluster**, select the **EC2 Linux + Networking** cluster template and click in `Next Step`:
 
 ![cluster template](/04-DeployEcsCluster/images/cluster_template.png)
 
@@ -43,8 +43,8 @@ You will then be asked to input information about your new cluster. In the *Conf
 * EC2 instance type: `t2.micro`
 
 ### Networking
-* VPC: Select the VPC created in the [Create VPC tutorial](/03-CreateVPC)
-* Subnets: Select the `private` subnet in your VPC
+* VPC: Select the VPC `containers-workshop-vpc` created in the [Create VPC tutorial](/03-CreateVPC)
+* Subnets: Select the `containers-on-aws-private-subnet-az1` and `containers-on-aws-private-subnet-az2` subnets in your VPC
 
 And them click in **Create**.
 
