@@ -37,7 +37,7 @@ Let's create our first ECS Cluster. Click in the button **Create cluster** and t
 You will then be asked to input information about your new cluster. In the *Configure cluster* screen, keep the default values to the fields, changing just these ones:
 
 ### Configure cluster
-* Cluster name: `workshop-ecs-cluster`
+* Cluster name: `containers-workshop-ecs-cluster`
 
 ### Instance configuration
 * EC2 instance type: `t2.micro`
@@ -73,7 +73,7 @@ Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2/v2/home
 
 ![choose ALB](/04-DeployEcsCluster/images/select_alb.png)
 
-Name your ALB **alb-workshop** and add an HTTP listener on port 80:
+Name your ALB `containers-workshop-alb` and add an HTTP listener on port 80:
 
 ![name ALB](/04-DeployEcsCluster/images/create_alb.png)
 
