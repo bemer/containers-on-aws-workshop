@@ -61,7 +61,7 @@ In this step, we are going to build a *Docker image* with a simple web applicati
 
 Take a look on the contents of this directory. You will see that there is directory called `app/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `00-Application` directory:
 
-    $ docker build -t containers-containers-workshop-app .
+    $ docker build -t containers-workshop-app .
 
 This should output steps that look something like this:
 
@@ -79,7 +79,7 @@ This should output steps that look something like this:
 If the container builds successfully, the output should end with something like this:
 
     Successfully built 0c50204fc662
-    Successfully tagged containers-containers-workshop-app:latest
+    Successfully tagged containers-workshop-app:latest
 
 To run your container:
 
