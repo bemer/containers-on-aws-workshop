@@ -5,5 +5,5 @@ RUN npm install --global gulp && npm install gulp
 RUN npm install
 RUN gulp
 ENTRYPOINT ["node"]
-EXPOSE 8080
+EXPOSE 80
 CMD ["server.js"]
