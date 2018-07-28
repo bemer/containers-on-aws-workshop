@@ -39,14 +39,14 @@ Resources:
             CidrBlock: !Ref VpcCIDR
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-vpc
+                  Value: containers-workshop-vpc
 
     InternetGateway:
         Type: AWS::EC2::InternetGateway
         Properties:
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-vpc-ig
+                  Value: containers-workshop-vpc-ig
 
     InternetGatewayAttachment:
         Type: AWS::EC2::VPCGatewayAttachment
@@ -63,7 +63,7 @@ Resources:
             MapPublicIpOnLaunch: true
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-public-subnet-az1
+                  Value: containers-workshop-public-subnet-az1
 
     PublicSubnet2:
         Type: AWS::EC2::Subnet
@@ -74,7 +74,7 @@ Resources:
             MapPublicIpOnLaunch: true
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-public-subnet-az2
+                  Value: containers-workshop-public-subnet-az2
 
     PrivateSubnet1:
         Type: AWS::EC2::Subnet
@@ -85,7 +85,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-private-subnet-az1
+                  Value: containers-workshop-private-subnet-az1
 
     PrivateSubnet2:
         Type: AWS::EC2::Subnet
@@ -96,7 +96,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-private-subnet-az2
+                  Value: containers-workshop-private-subnet-az2
 
     NatGateway1EIP:
         Type: AWS::EC2::EIP
@@ -128,7 +128,7 @@ Resources:
             VpcId: !Ref VPC
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-public-routes
+                  Value: containers-workshop-public-routes
 
     DefaultPublicRoute:
         Type: AWS::EC2::Route
@@ -157,7 +157,7 @@ Resources:
             VpcId: !Ref VPC
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-private-routes-az1
+                  Value: containers-workshop-private-routes-az1
     DefaultPrivateRoute1:
         Type: AWS::EC2::Route
         Properties:
@@ -175,7 +175,7 @@ Resources:
             VpcId: !Ref VPC
             Tags:
                 - Key: Name
-                  Value: containers-on-aws-private-routes-az2
+                  Value: containers-workshop-private-routes-az2
     DefaultPrivateRoute2:
         Type: AWS::EC2::Route
         Properties:

@@ -1,6 +1,6 @@
 # Creating your Docker image
 
-![container](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/container.png)
+![container](/02-CreatingDockerImage/images/container.png)
 
 
 ## Quick jump:
@@ -117,23 +117,23 @@ To create the group, navigate to the [IAM console](https://console.aws.amazon.co
 
 This is how your group permissions should like after the creation:
 
-![IAM group permissions](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/iam_group_permissions.png)
+![IAM group permissions](/02-CreatingDockerImage/images/iam_group_permissions.png)
 
 Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and them click in the button **Add user**.
 
 The user name will be **containers-workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
 
-![creating user](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_user.png)
+![creating user](/02-CreatingDockerImage/images/creating_user.png)
 
 Now, click in **Next: permissions** and in the **Add user to group** screen, select the group `containers-workshop-group` that we created before:
 
-![add user to group](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/add_user_to_group.png)
+![add user to group](/02-CreatingDockerImage/images/add_user_to_group.png)
 
 >NOTE: If you already have more groups created in your account, you can use the `Search` on the IAM console to find the group that you created before, just like in the picture.
 
 Click in **Next: Review** and check if is everything fine with your user creation. The screen should be similar to this one:
 
-![review user creation](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/review_user_creation.png)
+![review user creation](/02-CreatingDockerImage/images/review_user_creation.png)
 
 In this screen, click in **Create user**.
 
@@ -196,11 +196,11 @@ To create a repository, navigate to the [ECS console](https://console.aws.amazon
 
 Name your first repository **containers-workshop-app**:
 
-![create ecr repository](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/creating_repository.png)
+![create ecr repository](/02-CreatingDockerImage/images/creating_repository.png)
 
 Once you've created the repository, it will display a list of commands that you will need to use to push your Docker images. These commands will be like this:
 
-![push commands](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/push_commands.png)
+![push commands](/02-CreatingDockerImage/images/push_commands.png)
 
 ## 6. Pushing our tested images to ECR
 
