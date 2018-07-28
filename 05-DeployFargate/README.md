@@ -1,23 +1,23 @@
 # Deploying an application with AWS Fargate
 
-![aws fargate logo](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/aws_fargate_logo.png)
+![aws fargate logo](/05-DeployFargate/images/aws_fargate_logo.png)
 
 
 **Quick jump:**
 
-* [1. Tutorial overview](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#1-tutorial-overview)
-* [2. Creating the Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#2-creating-the-cluster)
-* [3. Creating the Task Definition](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#3-creating-the-task-definition)
-* [4. Deploying the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#4-deploying-the-application)
-* [5. Accessing the application](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#5-accessing-the-application)
-* [6. Conclusion](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate#6-conclusion)
+* [1. Tutorial overview](/05-DeployFargate#1-tutorial-overview)
+* [2. Creating the Cluster](/05-DeployFargate#2-creating-the-cluster)
+* [3. Creating the Task Definition](/05-DeployFargate#3-creating-the-task-definition)
+* [4. Deploying the application](/05-DeployFargate#4-deploying-the-application)
+* [5. Accessing the application](/05-DeployFargate#5-accessing-the-application)
+* [6. Conclusion](/05-DeployFargate#6-conclusion)
 
 
 ## 1. Tutorial overview
 
 This tutorial will walk you through a web application deployment using AWS Fargate. This is the same application that we used for the ECS Cluster with EC2. This means that we won't need to create and build another Docker image. We will also use the same image and ECR respoitory.
 
-After concluding this tutorial, you will have a serverless application running in AWS Fargate.
+After concluding this tutorial, you will have an application running in AWS Fargate.
 
 ## 2. Creating the Cluster
 
@@ -27,29 +27,29 @@ Let's create a new cluster to deploy our containers. In your AWS account Managem
 
 Click in **Create cluster** and in the following screen select the **Networking only** cluster template. Click in **Next step**:
 
-![cluster template](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/cluster_template.png)
+![cluster template](/05-DeployFargate/images/cluster_template.png)
 
-For the *Cluster name* type a name for your cluster and click in **Create**:
+For the **luster name** use `containers-workshop-fargate-cluster` and click in **Create**:
 
-![cluster configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/cluster_configuration.png)
+![cluster configuration](/05-DeployFargate/images/cluster_configuration.png)
 
 ## 3. Creating the Task Definition
 
-To create a Task Definition, at the left side of the ECS Console menu, click in **Task Definitions**. Clinck in **Create new Task Definition**. Select `FARGATE` as the *Launch type compatibility* and click in **Next steps**:
+To create a Task Definition, at the left side of the ECS Console menu, click in **Task Definitions**. Click in **Create new Task Definition**. Select `FARGATE` as the **Launch type compatibility** and click in **Next steps**:
 
-![type compatibility](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/task_compatibility.png)
+![type compatibility](/05-DeployFargate/images/task_compatibility.png)
 
-For *Task Definition Name* type a name for your task. For *Task Role* choose `None`.
+In the **Task Definition Name** type `containers-workshop-fargate-task-def`. For *Task Role* choose `None`.
 
-![task configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/task_configuration.png)
+![task configuration](/05-DeployFargate/images/task_configuration.png)
 
-For *Task execution role* choose `ecsTaskEcecutionRole`, if that role is not listed, choose `Create new role`. For *Task memory (GB)* select `0.5GB`. For *Task CPU (vCPU)* select `0.25 vCPU`. Click in **Add container**:
+Under **Task execution role** choose `ecsTaskEcecutionRole`, if that role is not listed, choose `Create new role`. And select `0.5GB` under **Task memory (GB)**. For **Task CPU (vCPU)** select `0.25 vCPU`. Click in **Add container**:
 
-![task size](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/task_size.png)
+![task size](/05-DeployFargate/images/task_size.png)
 
-For *Container name* type a name like `python-fargate`. For *Image* copy and paste the same ECR URL used in the previous tutorials. For *Port mappings* type `3000` and leave `tcp` as the protocol. Click in **Add**: 
+For **Container name** type the name `containers-workshop-app`. And add the same ECR URL using in the previous modules of this workshop in the **Image** field. Under **Port mappings** type `80` and leave `tcp` as the protocol. Click in **Add**:
 
-![task container](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/fargate_container.png)
+![task container](/05-DeployFargate/images/fargate_container.png)
 
 Click in **Create**.
 
@@ -57,43 +57,31 @@ Click in **Create**.
 
 Now that we have our task definition, let's create a task itself to see our container running with no servers to manage.
 
-Go back to the ECS Console and select the cluster that you created for this tutorial. Click on the *Task* tab and then click in **Run new task**
+Go back to the ECS Console and select the cluster that you created for this tutorial. Click on the **Task** tab and then click in **Run new task**
 
-![run task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/run_new_task.png)
+![run task](/05-DeployFargate/images/run_new_task.png)
 
-In the **Run Task** screen, for *Launch type* select `FARGATE`. For *Task Definition* select the Task Definition that you created in the previous step. For *Cluster* select the cluster that you created for this tutorial:
+In the **Run Task** screen, for **Launch type** select `FARGATE`. For **Task Definition** select the Task Definition that you created in the previous step. For **Cluster** select the cluster `containers-workshop-fargate-cluster`:
 
-![run task configuration](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/run_new_task_conf.png)
+![run task configuration](/05-DeployFargate/images/run_new_task_conf.png)
 
-For *Cluster VPC* select the VPC that you created in the step 03-CreateVPC. For *Subnets* select a public subnet. If you have more than one public subnet, feel free to choose all of them. For *Auto-assign public IP* choose `ENABLED`. Click in **Run Task**.
+Under **Cluster VPC**, select the VPC `containers-workshop-vpc` and the both `containers-workshop-public-subnets` as your **Subnets**. Select `ENABLED` in the **Auto-assign public IP** option. After selecting everything, click in **Run Task**:
 
-![run task configuration VPC](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/run_new_task_conf_vpc.png)
+![run task configuration VPC](/05-DeployFargate/images/run_new_task_conf_vpc.png)
 
 ## 5. Accessing the application
 
-After running your task, go back to the ECS Console. Select the cluster and click on the Tasks tab. You'll see a task in the `PENDING` status. 
+After running your task, go back to the ECS Console. Select the cluster and click on the Tasks tab. You'll see a task in the `PENDING` status.
 
-![pending task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/pending_task.png)
+![pending task](/05-DeployFargate/images/pending_task.png)
 
 A Fargate task can take around 30 seconds to a minute before changing its status to `RUNNING`. That's because, for each new task, an ENI is created in your VPC with an IP from the subnet you chose, and then, it's attached to the Fargate task.
 
-![running task](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/running_task.png)
+![running task](/05-DeployFargate/images/running_task.png)
 
-The last step to test our app is to change its Security Group. Click in the task that is currently running. In the Network section, find the **ENI Id** and click in the ENI. 
+To test your app, click in the Task and find the **Public IP**. Copy and paste it in your browser. The final URL should look like this: http://34.229.126.241
 
-![task eni](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/eni_fargate.png)
-
-In the Security Groups, click in the Security Group with a name `fargat-something`. 
-
-![SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_fargate.png)
-
-Click in the **Inbound** tab and click in **Edit**. First remove any rule that was already created by Fargate. Now we will add our rule. For **Type** select `Custom TCP Rule`. For **Port Range** type `3000`. For **Source** select `Anywhere`. Click in **Save**.
-
-![rules SG fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/sg_rules_fargate.png)
-
-To test your app go back to the Task and find the **Public IP**. Copy and paste it in your browser adding `:3000/app` at the end of the URL. The final URL should look like this: http://34.232.64.118:3000/app
-
-![final Fargate](https://github.com/bemer/containers-on-aws-workshop/blob/master/05-DeployFargate/images/final_fargate.png)
+![final Fargate](/05-DeployFargate/images/final_fargate.png)
 
 ## 6. Conclusion
 
