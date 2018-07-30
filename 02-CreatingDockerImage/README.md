@@ -168,7 +168,7 @@ If you already have a profile setup with the AWS CLI, you can also add a new pro
 
 You can test that your IAM user has the correct permissions, and that your CLI is setup to connect to your AWS account by running the command to obtain an ECR authentication token.  This will allow us to pull the Docker image to our repository in the next step:
 
-    $ aws ecr get-login --region us-east-1 --no-include-email
+    $ aws ecr get-login --region YOUR_REGION_HERE --no-include-email
 
 This should output something like:
 
