@@ -12,7 +12,7 @@ We will walk you through the very basics of containers: from installing and conf
 
 We are working on a content for running this workshop using a Windows machine. Meanwhile, please, we strongly recommend you spinning up an EC2 instance running Amazon Linux or a Cloud9 instance. 
 
-If you choose Cloud9, all you have to do is jump [03-CreateVPC](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC).
+If you choose Cloud9, all you have to do is jump to [03-CreateVPC](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC).
 
 If you want to run on a EC2 instance, the following links will guide you through the instance creation process and how to access it:
 
