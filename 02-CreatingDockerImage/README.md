@@ -14,7 +14,7 @@
 
 ## 1. Tutorial overview
 
-This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository.
+This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository. If you are going to execute this lab in the Clou9 environment, you can jump to [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image).
 
 >This Docker image will have a very simple web application written in Python that you can find in the `/app` directory.
 
@@ -48,6 +48,8 @@ This should return something like:
 If you have completed these steps, you are good to go!
 
 ## 2. Creating your first image
+
+The following steps should be executed on your own computer or Cloud9 instance, if you chose it.
 
 If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment#install-git) chapter, do it now using the following command:
 
