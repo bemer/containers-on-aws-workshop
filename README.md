@@ -21,12 +21,12 @@ If you want to run on a EC2 instance, the following links will guide you through
 
 ## 3) We strongly recommend you running this workshop in the following order:
 
-* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)
+* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/01-SetupEnvironment)
 
-* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
+* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/02-CreatingDockerImage)
 
-* [3. Creating A VPC for the Workshop](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-CreateVPC)
+* [3. Creating A VPC for the Workshop](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC)
 
-* [4. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployEcsCluster)
+* [4. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/04-DeployEcsCluster)
 
-* [5. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-DeployFargate)
+* [5. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/05-DeployFargate)
