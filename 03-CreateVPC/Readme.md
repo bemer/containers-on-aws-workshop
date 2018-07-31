@@ -14,7 +14,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 3. Insert the following URL on the field: 
 
-`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`;
+`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-on-aws-workshop-no-cloud9.yaml`;
 
 4. Click **Next**;
 
