@@ -18,7 +18,7 @@ To support us on this task, we must create a Continous Delivery pipeline that wi
 
 >c) a Deployment stage: automatically deploys the new version of our application that is on Amazon ECR into Amazon ECS. The Amazon ECS itself will be responsible for deploying it without any downtime;
 
-Since we already have the Depployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline. 
+Since we already have the Deployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline. 
 
 Let's begin with the Source stage.
 
