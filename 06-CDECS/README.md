@@ -12,11 +12,11 @@ So far we've been deploying our containers into ECS manually. On a production en
 
 To support us on this task, we must create a Continous Delivery pipeline that will orchestrate different stages of our pipeline. For this workshop our pipeline will have three stages:
 
-a) A Source stage: the Git repository branch where all the changes should be promoted to a production enviroment. We will use AWS CodeCommit as the Git repository;
+>a) a Source stage: the Git repository branch where all the changes should be promoted to a production enviroment. We will use AWS CodeCommit as the Git repository;
 
-b) A Build stage: automatically pulls the content from the Git repository, builds and tags the Docker image, and pushes the new version to Amazon ECR. We will use AWS CodeBuild for this job;
+>b) a Build stage: automatically pulls the content from the Git repository, builds and tags the Docker image, and pushes the new version to Amazon ECR. We will use AWS CodeBuild for this job;
 
-c) A Deployment stage: automatically deploys the new version of our application that is on Amazon ECR into Amazon ECS. The Amazon ECS itself will be responsible for deploying it without any downtime;
+>c) a Deployment stage: automatically deploys the new version of our application that is on Amazon ECR into Amazon ECS. The Amazon ECS itself will be responsible for deploying it without any downtime;
 
 Since we already have the Depployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline. 
 
