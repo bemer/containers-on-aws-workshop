@@ -30,3 +30,5 @@ If you want to run on a EC2 instance, the following links will guide you through
 * [4. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/04-DeployEcsCluster)
 
 * [5. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/05-DeployFargate)
+
+* [6. Creating a Continous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/06-CDECS)
