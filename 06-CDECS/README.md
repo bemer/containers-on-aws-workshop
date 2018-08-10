@@ -161,8 +161,7 @@ The `buildpsec.yml` shoudld be listed now
 
 ![List buildspec](/06-CDECS/images/buildspec_list.png)
 
-
-In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
+Now we have everything that we need to create our Build environment. In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
 ![CodeBuild](/06-CDECS/images/codebuild.png)
 
@@ -187,4 +186,8 @@ Change only what's defined below:
 **Runtime**: `Docker`
 
 **Runtime version**: `aws/codebuild/docker:17.09.0`
+
+Expand **Show advanced settings**
+
+**Environment variables**: In `Name` type `REPOSITORY_URI`. In `Value` type your ECR URI. In `Name` type `AWS_DEFAULT_REGION`. In `Value` type the region code where your ECR repository resides (e.g. us-east-1)
 
