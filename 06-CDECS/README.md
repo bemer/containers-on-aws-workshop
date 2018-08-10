@@ -120,34 +120,35 @@ In Clou9, click in **File > New File**
 
 Paste the following code and in the new file (remove the $ from the beggining of each line):
 
+```
 version: 0.2
 
-$ phases:
-$  pre_build:
-$    commands:
-$      - echo Logging in to Amazon ECR...
-$      - aws --version
-$      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-$      - REPOSITORY_URI=109434434086.dkr.ecr.us-east-2.amazonaws.com/cicd-test
-$      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-$      - IMAGE_TAG=${COMMIT_HASH:=latest}
-$  build:
-$    commands:
-$      - echo Build started on `date`
-$      - echo Building the Docker image...          
-$      - docker build -t $REPOSITORY_URI:latest .
-$      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-$  post_build:
-$    commands:
-$      - echo Build completed on `date`
-$      - echo Pushing the Docker images...
-$      - docker push $REPOSITORY_URI:latest
-$      - docker push $REPOSITORY_URI:$IMAGE_TAG
-$      - echo Writing image definitions file...
-$      - printf '[{"name":"cicd-test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-$ artifacts:
-$    files: imagedefinitions.json
-
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=109434434086.dkr.ecr.us-east-2.amazonaws.com/cicd-test
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"cicd-test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
+```
 
 In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
