@@ -151,6 +151,17 @@ Save the file by selecting **File > Save** in Cloud9. Name it as `buildspec.yml`
 
 ![Save the buildspec.yml file](/06-CDECS/images/buildspec_save.png)
 
+Your folder should have an `app` folder, a `buildspec.yml` file and a `Dockerfile` file. Let's push to our repository
+
+    $ git add buildspec.yml
+    $ git commit -m "Adding the build specifications file"
+    $ git push origin master
+
+The `buildpsec.yml` shoudld be listed now
+
+![List buildspec](/06-CDECS/images/buildspec_list.png)
+
+
 In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
 ![CodeBuild](/06-CDECS/images/codebuild.png)
