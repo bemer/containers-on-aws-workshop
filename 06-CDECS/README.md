@@ -118,7 +118,7 @@ In Clou9, click in **File > New File**
 
 ![Cloud9 new file](/06-CDECS/images/cloud9_new_file.png)
 
-Paste the following code and in the new file (remove the $ from the beggining of each line):
+Paste the following code in the new file, and change the `REPOSITORY_URI` with the URI of your ECR repository
 
 ```
 version: 0.2
@@ -129,7 +129,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=xxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/containers-workshop-repository
+      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/containers-workshop-app
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
