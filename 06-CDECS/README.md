@@ -36,16 +36,71 @@ Otherwise click **Create repository**.
 
 ![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository.png)
 
-In **Respoitory name** type a name for your respository. For exmaple: `ecs-workshop-repo`. Leave **Description** blank and click in **Create repository**.
+In **Respoitory name** type a name for your respository. For exmaple: `containers-workshop-repository`. Leave **Description** blank and click in **Create repository**.
 
 ![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository_II.png)
 
 In **Configure email notifications** just click in **Skip**.
 
-Now follow the steps that appear in **Steps to clone your repository**
+Now follow the steps that appear in **Steps to clone your repository** 
 
 ![CodeCommit clone respository](/06-CDECS/images/codecommit_clone_repository.png)
 
     $ git config --global credential.helper '!aws codecommit credential-helper $@'
     $ git config --global credential.UseHttpPath true
-    $ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/ecs-workshop-repo
+    $ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
+
+The output should be something like:
+
+    $ Cloning into 'containers-workshop-repository'...
+    $ warning: You appear to have cloned an empty repository.
+    $ Admin:~/environment $
+
+Aditionally you'll also need to type the following commands with your email and a username. This is just to identity who commited a new change to the repository:
+
+    $ git config --global user.email "YOUREMAIL@HERE.COM"
+    $ git config --global user.name "USERNAME"
+
+Now we need to copy our application to the CodeCommit repository. First, go to the folder where your application resides
+
+    $ cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/app
+
+Copy everything to the folder that was created when you cloned the empty repository from CodeCommit
+
+    $ cp -r * /home/ec2-user/environment/containers-workshop-repository/
+
+Go to the folder where we will synchronize with the CodeCommit repository
+
+    $ cd /home/ec2-user/environment/containers-workshop-repository/
+
+Now let's push our application to the repository
+
+    $ git add .
+    $ git commit -m "My first commit"
+
+The output should be somoething like:
+
+    $ [master (root-commit) ed123c6] My first commit
+    $ 61 files changed, 20778 insertions(+)
+    $ create mode 100644 LICENSE
+    $ create mode 100644 css/coming-soon.css
+    $ create mode 100644 gulpfile.js
+    $ create mode 100644 img/AWS_logo_RGB_REV.png
+    $ create mode 100644 img/bg-mobile-fallback.png
+    $ create mode 100644 index.html
+    $ create mode 100644 js/coming-soon.js
+    $ create mode 100644 mp4/bg.mp4
+    $ create mode 100644 package.json
+    $ ...
+
+Finally
+
+    $ git push origin master
+
+    $ Counting objects: 77, done.
+    $ Compressing objects: 100% (73/73), done.
+    $ Writing objects: 100% (77/77), 4.27 MiB | 7.42 MiB/s, done.
+    $ Total 77 (delta 5), reused 0 (delta 0)
+    $ To https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
+    $ * [new branch]      master -> master
+
