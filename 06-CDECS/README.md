@@ -97,6 +97,8 @@ Finally
 
     $ git push origin master
 
+The output should be something like:
+
     $ Counting objects: 77, done.
     $ Compressing objects: 100% (73/73), done.
     $ Writing objects: 100% (77/77), 4.27 MiB | 7.42 MiB/s, done.
