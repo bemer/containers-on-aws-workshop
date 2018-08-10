@@ -151,10 +151,6 @@ Save the file by selecting **File > Save** in Cloud9. Name it as `buildspec.yml`
 
 ![Save the buildspec.yml file](/06-CDECS/images/buildspec_save.png)
 
-
-
-
-
 In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
 ![CodeBuild](/06-CDECS/images/codebuild.png)
@@ -170,9 +166,14 @@ Otherwise, click in **Create project**
 Change only what's defined below:
 
 **Project name**: `containers-workshop-build`
+
 **Source provider**: `AWS CodeCommit`
+
 **Repository**: `containers-workshop-repository`
+
 **Operating system**: `Ubuntu`
+
 **Runtime**: `Docker`
+
 **Runtime version**: `aws/codebuild/docker:17.09.0`
 
