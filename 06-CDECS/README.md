@@ -63,7 +63,7 @@ Aditionally you'll also need to type the following commands with your email and 
 
 Now we need to copy our application to the CodeCommit repository. First, go to the folder where your application resides
 
-    $ cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/app
+    $ cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/
 
 Copy everything to the folder that was created when you cloned the empty repository from CodeCommit
 
@@ -80,17 +80,14 @@ Now let's push our application to the repository
 
 The output should be somoething like:
 
-    $ [master (root-commit) ed123c6] My first commit
-    $ 61 files changed, 20778 insertions(+)
-    $ create mode 100644 LICENSE
-    $ create mode 100644 css/coming-soon.css
-    $ create mode 100644 gulpfile.js
-    $ create mode 100644 img/AWS_logo_RGB_REV.png
-    $ create mode 100644 img/bg-mobile-fallback.png
-    $ create mode 100644 index.html
-    $ create mode 100644 js/coming-soon.js
-    $ create mode 100644 mp4/bg.mp4
-    $ create mode 100644 package.json
+    $ [master 4956fb4] My first commit
+    $ 62 files changed, 20787 insertions(+)
+    $ create mode 100644 Dockerfile
+    $ create mode 100644 app/LICENSE
+    $ create mode 100644 app/css/coming-soon.css
+    $ create mode 100644 app/gulpfile.js
+    $ create mode 100644 app/img/AWS_logo_RGB_REV.png
+    $ create mode 100644 app/img/bg-mobile-fallback.png
     $ ...
 
 Finally
@@ -149,6 +146,14 @@ phases:
 artifacts:
     files: imagedefinitions.json
 ```
+
+Save the file by selecting **File > Save** in Cloud9. Name it as `buildspec.yml` in the `containers-workshop-repository` folder
+
+![Save the buildspec.yml file](/06-CDECS/images/buildspec_save.png)
+
+
+
+
 
 In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
