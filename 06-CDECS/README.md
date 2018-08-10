@@ -106,3 +106,6 @@ The output should be something like:
     $ To https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
     $ * [new branch]      master -> master
 
+We can also list the files through the CodeCommit interface:
+
+![CodeCommit list files](/06-CDECS/images/codecommit_list_files.png)
