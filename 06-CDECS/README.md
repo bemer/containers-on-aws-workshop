@@ -110,7 +110,7 @@ We can also list the files through the CodeCommit interface:
 
 ![CodeCommit list files](/06-CDECS/images/codecommit_list_files.png)
 
-## [3. Creating a Build stage]
+## 3. Creating a Build stage
 
 Before we create our CodeBuild environment, we need to upload the YAML file with all the build commands and specifications. This file will be read by the CodeBuild everytime a new build must be done.
 
