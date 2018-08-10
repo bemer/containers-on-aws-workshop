@@ -24,6 +24,28 @@ Let's begin with the Source stage.
 
 ## 2. Creating a Source stage
 
-In the AWS Console Management, type on the search field `Commit` and select **CodeCommit** from the drop down list
+In the AWS Console Management, type on the search field `Commit` and select **CodeCommit** from the drop down list.
 
 ![CodeCommit](/06-CDECS/images/codecommit.png)
+
+If this is your first time using CodeCommit, click in **Get started**.
+
+![Get started with CodeCommit](/06-CDECS/images/codecommit_get_started.png)
+
+Otherwise click **Create repository**.
+
+![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository.png)
+
+In **Respoitory name** type a name for your respository. For exmaple: `ecs-workshop-repo`. Leave **Description** blank and click in **Create repository**.
+
+![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository_II.png)
+
+In **Configure email notifications** just click in **Skip**.
+
+Now follow the steps that appear in **Steps to clone your repository**
+
+![CodeCommit clone respository](/06-CDECS/images/codecommit_clone_repository.png)
+
+    $ git config --global credential.helper '!aws codecommit credential-helper $@'
+    $ git config --global credential.UseHttpPath true
+    $ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/ecs-workshop-repo
