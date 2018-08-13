@@ -2,6 +2,10 @@
 
 This section describes the hardware and software needed for this workshop, and how to configure them. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
 
+## First Notes
+
+This lab can now be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab. If you still want to run this lab on your own computer, please, follow the instructions bellow, otherwise, jump to [03-CreateVPC](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC).
+
 ## Hardware & Software
 
 - Memory: At least 4 GB+, strongly preferred 8 GB
