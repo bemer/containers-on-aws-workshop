@@ -229,19 +229,8 @@ Resources:
             GroupName: "no-ingress-sg"
             GroupDescription: "Security group with no ingress rule"
             VpcId: !Ref VPC
-    Cloud9Instance:
-        Type: AWS::Cloud9::EnvironmentEC2
-        Properties:
-            AutomaticStopTimeMinutes: 15
-            InstanceType: t2.small
-            Name: !Sub ${EnvironmentName}-containers-workshop-cloud9-instance
-            SubnetId: !Ref PublicSubnet1
-        DependsOn: PublicSubnet1
 
 Outputs:
-    Cloud9URL:
-        Description: URL used to access the Cloud9 environment
-        Value: !Join [ "", ["https://", !Ref "AWS::Region", ".console.aws.amazon.com/cloud9/ide/", !Ref "Cloud9Instance", "?region=", !Ref "AWS::Region"] ]
     VPC:
         Description: A reference to the created VPC
         Value: !Ref VPC
