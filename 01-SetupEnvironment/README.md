@@ -4,23 +4,21 @@ This section describes the hardware and software needed for this workshop, and h
 
 **Quick jump:**
 
-* [1. First Notes](01-SetupEnvironment#first-notes)
-* [2. Creating the Cluster](/05-DeployFargate#2-creating-the-cluster)
-* [3. Creating the Task Definition](/05-DeployFargate#3-creating-the-task-definition)
-* [4. Deploying the application](/05-DeployFargate#4-deploying-the-application)
-* [5. Accessing the application](/05-DeployFargate#5-accessing-the-application)
-* [6. Conclusion](/05-DeployFargate#6-conclusion)
-
+* [1. First Notes](/01-SetupEnvironment#1-first-notes)
+* [2. The VPC Structure](/01-SetupEnvironment#2-the-vpc-structure)
+* [3. VPC Setup](/01-SetupEnvironment#3-vpc-setup)
+* [4. Understanding the Cloud9 Interface](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
+* [5. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer)
 
 
 ## 1. First Notes
 
-This lab can now be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
+This lab can be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
-If you still want to run this lab on your own computer, please, jump to Running on your own computer](01-SetupEnvironment#RunningOnYourOwnComputer), otherwise, continue with the following steps.
+If you still want to run this lab on your own computer, please, jump to [5. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
-# 2. The VPC Structure
+## 2. The VPC Structure
 
 For this workshop, we are going to use a VPC with public and private subnets. All EC2 instances and Fargate tasks should run on private subnets. All Load Balancers should run on public subnets.
 
@@ -28,7 +26,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ![VPC structure](/01-SetupEnvironment/images/containers-on-aws-workshop-vpc.png)
 
-# 3. VPC Setup
+## 3. VPC Setup
 
 1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type `CloudFormation` and select **CloudFormation**;
 
