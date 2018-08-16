@@ -8,7 +8,7 @@ This section describes the hardware and software needed for this workshop, and h
 * [2. The VPC Structure](/01-SetupEnvironment#2-the-vpc-structure)
 * [3. VPC Setup](/01-SetupEnvironment#3-vpc-setup)
 * [4. Understanding the Cloud9 Interface](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
-* [5. Cloning the workshop repository](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
+* [5. Cloning the workshop repository](/01-SetupEnvironment#5-cloning-the-workshop-repository)
 * [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer)
 
 
