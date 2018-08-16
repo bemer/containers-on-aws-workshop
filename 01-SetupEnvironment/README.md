@@ -14,7 +14,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 ## 1. First Notes
 
-This lab can be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
+This workshop can be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
 If you still want to run this lab on your own computer, please, jump to [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
 
