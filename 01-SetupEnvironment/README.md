@@ -2,26 +2,122 @@
 
 This section describes the hardware and software needed for this workshop, and how to configure them. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
 
-## First Notes
+**Quick jump:**
 
-This lab can now be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab. If you still want to run this lab on your own computer, please, follow the instructions bellow, otherwise, jump to [03-CreateVPC](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC).
+* [1. First Notes](01-SetupEnvironment#first-notes)
+* [2. Creating the Cluster](/05-DeployFargate#2-creating-the-cluster)
+* [3. Creating the Task Definition](/05-DeployFargate#3-creating-the-task-definition)
+* [4. Deploying the application](/05-DeployFargate#4-deploying-the-application)
+* [5. Accessing the application](/05-DeployFargate#5-accessing-the-application)
+* [6. Conclusion](/05-DeployFargate#6-conclusion)
 
-## Hardware & Software
+
+
+## 1. First Notes
+
+This lab can now be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
+
+If you still want to run this lab on your own computer, please, jump to Running on your own computer](01-SetupEnvironment#RunningOnYourOwnComputer), otherwise, continue with the following steps.
+
+
+# 2. The VPC Structure
+
+For this workshop, we are going to use a VPC with public and private subnets. All EC2 instances and Fargate tasks should run on private subnets. All Load Balancers should run on public subnets.
+
+> NOTE: If you are running this workshop on a large group of people, you can optionally create just one VPC for the entire workshop, instead of one VPC per workshop participant. This is just to prevent you hitting some VPC limits for your AWS account, like number of VPCs per region and number of Elastic IPs per region.
+
+![VPC structure](/01-SetupEnvironment/images/containers-on-aws-workshop-vpc.png)
+
+# 3. VPC Setup
+
+1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type `CloudFormation` and select **CloudFormation**;
+
+2. Click **Create Stack**;
+
+3. Select `Specify an Amazon S3 template URL`;
+
+4. Insert the following URL on the field:
+
+`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`;
+
+5. Click **Next**;
+
+6. For *Stack name*, use the name `containers-workshop-insfrastructure`. For everything else leave with the default values. Click **Next**;
+
+7. Leave everything as the default values and click **Next**;
+
+8. Click **Create**;
+
+9. Wait for the **Status** to be *CREATE_COMPLETE*. This process may take 5 to 10 minutes to be completed;
+
+10. Click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provisions a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
+
+![CloudFormation Output](/01-SetupEnvironment/images/cloudformation_output.png)
+
+## 4. Understanding the Cloud9 Interface
+
+AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. During this workshop, we will be using Cloud9 to interact with the application code and Docker containers. Since Cloud9 has everything that we need to run the workshop, let's now take a moment to understand where we will be running our commands and executing the steps.
+
+This is the main interface presented by Cloud9 and the first thing you will see when clicking in the CloudFormation output URL:
+
+![Cloud9 Main Screen](/01-SetupEnvironment/images/cloud9_main_screen.png)
+
+All the commands presented in the workshop, such as `docker build`, `aws ecr get-login` and so on, should be executed in the terminal window:
+
+![Cloud9 Terminal](/01-SetupEnvironment/images/cloud9_terminal.png)
+
+>NOTE: You can arrange the size of the windows inside the Cloud9 interface.
+
+On the left side of the screen, you will have a list of all files:
+
+![Cloud9 Files](/01-SetupEnvironment/images/cloud9_files.png)
+
+On the top window, you have a text editor, where you can make all the changes in the files. If you just click twice in any file on the *files** menu, you will be able to edit it:
+
+![Cloud9 Editor](/01-SetupEnvironment/images/cloud9_editor.png)
+
+
+## 5. Running on your own computer
+
+### 5.1 Hardware & Software
 
 - Memory: At least 4 GB+, strongly preferred 8 GB
 - Operating System: Mac OS X (10.10.3+), Windows 10 Pro+ 64-bit, Ubuntu 12+, CentOS 7+.
 
 > NOTE: An older version of the operating system may be used. The installation instructions would differ slightly in that case and are explained in the next section.
 
-## Install Docker
+### 5.2 Install Docker
 
 Docker runs natively on Mac, Windows and Linux. This lab will use [Docker Community Edition - CE](https://www.docker.com/community-edition). This documentation will cover the Docker CE install process in an EC2 instance running `Amazon Linux`. If you want to use it in your own desktop, please follow the sptes in the [Docker CE official downloads page](https://www.docker.com/community-edition#/download).
 
 > NOTE: Docker CE requires a fairly recent operating system version. If your machine does not meet the requirements, then you need to install https://www.docker.com/products/docker-toolbox (Docker Toolbox).
 
-### Installing Docker on an EC2 instance running Amazon Linux
+### 5.3 Install AWS CLI
 
-After accessing your EC2 instance, you will need to install the Docker components in order to interact with the Docker daemon to create, run and push your images. On your instance, run the following commands:
+During this workshop we will interact with some AWS API's. Having the latest version of the AWS CLI in your computer is appropriated.
+
+Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
+
+
+### 5.4 Install git
+
+To better execute the workshop, you will need to clone this repository and having `git` installed is needed to perform this action.
+
+Download and install here: https://git-scm.com/downloads
+You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
+
+In order to clone this repository, you can use the following command:
+
+    $ git clone https://github.com/bemer/containers-on-aws-workshop.git
+
+After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
+
+
+### 5.5 Installing Docker on an EC2 instance running Amazon Linux
+
+If you don't want to use a Cloud9 environment and don't have a Linux computer, you can also use an EC2 instance to run the steps in this workshop.
+
+After launching and accessing your EC2 instance, you will need to install the Docker components in order to interact with the Docker daemon to create, run and push your images. On your EC2 instance, run the following commands:
 
     $ sudo yum update -y
     $ sudo yum install -y docker
@@ -68,24 +164,3 @@ The output should look like:
 
     For more examples and ideas, visit:
      https://docs.docker.com/engine/userguide/
-
-
-## Install AWS CLI
-
-During this workshop we will interact with some AWS API's. Having the latest version of the AWS CLI in your computer is appropriated.
-
-Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
-
-
-## Install git
-
-Sometimes will be easier if you just clone this repo, instead of copying the files. Having the git installed is not a mandatory requisite, but it may help you.
-
-Download and install here: https://git-scm.com/downloads
-You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
-
-In order to clone this repository, you can use the following command:
-
-    $ git clone https://github.com/bemer/containers-on-aws-workshop.git
-
-After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.

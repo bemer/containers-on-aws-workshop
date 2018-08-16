@@ -8,7 +8,7 @@
 
 ## 1. Tutorial overview
 
-So far we've been deploying our containers into ECS manually. On a production enviroment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continous Delievey (CD).
+So far we've been deploying our containers into ECS manually. On a production environment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continous Delievey (CD).
 
 To support us on this task, we must create a Continous Delivery pipeline that will orchestrate different stages of our pipeline. For this workshop our pipeline will have three stages:
 
@@ -18,7 +18,7 @@ To support us on this task, we must create a Continous Delivery pipeline that wi
 
 **c) a Deployment stage**: automatically deploys the new version of our application that is on Amazon ECR into Amazon ECS. The Amazon ECS itself will be responsible for deploying it without any downtime;
 
-Since we already have the Deployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline. 
+Since we already have the Deployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline.
 
 Let's begin with the Source stage.
 
@@ -42,7 +42,7 @@ In **Respoitory name** type a name for your respository. For exmaple: `container
 
 In **Configure email notifications** just click in **Skip**.
 
-Now follow the steps that appear in **Steps to clone your repository** 
+Now follow the steps that appear in **Steps to clone your repository**
 
 ![CodeCommit clone respository](/06-CDECS/images/codecommit_clone_repository.png)
 
@@ -190,4 +190,3 @@ Change only what's defined below:
 Expand **Show advanced settings**
 
 **Environment variables**: In `Name` type `REPOSITORY_URI`. In `Value` type your ECR URI. In `Name` type `AWS_DEFAULT_REGION`. In `Value` type the region code where your ECR repository resides (e.g. us-east-1)
-
