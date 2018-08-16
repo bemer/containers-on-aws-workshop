@@ -51,7 +51,7 @@ If you have completed these steps, you are good to go!
 
 The following steps should be executed on your own computer or Cloud9 instance, if you chose it.
 
-If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment#install-git) chapter, do it now using the following command:
+If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment#5-cloning-the-workshop-repository) chapter, do it now using the following command:
 
     $ git clone https://github.com/bemer/containers-on-aws-workshop.git
 
