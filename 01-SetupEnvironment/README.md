@@ -8,14 +8,15 @@ This section describes the hardware and software needed for this workshop, and h
 * [2. The VPC Structure](/01-SetupEnvironment#2-the-vpc-structure)
 * [3. VPC Setup](/01-SetupEnvironment#3-vpc-setup)
 * [4. Understanding the Cloud9 Interface](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
-* [5. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer)
+* [5. Cloning the workshop repository](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
+* [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer)
 
 
 ## 1. First Notes
 
 This lab can be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
-If you still want to run this lab on your own computer, please, jump to [5. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
+If you still want to run this lab on your own computer, please, jump to [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
 ## 2. The VPC Structure
@@ -74,35 +75,7 @@ On the top window, you have a text editor, where you can make all the changes in
 
 ![Cloud9 Editor](/01-SetupEnvironment/images/cloud9_editor.png)
 
-
-## 5. Running on your own computer
-
-### 5.1 Hardware & Software
-
-- Memory: At least 4 GB+, strongly preferred 8 GB
-- Operating System: Mac OS X (10.10.3+), Windows 10 Pro+ 64-bit, Ubuntu 12+, CentOS 7+.
-
-> NOTE: An older version of the operating system may be used. The installation instructions would differ slightly in that case and are explained in the next section.
-
-### 5.2 Install Docker
-
-Docker runs natively on Mac, Windows and Linux. This lab will use [Docker Community Edition - CE](https://www.docker.com/community-edition). This documentation will cover the Docker CE install process in an EC2 instance running `Amazon Linux`. If you want to use it in your own desktop, please follow the sptes in the [Docker CE official downloads page](https://www.docker.com/community-edition#/download).
-
-> NOTE: Docker CE requires a fairly recent operating system version. If your machine does not meet the requirements, then you need to install https://www.docker.com/products/docker-toolbox (Docker Toolbox).
-
-### 5.3 Install AWS CLI
-
-During this workshop we will interact with some AWS API's. Having the latest version of the AWS CLI in your computer is appropriated.
-
-Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
-
-
-### 5.4 Install git
-
-To better execute the workshop, you will need to clone this repository and having `git` installed is needed to perform this action.
-
-Download and install here: https://git-scm.com/downloads
-You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
+## 5. Cloning the workshop repository
 
 In order to clone this repository, you can use the following command:
 
@@ -110,8 +83,43 @@ In order to clone this repository, you can use the following command:
 
 After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
+>NOTE: This step needs to be executed if you are using a Clou9 environment or if you are running this workshop in your computer or in an EC2 instance.
 
-### 5.5 Installing Docker on an EC2 instance running Amazon Linux
+
+## 6. Running on your own computer
+
+The following steps are needed if you want to run this workshop in your own computer instead of using the Cloud9 environment.
+
+
+### 6.1 Hardware & Software
+
+- Memory: At least 4 GB+, strongly preferred 8 GB
+- Operating System: Mac OS X (10.10.3+), Windows 10 Pro+ 64-bit, Ubuntu 12+, CentOS 7+.
+
+> NOTE: An older version of the operating system may be used. The installation instructions would differ slightly in that case and are explained in the next section.
+
+### 6.2 Install Docker
+
+Docker runs natively on Mac, Windows and Linux. This lab will use [Docker Community Edition - CE](https://www.docker.com/community-edition). This documentation will cover the Docker CE install process in an EC2 instance running `Amazon Linux`. If you want to use it in your own desktop, please follow the sptes in the [Docker CE official downloads page](https://www.docker.com/community-edition#/download).
+
+> NOTE: Docker CE requires a fairly recent operating system version. If your machine does not meet the requirements, then you need to install https://www.docker.com/products/docker-toolbox (Docker Toolbox).
+
+### 6.3 Install AWS CLI
+
+During this workshop we will interact with some AWS API's. Having the latest version of the AWS CLI in your computer is appropriated.
+
+Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
+
+
+### 6.4 Install git
+
+To better execute the workshop, you will need to clone this repository and having `git` installed is needed to perform this action.
+
+Download and install here: https://git-scm.com/downloads
+You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
+
+
+### 6.5 Installing Docker on an EC2 instance running Amazon Linux
 
 If you don't want to use a Cloud9 environment and don't have a Linux computer, you can also use an EC2 instance to run the steps in this workshop.
 
