@@ -36,7 +36,7 @@ Otherwise click **Create repository**.
 
 ![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository.png)
 
-In **Respoitory name** type a name for your respository. For exmaple: `containers-workshop-repository`. Leave **Description** blank and click in **Create repository**.
+In **Respoitory name** type a name for your respository. For example: `containers-workshop-repository`. Leave **Description** blank and click in **Create repository**.
 
 ![CodeCommit create repository](/06-CDECS/images/codecommit_create_repository_II.png)
 
@@ -78,7 +78,7 @@ Now let's push our application to the repository
     $ git add .
     $ git commit -m "My first commit"
 
-The output should be somoething like:
+The output should be something like:
 
     $ [master 4956fb4] My first commit
     $ 62 files changed, 20787 insertions(+)
