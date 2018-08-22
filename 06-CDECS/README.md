@@ -195,7 +195,19 @@ Click **Continue** and then click in **Save**. Your build project should be list
 
 ![CodeBuild list project](/06-CDECS/images/codebuild_list_project.png)
 
-Let's test our build. In **CodeBuild**, on the left side, click in **Build projects**. Select your project by click in the radio button and then click in **Start build**
+If we try and test our build now, it will fail. That's because CodeBuild doesn't have permisions to read anything from our CodeCommit repository. Let's fix  this.
+
+In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **ECS** from the drop down list
+
+![select ECS](/06-CDECS/images/ecs_select.png)
+
+On the left side menu, click in **Repositories** and then click in the ECR repository that we are using (`containers-workshop-app`)
+
+Click in the tab **Permissions** and click in **Add**
+
+![ECR add permissions](/06-CDECS/images/ecr_add_permissions.png)
+
+ the first step to test our build is to add the right permissions Let's test our build. In **CodeBuild**, on the left side, click in **Build projects**. Select your project by clicking in the radio button and then click in **Start build**
 
 For **Branch** select `master`. Leave everything else with the default configuration and click in **Start build**
 
