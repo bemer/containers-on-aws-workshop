@@ -195,9 +195,15 @@ Click **Continue** and then click in **Save**. Your build project should be list
 
 ![CodeBuild list project](/06-CDECS/images/codebuild_list_project.png)
 
-If we try and test our build now, it will fail. That's because CodeBuild doesn't have permisions to read anything from our CodeCommit repository. Let's fix  this.
+If we try and test our build now, it will fail. There are two reasons for that: 
 
-In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **ECS** from the drop down list
+1) The service CodeBuild doesn't have permissions to read anything from our CodeCommit repository; 
+
+2) The IAM role associated with the CodeBuild environment has only permissions to input logs in the CloudWatch logs (that's the default permissions created by the CodeBuild service role).
+
+Let's fix these. 
+
+First, let's change de ECR repository permisions. In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **ECS** from the drop down list
 
 ![select ECS](/06-CDECS/images/ecs_select.png)
 
@@ -207,12 +213,31 @@ Click in the tab **Permissions** and click in **Add**
 
 ![ECR add permissions](/06-CDECS/images/ecr_add_permissions.png)
 
- the first step to test our build is to add the right permissions Let's test our build. In **CodeBuild**, on the left side, click in **Build projects**. Select your project by clicking in the radio button and then click in **Start build**
+For **Sid** type `Codebuild permission`
+
+For **Principal** type `codebuild.amazonaws.com`
+
+For **Action** select the following actions: `ecr:GetDownloadUrlForLayer`, `ecr:PutImage`, `ecr:CompleteLayerUpload`, `ecr:BatchGetImage`, `ecr:InitiateLayerUpload`, `ecr:BatchCheckLayerAvailability`, `ecr:UploadLayerPart`
+
+![ECR actions](/06-CDECS/images/ecr_actions.png)
+
+Click in **Save all**
+
+Next step, change de IAM role that's associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search filed type `iam` and select **IAM** from the drop down list
+
+![Select IAM](/06-CDECS/images/iam.png)
+
+Now let's go ahead and configure our first test build. 
+
+On the AWS Management Console, click in **Services** > in the search field type `build` and select **CodeBuild** from the drop down list. 
+
+In **CodeBuild**, on the left side, click in **Build projects**. Select your project by clicking in the radio button and then click in **Start build**
 
 For **Branch** select `master`. Leave everything else with the default configuration and click in **Start build**
 
 ![CodeBuild list project](/06-CDECS/images/codebuild_test_project.png)
 
+Pres
 
 
 
