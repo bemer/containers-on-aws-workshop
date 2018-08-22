@@ -8,11 +8,11 @@
 
 ## 1. Tutorial overview
 
-So far we've been deploying our containers into ECS manually. On a production environment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continous Delievey (CD).
+So far we've been deploying our containers into ECS manually. On a production environment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continous Delivery (CD).
 
 To support us on this task, we must create a Continous Delivery pipeline that will orchestrate different stages of our pipeline. For this workshop our pipeline will have three stages:
 
-**a) a Source stage**: the Git repository branch where all the changes should be promoted to a production enviroment. We will use AWS CodeCommit as the Git repository;
+**a) a Source stage**: the Git repository branch where all the changes should be promoted to a production environment. We will use AWS CodeCommit as the Git repository;
 
 **b) a Build stage**: automatically pulls the content from the Git repository, builds and tags the Docker image, and pushes the new version to Amazon ECR. We will use AWS CodeBuild for this job;
 
