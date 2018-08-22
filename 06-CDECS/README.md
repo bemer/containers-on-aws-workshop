@@ -203,7 +203,7 @@ If we try and test our build now, it will fail. There are two reasons for that:
 
 Let's fix these. 
 
-First, let's change de ECR repository permisions. In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **ECS** from the drop down list
+First, let's change de ECR repository permisions. In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **Elastic Container Service** from the drop down list
 
 ![select ECS](/06-CDECS/images/ecs_select.png)
 
@@ -223,9 +223,21 @@ For **Action** select the following actions: `ecr:GetDownloadUrlForLayer`, `ecr:
 
 Click in **Save all**
 
-Next step, change de IAM role that's associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search filed type `iam` and select **IAM** from the drop down list
+Next step, we need to change de IAM role associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search filed type `iam` and select **IAM** from the drop down list
 
 ![Select IAM](/06-CDECS/images/iam.png)
+
+On the left side menu, click in **Roles**. This will list all the roles in your account. We need to find what is the role associated with our CodeBuild.
+
+Go to your CodeBuild project and click in **Edit project**. Scroll down until you find **Service role**. In **Role name** you can find the role associated (e.g.: `codebuild-containers-workshop-build-service-role`)
+
+![Find the IAM role](/06-CDECS/images/codebuild_find_iam_role.png)
+
+Go back to the IAM roles list and type the role name in the search field. cClick in the IAM role.
+
+![IAM filter role](/06-CDECS/images/iam_filter_role.png)
+
+
 
 Now let's go ahead and configure our first test build. 
 
