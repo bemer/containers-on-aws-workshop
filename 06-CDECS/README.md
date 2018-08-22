@@ -194,3 +194,13 @@ Expand **Show advanced settings**
 Click **Continue** and then click in **Save**. Your build project should be listed now:
 
 ![CodeBuild list project](/06-CDECS/images/codebuild_list_project.png)
+
+Let's test our build. In **CodeBuild**, on the left side, click in **Build projects**. Select your project by click in the radio button and then click in **Start build**
+
+For **Branch** select `master`. Leave everything else with the default configuration and click in **Start build**
+
+![CodeBuild list project](/06-CDECS/images/codebuild_test_project.png)
+
+
+
+
