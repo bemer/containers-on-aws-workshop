@@ -233,11 +233,21 @@ Go to your CodeBuild project and click in **Edit project**. Scroll down until yo
 
 ![Find the IAM role](/06-CDECS/images/codebuild_find_iam_role.png)
 
-Go back to the IAM roles list and type the role name in the search field. cClick in the IAM role.
+Go back to the IAM roles list and type the role name in the search field. Click in the IAM role that appears.
 
 ![IAM filter role](/06-CDECS/images/iam_filter_role.png)
 
+In the **Permissions** tab click in **Attach policies**
 
+![Find the IAM role](/06-CDECS/images/iam_attach_policies.png)
+
+In the serch field type `registry` and select `AmazonEC2ContainerRegistryPowerUser`. Click in **Attach policy**
+
+![Attach ECR Power User](/06-CDECS/images/iam_registry_policy.png)
+
+Your permissions should look like this:
+
+![Permissions list](/06-CDECS/images/iam_permissions_list.png)
 
 Now let's go ahead and configure our first test build. 
 
