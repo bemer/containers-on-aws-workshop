@@ -1,6 +1,7 @@
 ## Quick jump:
 
 * [1. Tutorial overview](/07-AutoScaling#1-tutorial-overview)
+* [2. Configuring the Service Auto Scaling](/07-AutoScaling#2-configuring-the-service-auto-scaling)
 
 ## 1. Tutorial overview
 
