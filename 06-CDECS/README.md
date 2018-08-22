@@ -176,10 +176,17 @@ Otherwise, click in **Create project**
 Change only what's defined below:
 
 **Project name**: `containers-workshop-build`
+
 **Source provider**: `AWS CodeCommit`
+
 **Repository**: `containers-workshop-repository`
+
 **Operating system**: `Ubuntu`
+
 **Runtime**: `Docker`
+
 **Runtime version**: `aws/codebuild/docker:17.09.0`
+
 Expand **Show advanced settings**
-**Environment variables**: In `Name` type `REPOSITORY_URI`. In `Value` type your ECR URI. In `Name` type `AWS_DEFAULT_REGION`. In `Value` type the region code where your ECR repository resides (e.g. us-east-1)
+
+**Environment variables**: let's create 2 env vars - in `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...)
