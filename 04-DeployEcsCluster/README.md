@@ -202,7 +202,7 @@ Now, under `Load balancing`, select `Application Load Balancer`. Let's configure
 
 ![add to ALB](/04-DeployEcsCluster/images/add_container_to_alb.png)
 
-This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like `containers-workshop-ecs-target-group`.  For **Path Pattern**, the value should be `/*`. In the **Evaluation order**, add the number `1`.
+This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like `containers-workshop-ecs-target`.  For **Path Pattern**, the value should be `/*`. In the **Evaluation order**, add the number `1`.
 
 Finally, **Health check path**, use the value `/`.
 
