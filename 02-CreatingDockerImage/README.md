@@ -119,7 +119,7 @@ This is how your group permissions should like after the creation:
 
 ![IAM group permissions](https://github.com/bemer/containers-on-aws-workshop/blob/master/02-CreatingDockerImage/images/iam_group_permissions.png)
 
-Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and them click in the button **Add user**.
+Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and then click in the button **Add user**.
 
 The user name will be **workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
 
@@ -135,7 +135,7 @@ Click in **Next: Review** and check if is everything fine with your user creatio
 
 In this screen, click in **Create user**.
 
-When the wizard finishes, make sure to download and save your access key and secret key.  You'll need them in the next step.
+When the wizard finishes, make sure to download and save your access key and secret key.  You'll need then in the next step.
 
 >NOTE: The Secret access key is presented only once, during the user creation. If you loose this information, you will need to create a new Access and Secret keys in order to authenticate again with the same user.
 
@@ -224,7 +224,7 @@ To login to ECR, copy this output and execute it as a linux command. The output 
 
 If you are unable to login to ECR, check your IAM user group permissions.
 
-Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
+Now, let's tag our image locally and then push our image to the ECR repository. Use the following commands:
 
     $ docker tag workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
     $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/workshop-app:latest
