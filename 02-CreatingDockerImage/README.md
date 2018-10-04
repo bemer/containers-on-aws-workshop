@@ -135,7 +135,7 @@ Click in **Next: Review** and check if is everything fine with your user creatio
 
 In this screen, click in **Create user**.
 
-When the wizard finishes, make sure to download and save your access key and secret key.  You'll need then in the next step.
+When the wizard finishes, make sure to download and save your access key and secret key.  You'll need them in the next step.
 
 >NOTE: The Secret access key is presented only once, during the user creation. If you loose this information, you will need to create a new Access and Secret keys in order to authenticate again with the same user.
 
