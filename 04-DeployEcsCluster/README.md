@@ -157,6 +157,9 @@ In the `Task execution IAM role` select `Create new role`:
 
 ![create task iam](https://github.com/bemer/containers-on-aws-workshop/blob/master/04-DeployEcsCluster/images/create_task_iam.png)
 
+>If you don't see the option `Create new role` and you see a message
+>"You are giving permission to Elastic Container Service to create and
+>use ecsTaskExecutionRole.", you may skip this step.
 
 The next step is to add the information about our container. Click in the **Add container** button, under `Container Definitions`. The name of the container will be `ecs-workshop-app`. In the *Image* field, add the URI that you got before, pointing to your image.
 
