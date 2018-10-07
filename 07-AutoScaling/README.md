@@ -43,4 +43,4 @@ You can check the `Auto Scaling` configurations of your service by clicking in t
 
 ## 3. Generating Load
 
-Now that we have our Service Auto Scaling configurated, we need to generate load in order to 
+Now that we have our Service Auto Scaling configured, we need to generate load in order to scale the number of running tasks in our cluster. To do so, we will be using an open source tool called `Locust`

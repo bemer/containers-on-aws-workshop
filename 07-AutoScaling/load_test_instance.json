@@ -179,26 +179,28 @@
         "KeyName" : { "Ref" : "KeyName" },
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
-        "UserData" :
-          "yum update -y && yum install -y python python-pip\n
-          pip install locustio\n
-          ulimit -n 65535\n
-          cat << EOF > locustfile.py \"from locust import HttpLocust, TaskSet, task\n
-          \n
-          class MyTaskSet(TaskSet):\n
-              @task\n
-              def index(self):\n
-                  self.client.get(\"/\")\n
-          \n
-          class MyLocust(HttpLocust):\n
-              task_set = MyTaskSet\n
-              min_wait = 5000\n
-              max_wait = 15000\"\n
-          EOF\n
-          export LB_URL= www.google.com\n
-          locust -f locustfile.py --host=$LB_URL --web-port=80\n
-        "
-      }
+        "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
+           "#!/bin/bash -xe\n",
+           "yum update -y && yum install -y python python-pip\n",
+           "python -m pip install locustio\n",
+           "ulimit -n 65535\n",
+           "cat > /home/ec2-user/locustfile.py <<EOF \n",
+           "from locust import HttpLocust, TaskSet, task\n",
+           "\n",
+           "class MyTaskSet(TaskSet):\n",
+           "    @task\n",
+           "    def index(self):\n",
+           "        self.client.get(\"/\")\n",
+           "\n",
+           "class MyLocust(HttpLocust):\n",
+           "    task_set = MyTaskSet\n",
+           "    min_wait = 5000\n",
+           "    max_wait = 15000\n",
+           "EOF\n",
+           "export LB_URL=www.google.com\n",
+           "locust -f /home/ec2-user/locustfile.py --host=$LB_URL --web-port=80\n",
+           "echo 'file created' > /tmp/file-created.txt\n"
+        ]]}}      }
     },
 
     "InstanceSecurityGroup" : {
