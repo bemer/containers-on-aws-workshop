@@ -263,7 +263,7 @@ The build phase migh take a while to finish. Once its completed, you should see 
 
 ![CodeBuild Status Succeeded](/06-CDECS/images/codebuild_succeeded.png)
 
-##4. Configuring a Continous Delivery pipeline
+## 4. Configuring a Continous Delivery pipeline
 
 Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are done, we need a tool to orchestrate and connect all of them. To do this we will use AWS CodePipeline.
 
