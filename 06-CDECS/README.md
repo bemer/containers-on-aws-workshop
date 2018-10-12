@@ -262,3 +262,27 @@ For **Branch** select `master`. Leave everything else with the default configura
 The build phase migh take a while to finish. Once its completed, you should see all the **Phase details** as `Succeeded`.
 
 ![CodeBuild Status Succeeded](/06-CDECS/images/codebuild_succeeded.png)
+
+##4. Configuring a Continous Delivery pipeline
+
+Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are done, we need a tool to orchestrate and connect all of them. To do this we will use AWS CodePipeline.
+
+AWS CodePipeline already has the concepts of Stages (Source, Build, Test, Deploy, Approval, Invoke). All we need to do is to create a pipeline, and for each stage, choose the corelated service. For example, when configuring the Source stage, we will choose our CodeCommit respository. And so on...
+
+Hands-on time:
+
+On the AWS Management Console, click in **Services** > in search field type `pipeline` and select **CodePipeline** from the drop down list.
+
+![CodePipeline](/06-CDECS/images/codepipeline.png)
+
+If this is your first time using CodePipeline, click in **Get started**.
+
+![CodePipeline Get started](/06-CDECS/images/codepipeline_get_started.png)
+
+Otherwise click in **Create pipeline**
+
+![CodePipeline create](/06-CDECS/images/codepipeline_create.png)
+
+In **Pipeline name** type `containers-workshop-pipeline` and click in **Next step**
+
+![CodePipeline Next Step](/06-CDECS/images/codepipeline_next.png)
