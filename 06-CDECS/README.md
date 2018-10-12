@@ -286,3 +286,15 @@ Otherwise click in **Create pipeline**
 In **Pipeline name** type `containers-workshop-pipeline` and click in **Next step**
 
 ![CodePipeline Next Step](/06-CDECS/images/codepipeline_next.png)
+
+For **Source provider** select **CodeCommit**
+
+![CodePipeline Source Stage](/06-CDECS/images/codepipeline_source.png)
+
+For **Repository name** select the respository created for this workshop `containers-workshop-repository`
+
+For **Branch name** select `master`
+
+Click in **Next step**
+
+![CodePipeline Source Stage](/06-CDECS/images/codepipeline_repository_ii.png)
