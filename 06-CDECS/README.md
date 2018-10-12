@@ -249,7 +249,7 @@ Your permissions should look like this:
 
 ![Permissions list](/06-CDECS/images/iam_permissions_list.png)
 
-Now let's go ahead and configure our first test build. 
+Now let's go ahead and configure our test build. 
 
 On the AWS Management Console, click in **Services** > in the search field type `build` and select **CodeBuild** from the drop down list. 
 
@@ -259,7 +259,6 @@ For **Branch** select `master`. Leave everything else with the default configura
 
 ![CodeBuild list project](/06-CDECS/images/codebuild_test_project.png)
 
-Pres
+The build phase migh take a while to finish. Once its completed, you should see all the **Phase details** as `Succeeded`.
 
-
-
+![CodeBuild Status Succeeded](/06-CDECS/images/codebuild_succeeded.png)
