@@ -299,7 +299,7 @@ Click in **Next step**
 
 ![CodePipeline Source Stage](/06-CDECS/images/codepipeline_repository_ii.png)
 
-We are now comnfiguring the Buid Stage: 
+We are now configuring the Buid Stage: 
 
 For **Build provider** select **CodeBuild** and click in **Next step**
 
