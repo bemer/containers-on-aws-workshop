@@ -269,7 +269,7 @@ Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are 
 
 AWS CodePipeline already has the concepts of Stages (Source, Build, Test, Deploy, Approval, Invoke). All we need to do is to create a pipeline, and for each stage, choose the corelated service. For example, when configuring the Source stage, we will choose our CodeCommit respository. And so on...
 
-Hands-on time:
+Le'ts start with the Source Stage:
 
 On the AWS Management Console, click in **Services** > in search field type `pipeline` and select **CodePipeline** from the drop down list.
 
@@ -298,3 +298,21 @@ For **Branch name** select `master`
 Click in **Next step**
 
 ![CodePipeline Source Stage](/06-CDECS/images/codepipeline_repository_ii.png)
+
+We are now comnfiguring the Buid Stage: 
+
+For **Build provider** select **CodeBuild** and click in **Next step**
+
+![CodePipeline Build Stage](/06-CDECS/images/codepipeline_create_build.png)
+
+In **Configure your project** choose the option **Select an existing build project**.
+
+For **Project name** select `containers-workshop-build` and click in **Next step**
+
+![CodePipeline Build Stage](/06-CDECS/images/codepipeline_create_build_ii.png)
+
+Finally, it's time do configure the last stage of our pipeline. The Deploy Stage.
+
+For **Deployment provider** select **Amazon ECS**
+
+For **Cluster name** select **workshop-ecs-cluster**
