@@ -333,7 +333,7 @@ In **AWS Service Role**, for **Role name**. You will be redirected to another pa
 
 Click in **Next step**
 
-Click in **Create pipeline**. You will be redirected to the pipeline page.
+Click in **Create pipeline**.
 
 You should see now that AWS CodePiepline will atomatically start the pipeline.
 
