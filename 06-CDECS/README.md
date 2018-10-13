@@ -349,10 +349,32 @@ If you go to the URL of your app you won't see any changes beucase we didn't cha
 
 Go to your Cloud9 enviroment. On the left side menu, expand `MyCloud9Instance > containers-workshop-repository > app`
 
-Open the `index.html` file
+Right click in the `index.html` > Open
 
 ![Test your pipeline](/06-CDECS/images/cloud9_open_index.png)
 
-In line 11, edit the title to `Containers on AWS Workshop v2` and save it
+A new tab will open. In line 37, before `This application is running inside a container!`, add the following text: `This is the version 2!`. Should look like this:
 
 ![Test your pipeline](/06-CDECS/images/cloud9_edit_html.png)
+
+Save it (Ctrl+S or Command+S)
+
+Now let's commit our change to the CodeCommit repository. Go to the Terminal tab and type
+
+    $ cd /home/ec2-user/environment/containers-workshop-repository/app
+    $ git add index.html
+    $ git commit -m "Changing the text"
+    $ git push
+
+
+Watch the CodePipeline being executed. You will see in a minute or so, the Source stage chaging to `In Progress`. Wait until the Staging source is done.
+
+
+![CodePipeline final run](/06-CDECS/images/codepipeline_final_test.png)
+
+
+Go to your app URL and see the new title!
+
+
+
+
