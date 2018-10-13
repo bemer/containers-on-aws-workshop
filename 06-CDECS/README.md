@@ -311,8 +311,32 @@ For **Project name** select `containers-workshop-build` and click in **Next step
 
 ![CodePipeline Build Stage](/06-CDECS/images/codepipeline_create_build_ii.png)
 
-Finally, it's time do configure the last stage of our pipeline. The Deploy Stage.
+Finally, it's time do configure the last stage of our pipeline: the Deploy Stage.
 
 For **Deployment provider** select **Amazon ECS**
 
-For **Cluster name** select **workshop-ecs-cluster**
+![CodePipeline Deploy Stage](/06-CDECS/images/codepipeline_deploy.png)
+
+For **Cluster name** select `containers-workshop-ecs-cluster`
+
+For **Service name** select `containers-workshop-ecs-service`
+
+For **Image filename** type `imagedefinitions.json`
+
+Click in **Next step**
+
+![CodePipeline Deploy Stage](/06-CDECS/images/codepipeline_deploy_ii.png)
+
+In **AWS Service Role**, for **Role name**. You will be redirected to another page. Click in **Allow**
+
+![CodePipeline Deploy Stage](/06-CDECS/images/codepipeline_iam.png)
+
+Click in **Next step**
+
+Click in **Create pipeline**. You will be redirected to the pipeline page.
+
+You should see now that AWS CodePiepline will atomatically start the pipeline.
+
+![CodePipeline Running](/06-CDECS/images/codepipeline_running.png)
+
+After a few minutes, all three stages will be completed as `Succeeded`. If you fo to the URL of your app you won't see any changes beucase we didn't change anything. 
