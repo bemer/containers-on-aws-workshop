@@ -142,7 +142,7 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"cicd-test","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"containers-workshop-app","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
 ```
@@ -339,4 +339,20 @@ You should see now that AWS CodePiepline will atomatically start the pipeline.
 
 ![CodePipeline Running](/06-CDECS/images/codepipeline_running.png)
 
-After a few minutes, all three stages will be completed as `Succeeded`. If you fo to the URL of your app you won't see any changes beucase we didn't change anything. 
+Thow whole process should take around 10 minutes. All three stages should be completed as `Succeeded`. 
+
+
+![CodePipeline Finished](/06-CDECS/images/codepipeline_succeeded.png)
+
+
+If you go to the URL of your app you won't see any changes beucase we didn't change anything. So now, let's do exactly that. Let's change something on our app to see the modification being deployed automatically.
+
+Go to your Cloud9 enviroment. On the left side menu, expand `MyCloud9Instance > containers-workshop-repository > app`
+
+Open the `index.html` file
+
+![Test your pipeline](/06-CDECS/images/cloud9_open_index.png)
+
+In line 11, edit the title to `Containers on AWS Workshop v2` and save it
+
+![Test your pipeline](/06-CDECS/images/cloud9_edit_html.png)
