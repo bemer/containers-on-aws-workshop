@@ -197,8 +197,8 @@
            "    min_wait = 5000\n",
            "    max_wait = 15000\n",
            "EOF\n",
-           "export LB_URL=www.google.com\n",
-           "locust -f /home/ec2-user/locustfile.py --host=$LB_URL --web-port=80\n",
+           "export LB_URL=http://",{ "Ref" : "LoadBalancerURL" },"/\n",
+           "/usr/local/bin/locust -f /home/ec2-user/locustfile.py --host=$LB_URL --web-port=80 &\n",
            "echo 'file created' > /tmp/file-created.txt\n"
         ]]}}      }
     },
@@ -218,21 +218,13 @@
   },
 
   "Outputs" : {
-    "InstanceId" : {
-      "Description" : "InstanceId of the newly created EC2 instance",
-      "Value" : { "Ref" : "EC2Instance" }
-    },
-    "AZ" : {
-      "Description" : "Availability Zone of the newly created EC2 instance",
-      "Value" : { "Fn::GetAtt" : [ "EC2Instance", "AvailabilityZone" ] }
-    },
-    "PublicDNS" : {
-      "Description" : "Public DNSName of the newly created EC2 instance",
-      "Value" : { "Fn::GetAtt" : [ "EC2Instance", "PublicDnsName" ] }
-    },
-    "PublicIP" : {
-      "Description" : "Public IP address of the newly created EC2 instance",
-      "Value" : { "Fn::GetAtt" : [ "EC2Instance", "PublicIp" ] }
+    "LoadTestingURL" : {
+      "Description" : "URL to your instance with Locust",
+      "Value" : { "Fn::Join" : ["", [
+         "http://",
+         { "Fn::GetAtt" : [ "EC2Instance", "PublicDnsName" ] },
+         "/"
+      ]]}
     }
   }
 }

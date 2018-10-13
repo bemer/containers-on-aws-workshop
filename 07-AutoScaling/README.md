@@ -2,6 +2,8 @@
 
 * [1. Tutorial overview](/07-AutoScaling#1-tutorial-overview)
 * [2. Configuring the Service Auto Scaling](/07-AutoScaling#2-configuring-the-service-auto-scaling)
+* [3. Generating Load](/07-AutoScaling#3-generating-load)
+* [4. Scaling your environment](/07-AutoScaling#4-scaling-your-environment)
 
 ## 1. Tutorial overview
 
@@ -29,7 +31,9 @@ Under `Service Auto Scaling`, select the option `Configure Service Auto Scaling 
 
 After adding this information, let's add a new `scaling policy`, which will execute the scaling actions in your cluster based in some specific metrics. Click in the button `Add scaling policy`.
 
-In this screen, give your policy the name `containers-workshop-ecs-scaling-policy`. In this workshop, we are going to scale the tasks every time that the metric `ECSServiceAverageCPUUtilization` reaches 40%. Add the value `40` in `Target value`, change the `Scale-out cooldown period` and the `Scale-in cooldown period` to `30`. We are doing this change in order to scale fast and see everything working fine in our workshop.
+In this screen, give your policy the name `containers-workshop-ecs-scaling-policy`. In this workshop, we are going to scale the tasks every time that the metric `ECSServiceAverageCPUUtilization` reaches 10%. Add the value `10` in `Target value`, change the `Scale-out cooldown period` and the `Scale-in cooldown period` to `30`. We are doing this change in order to scale fast and see everything working fine in our workshop.
+
+>NOTE: We are using a lower value here because we will be generating load using just one EC2 instance. In a real world scenario, you might want to use a higher value to scale your application.
 
 Leave the other parameters with the default values and them click in `Save`:
 
@@ -43,4 +47,38 @@ You can check the `Auto Scaling` configurations of your service by clicking in t
 
 ## 3. Generating Load
 
-Now that we have our Service Auto Scaling configured, we need to generate load in order to scale the number of running tasks in our cluster. To do so, we will be using an open source tool called `Locust`
+Now that we have our Service Auto Scaling configured, we need to generate load in order to scale the number of running tasks in our cluster. To do so, we will be using an open source tool called `Locust`. You can find more information about Locust in [their documentation](https://docs.locust.io/en/stable/).
+
+Since the objective of this workshop is teach you how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance and install and configure Locust in it. So, in the Management Console, go to the CloudFormation interface and click in `Create Stack`. You should use the template `load_test_instance.json` present in this workshop.
+
+In the following screen, provide a name to you stack such as `containers-workshop-load-testing`. For the `HTTP Location` parameter, you can add you public IP Address or just leave it as the default.
+
+Since we will be generating a large ammount of load, it's recommended that you use a large instance type. We are setting the default as `m5.xlarge`.
+
+If you have a keypair created in the region where you are running this workshop, you can select it under `KeyName`. Just remember that you don't need to access the Locust instance, since we will be installing and configuring everything for you.
+
+Under `Load Balancer URL`, you should add the hostname of your Load Balancer. This is the same name that you used to access your application in the step [04-Deploy ECS Cluster](/04-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb).
+
+![load testing cfn](/07-AutoScaling/images/load_test_cfn.png)
+
+Them, click in `Next` and in the Options screen, click in `Next` again. Under the Review screen, validate your configurations and click in `Create`.
+
+After creating your new Stack, you should see a URL that point to you EC2 instance with the Locust installed:
+
+![load testing output](/07-AutoScaling/images/load_test_output.png)
+
+Click in this URL and you will be redirected to the Locust page in your instance. In this screen, you can see that the `HOST` is pointing to your Load Balancer hostname. Now, under `Number of users to simulate` you can add `20000` and under `Hatch rate` add `500`:
+
+![locust main screen](/07-AutoScaling/images/locust_main_screen.png)
+
+After configuring Locust, you can click in `Start swarming`.
+
+This will start to simulate 20000 users accessing your application. You can follow the results in the following screen:
+
+![locust test](/07-AutoScaling/images/locust_test.png)
+
+## 4. Scaling your environment
+
+After generating load against your application, you should be able to see it scaling after a few seconds. Go to you `containers-workshop-ecs-cluster` and click in the service `containers-workshop-ecs-service`. By clicking in the service `containers-workshop-ecs-service` and going to the tab `Events` you will find the message saying that the desired count of tasks was changed:
+
+![scaling message](/07-AutoScaling/images/scaling_message.png)
