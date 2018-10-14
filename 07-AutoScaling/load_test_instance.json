@@ -14,7 +14,7 @@
       "Description" : "Locust.io EC2 instance type",
       "Type" : "String",
       "Default" : "m5.xlarge",
-      "AllowedValues" : [ "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.10xlarge"],
+      "AllowedValues" : [ "m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.12xlarge", "m5.24xlarge"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
@@ -57,7 +57,8 @@
       "m5.xlarge"   : { "Arch" : "HVM64"  },
       "m5.2xlarge"  : { "Arch" : "HVM64"  },
       "m5.4xlarge"  : { "Arch" : "HVM64"  },
-      "m5.10xlarge" : { "Arch" : "HVM64"  },
+      "m5.12xlarge" : { "Arch" : "HVM64"  },
+      "m5.24xlarge" : { "Arch" : "HVM64"  },
       "c1.medium"   : { "Arch" : "PV64"   },
       "c1.xlarge"   : { "Arch" : "PV64"   },
       "c3.large"    : { "Arch" : "HVM64"  },
@@ -113,7 +114,8 @@
       "m5.xlarge"   : { "Arch" : "NATHVM64"  },
       "m5.2xlarge"  : { "Arch" : "NATHVM64"  },
       "m5.4xlarge"  : { "Arch" : "NATHVM64"  },
-      "m5.10xlarge" : { "Arch" : "NATHVM64"  },
+      "m5.12xlarge" : { "Arch" : "NATHVM64"  },
+      "m5.24xlarge" : { "Arch" : "NATHVM64"  },
       "c1.medium"   : { "Arch" : "NATPV64"   },
       "c1.xlarge"   : { "Arch" : "NATPV64"   },
       "c3.large"    : { "Arch" : "NATHVM64"  },
@@ -179,6 +181,12 @@
         "KeyName" : { "Ref" : "KeyName" },
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "Tags" : [
+                     {
+                        "Key" : "Name",
+                        "Value" : "containers-workshop-loadtest"
+                     }
+                  ],
         "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
            "#!/bin/bash -xe\n",
            "yum update -y && yum install -y python python-pip\n",
