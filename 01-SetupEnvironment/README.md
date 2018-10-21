@@ -37,7 +37,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 4. Insert the following URL on the field:
 
-`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`;
+`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`
 
 5. Click **Next**;
 
@@ -88,8 +88,11 @@ After cloning the repository, you will see that a new folder called `containers-
 
 ## 6. Running on your own computer
 
-The following steps are needed if you want to run this workshop in your own computer instead of using the Cloud9 environment.
+We strongly recommend you to run this workshop using the Cloud9 provided interface, but it is also possible to run this workshop using your own computer instead of Cloud9 environment.
 
+The following steps are needed if you want to run this workshop in your own computer.
+
+>NOTE: If you will be using the Cloud9 interface and have done the steps above, please go to the next chapter.
 
 ### 6.1 Hardware & Software
 
