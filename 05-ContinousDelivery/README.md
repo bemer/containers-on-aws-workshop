@@ -1,6 +1,6 @@
 ## Quick jump:
 
-* [1. Tutorial overview](/09-ContinousDelivery#1-tutorial-overview)
+* [1. Tutorial overview](/05-ContinousDelivery#1-tutorial-overview)
 * [2. Creating a Source stage](/05-ContinousDelivery#2-creating-a-source-stage)
 * [3. Creating a Build stage](/05-ContinousDelivery#3-creating-a-build-stage)
 * [4. Configuring a Continous Delivery pipeline](/05-ContinousDelivery#4-configuring-a-continous-delivery-pipeline)
