@@ -1,9 +1,9 @@
 ## Quick jump:
 
-* [1. Tutorial overview](/07-AutoScaling#1-tutorial-overview)
-* [2. Configuring the Service Auto Scaling](/07-AutoScaling#2-configuring-the-service-auto-scaling)
-* [3. Generating Load](/07-AutoScaling#3-generating-load)
-* [4. Scaling your environment](/07-AutoScaling#4-scaling-your-environment)
+* [1. Tutorial overview](/06-AutoScaling#1-tutorial-overview)
+* [2. Configuring the Service Auto Scaling](/06-AutoScaling#2-configuring-the-service-auto-scaling)
+* [3. Generating Load](/06-AutoScaling#3-generating-load)
+* [4. Scaling your environment](/06-AutoScaling#4-scaling-your-environment)
 
 ## 1. Tutorial overview
 
@@ -17,7 +17,7 @@ When we talk about scaling on ECS, we need to keep in mind that there are two th
 
 Ir order to make these configurations, on your ECS console access the cluster named `containers-workshop-ecs-cluster` and under services, select the service `containers-workshop-ecs-service` and click in update:
 
-![update service](/07-AutoScaling/images/update_service.png)
+![update service](/06-AutoScaling/images/update_service.png)
 
 Now, in the `Configure service` screen, just click in `Next Step`. Click in `Next Step` again under `Configure network` screen. You will reach the `Set Auto Scaling` screen. Here is where we are going to make the first changes.
 
@@ -27,7 +27,7 @@ Under `Service Auto Scaling`, select the option `Configure Service Auto Scaling 
 **Desired number of tasks**: 1
 **Maximum number of tasks**: 5
 
-![number of tasks](/07-AutoScaling/images/number_of_tasks.png)
+![number of tasks](/06-AutoScaling/images/number_of_tasks.png)
 
 After adding this information, let's add a new `scaling policy`, which will execute the scaling actions in your cluster based in some specific metrics. Click in the button `Add scaling policy`.
 
@@ -37,13 +37,13 @@ In this screen, give your policy the name `containers-workshop-ecs-scaling-polic
 
 Leave the other parameters with the default values and them click in `Save`:
 
-![number of tasks](/07-AutoScaling/images/ecs_scaling_policy.png)
+![number of tasks](/06-AutoScaling/images/ecs_scaling_policy.png)
 
 After saving the policy, click in `Next step`, review your configurations and them click in `Update Service`.
 
 You can check the `Auto Scaling` configurations of your service by clicking in the service `containers-workshop-ecs-service` under your cluster, and them selecting the tab `Auto Scaling`:
 
-![service auto scaling](/07-AutoScaling/images/service_auto_scaling.png)
+![service auto scaling](/06-AutoScaling/images/service_auto_scaling.png)
 
 ## 3. Generating Load
 
@@ -59,26 +59,26 @@ If you have a keypair created in the region where you are running this workshop,
 
 Under `Load Balancer URL`, you should add the hostname of your Load Balancer. This is the same name that you used to access your application in the step [04-Deploy ECS Cluster](/04-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb).
 
-![load testing cfn](/07-AutoScaling/images/load_test_cfn.png)
+![load testing cfn](/06-AutoScaling/images/load_test_cfn.png)
 
 Them, click in `Next` and in the Options screen, click in `Next` again. Under the Review screen, validate your configurations and click in `Create`.
 
 After creating your new Stack, you should see a URL that point to you EC2 instance with the Locust installed:
 
-![load testing output](/07-AutoScaling/images/load_test_output.png)
+![load testing output](/06-AutoScaling/images/load_test_output.png)
 
 Click in this URL and you will be redirected to the Locust page in your instance. In this screen, you can see that the `HOST` is pointing to your Load Balancer hostname. Now, under `Number of users to simulate` you can add `20000` and under `Hatch rate` add `500`:
 
-![locust main screen](/07-AutoScaling/images/locust_main_screen.png)
+![locust main screen](/06-AutoScaling/images/locust_main_screen.png)
 
 After configuring Locust, you can click in `Start swarming`.
 
 This will start to simulate 20000 users accessing your application. You can follow the results in the following screen:
 
-![locust test](/07-AutoScaling/images/locust_test.png)
+![locust test](/06-AutoScaling/images/locust_test.png)
 
 ## 4. Scaling your environment
 
 After generating load against your application, you should be able to see it scaling after a few seconds. Go to you `containers-workshop-ecs-cluster` and click in the service `containers-workshop-ecs-service`. By clicking in the service `containers-workshop-ecs-service` and going to the tab `Events` you will find the message saying that the desired count of tasks was changed:
 
-![scaling message](/07-AutoScaling/images/scaling_message.png)
+![scaling message](/06-AutoScaling/images/scaling_message.png)
