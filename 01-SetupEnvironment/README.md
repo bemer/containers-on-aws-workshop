@@ -171,5 +171,9 @@ The output should look like:
     Share images, automate workflows, and more with a free Docker ID:
      https://cloud.docker.com/
 
-    For more examples and ideas, visit:
+    For more examples and ideas, visit:mM
      https://docs.docker.com/engine/userguide/
+
+     | ![back to index](/01-SetupEnvironment/images/back_to_index.png)  | Second Header |
+     | ------------- | ------------- |
+     | Content Cell  | Content Cell  |
