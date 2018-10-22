@@ -6,7 +6,7 @@ Hello and welcome to the Containers On AWS Workshop! Please, read the instructio
 
 ## 1) It's all about containers!
 
-We will walk you through the very basics of containers: from installing and configuring Docker, running containers locally, deploying them on AWS container services like Elastic Container Services (ECS), till implementing a Continous Delivery pipeline for your container and help you configure Auto Scaling for your containerized app.
+We will walk you through the very basics of containers: from installing and configuring Docker, running containers locally, deploying them on AWS container services like Elastic Container Services (ECS), till implementing a Continuous Delivery pipeline for your container and help you configure Auto Scaling for your containerized app.
 
 ## 2) If you are using a Windows machine
 
@@ -29,6 +29,6 @@ If you want to run on a EC2 instance, the following links will guide you through
 
 * [4. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployFargate)
 
-* [5. Creating a Continous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-ContinousDelivery)
+* [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-ContinousDelivery)
 
 * [6. Configuring Service Auto Scaling on Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/06-AutoScaling)
