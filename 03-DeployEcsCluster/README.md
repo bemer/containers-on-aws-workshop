@@ -10,8 +10,6 @@
 * [4. Creating the Task Definition](/03-DeployEcsCluster#4-creating-the-task-definition)
 * [5. Creating the Service](/03-DeployEcsCluster#5-creating-the-service)
 * [6. Testing our service deployments from the console and the ALB](/03-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb)
-* [7. That's a wrap](/03-DeployEcsCluster#7-that's-a-wrap)
-
 
 ## 1. Tutorial overview
 
@@ -224,8 +222,3 @@ We can also test from the ALB itself. To find the DNS A record for your ALB, nav
 ![alb web test](/03-DeployEcsCluster/images/alb_app_response.png)
 
 You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container `/app` requests go to our app service.
-
-
-## 7. That's a wrap
-
-Congratulations! You've deployed an ECS Cluster with a working endpoints.  
