@@ -350,6 +350,8 @@ Thow whole process should take around 10 minutes. All three stages should be com
 
 If you go to the URL of your app you won't see any changes beucase we didn't change anything. So now, let's do exactly that. Let's change something on our app to see the modification being deployed automatically.
 
+## 5. Testing our pipeline
+
 Go to your Cloud9 enviroment. On the left side menu, expand `MyCloud9Instance > containers-workshop-repository > app`
 
 Right click in the `index.html` > Open
@@ -376,4 +378,4 @@ Watch the CodePipeline being executed. You will see in a minute or so, the Sourc
 ![CodePipeline final run](/05-ContinousDelivery/images/codepipeline_final_test.png)
 
 
-Go to your app URL and see the new title!
+Go to your app URL and see the new text!

@@ -16,7 +16,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 This workshop can be executed both on a Cloud9 environment or in your own computer. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
-If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
+If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#6-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
 ## 2. The VPC Structure
@@ -39,9 +39,9 @@ In order to deploy the infrastructure to your account, you can use one of the fo
 |[🚀][eu-west-1-with-cloud9] | EU (Ireland)|
 |[🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
 
-In the ClouFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
+In the CloudFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
-The the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provisions a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
+Wait till the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provision a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
 
 ![CloudFormation Output](/01-SetupEnvironment/images/cloudformation_output.png)
 
