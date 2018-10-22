@@ -226,6 +226,6 @@ We can also test from the ALB itself. To find the DNS A record for your ALB, nav
 You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container `/app` requests go to our app service.
 
 
-## 7. That's a wrap!
+## 7. That's a wrap
 
 Congratulations! You've deployed an ECS Cluster with a working endpoints.  

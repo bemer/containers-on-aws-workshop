@@ -10,7 +10,7 @@ We will walk you through the very basics of containers: from installing and conf
 
 ## 2) If you are using a Windows machine
 
-We strongly recommend you spinning up an EC2 instance running Amazon Linux or a Cloud9 instance. 
+We strongly recommend you spinning up a Cloud9 enviroment. Optionally, you can spin up an EC2 instance with Amazon Linux. 
 
 If you choose Cloud9, all you have to do is jump to [01-SetupEnvironment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment).
 
