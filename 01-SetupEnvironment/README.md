@@ -33,6 +33,7 @@ In order to deploy the infrastructure to your account, you can use one of the fo
 
 Deploy | Region |
 :---: |
+
 [🚀][us-east-1-with-cloud9] | US East (N. Virginia)
 
 [🚀][us-east-2-with-cloud9] | US East (Ohio)
