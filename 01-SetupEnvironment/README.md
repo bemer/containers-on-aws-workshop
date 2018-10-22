@@ -32,7 +32,6 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Clou9.
 
 Deploy | Region |
-:---: |
 
 [🚀][us-east-1-with-cloud9] | US East (N. Virginia)
 
