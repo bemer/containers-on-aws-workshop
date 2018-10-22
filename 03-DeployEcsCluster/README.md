@@ -45,9 +45,9 @@ You will then be asked to input information about your new cluster. In the *Conf
 * VPC: Select the VPC `containers-workshop-vpc` created in the [Create VPC tutorial](/03-CreateVPC)
 * Subnets: Select the `containers-workshop-private-subnet-az1` and `containers-workshop-private-subnet-az2` subnets in your VPC
 
-And them click in **Create**.
+And then click in **Create**.
 
->In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and them select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
+>In this tutorial we are not covering the creation of a Key Pair to access your EC2 instances. If you want to access your instances for troubleshooting purposes or even to just see how the ECS agent works you will need to create a Key Pair and then select it in the `Key pair` option. You can see how to create a new Key Pair in [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 
 Note that this wizard is also going to create a security group for you allowing access in the port 80 (TCP).
 
@@ -57,14 +57,14 @@ When the creation process finishes, you will see the following screen:
 
 ![cluster created](/03-DeployEcsCluster/images/cluster_created.png)
 
-You can them click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
+You can then click in the button **View Cluster** to see your cluster. The ECS Cluster screen will be like this:
 
 ![cluster screen](/03-DeployEcsCluster/images/cluster_screen.png)
 
 
 ## 3. Creating the ALB
 
-Now that we've created our cluster, we need an [Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/) to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints.  In our example, we'll use the enpoint:  `/app`.
+Now that we've created our cluster, we need an [Application Load Balancer (ALB)](https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/) to route traffic to our endpoints. Compared to a traditional load balancer, an ALB lets you direct traffic between different endpoints. In our example, we'll use the enpoint `/app`.
 
 To create the ALB:
 
@@ -76,7 +76,7 @@ Name your ALB `containers-workshop-alb` and add an HTTP listener on port 80:
 
 ![name ALB](/03-DeployEcsCluster/images/create_alb.png)
 
-In this same screen, under **Availability Zones** select the VPC `containers-workshop-vpc` previously created  and add select the two public subnets:
+In this same screen, under **Availability Zones** select the VPC `containers-workshop-vpc` previously created and select the two public subnets:
 
 ![select subnets](/03-DeployEcsCluster/images/select_subnets.png)
 
@@ -97,12 +97,12 @@ During this initial setup, we're just adding a dummy health check on `/`.  We'll
 
 ![add routing](/03-DeployEcsCluster/images/configure_alb_routing.png)
 
-Click in **Next: Register Targets** and them in **Nex: Review**. If your values look correct, click **Create**:
+Click in **Next: Register Targets** and then in **Next: Review**. If your values look correct, click **Create**:
 
 ![alb creation](/03-DeployEcsCluster/images/alb_creation.png)
 
 
-After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. In order to identify what is the security group applied to your instances, you can access the ECS console, select the cluster `containers-workshop-ecs-cluster` and them select the tab **ECS Instances**. You will see that you have one instance running. Them, click in the ECS Instance ID:
+After creating your ALB, you need to update the security group rule so your ALB can access the EC2 instances where your containers will run. In order to identify what is the security group applied to your instances, you can access the ECS console, select the cluster `containers-workshop-ecs-cluster` and then select the tab **ECS Instances**. You will see that you have one instance running. Then, click in the ECS Instance ID:
 
 ![ecs instance](/03-DeployEcsCluster/images/ecs_instance.png)
 
@@ -112,7 +112,7 @@ In the EC2 service dashboard, you will see all the information about your instan
 
 ![ec2 security group](/03-DeployEcsCluster/images/ec2_security_group.png)
 
-In this scree, with the Security Group selected, click in the tab **Inbound** and them in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and in the field `Source` start typing `sg-`. You will see a list with all the security groups created in your AWS account. Select the security group `containers-workshop-alb-sg` previouly created and click in **Save**:
+In this scree, with the Security Group selected, click in the tab **Inbound** and then in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and in the field `Source` start typing `sg-`. You will see a list with all the security groups created in your AWS account. Select the security group `containers-workshop-alb-sg` previouly created and click in **Save**:
 
 ![security group configuration](/03-DeployEcsCluster/images/sg_configuration.png)
 
@@ -129,7 +129,7 @@ At this point, your EC2 instances will be able to receive traffic from the ALB.
 
 ## 4. Creating the Task Definition
 
-When working with ECS to run our applications, there are a few concepts that we need to understand. The first of these concepts is about what is a `Task`. Basically, a task is a subset of containers that we need to execute to have our application running. The `Tasks` are defined in a configuration called `Task Definition`.
+When working with ECS to run our applications, there are a few concepts that we need to understand. The first of these concepts is about what is a `Task`. Basically, a task is a subset of containers that we need to execute in order to have our application running. The `Tasks` are defined in a configuration called `Task Definition`.
 
 A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports needs to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
 
@@ -163,9 +163,9 @@ A few things to note here:
 
 - We've specified a specific container image, including the `:latest` tag.  Although it's not important for this demo, in a production environment where you were creating Task Definitions programmatically from a CI/CD pipeline, Task Definitions could include a specific SHA, or a more accurate tag.
 
-- Under **Port Mappings**, we've specified a **Container Port** (80), but left **Host Port** as 0.  This was intentional, and is used to facilitate dynamic port allocation.  This means that we don't need to map the Container Port to a specific Host Port in our Container Definition - instead, we can let the ALB allocate a port during task placement.  To learn more about port allocation, check out the [ECS documentation here](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html).
+- Under **Port Mappings**, we've specified a **Container Port** (80), but left **Host Port** as 0.  This was intentional, and is used to facilitate dynamic port allocation.  This means that we don't need to map the Container Port to a specific Host Port in our Container Definition - instead, we can let the ALB dynamically allocate a port during the task placement. To learn more about port allocation, check out the [ECS documentation here](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html).
 
-Once you've specified your Port Mappings, scroll down and add a log driver.  There are a few options here, but for this demo, select **Auto-configure CloudWatch Logs**:
+Once you've specified your Port Mappings, scroll down and add a log driver. There are a few options here, but for this demo, select **Auto-configure CloudWatch Logs**:
 
 ![aws log driver](/03-DeployEcsCluster/images/setup_logdriver.png)
 
@@ -192,7 +192,7 @@ Select `EC2` as the `Launch Type`, and choose the Task Definition created in the
 
 Name your service `containers-workshop-ecs-service`.
 
-You can keep the default **AZ Balanced Spread** for the Task Placement Policy.  To learn more about the different Task Placement Policies, see the [documentation](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html), or this [blog post](https://aws.amazon.com/blogs/compute/introducing-amazon-ecs-task-placement-policies/).
+You can keep the default **AZ Balanced Spread** for the Task Placement Policy. To learn more about the different Task Placement Policies, see the [documentation](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html), or this [blog post](https://aws.amazon.com/blogs/compute/introducing-amazon-ecs-task-placement-policies/).
 
   ![create service](/03-DeployEcsCluster/images/create_service.png)
 
@@ -202,7 +202,7 @@ Now, under `Load balancing`, select `Application Load Balancer`. Let's configure
 
 ![add to ALB](/03-DeployEcsCluster/images/add_container_to_alb.png)
 
-This final step allows you to configure the container with the ALB.  When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**.  For **Target Group Name**, enter a value that will make sense to you later, like `containers-workshop-ecs-target`.  For **Path Pattern**, the value should be `/*`. In the **Evaluation order**, add the number `1`.
+This final step allows you to configure the container with the ALB. When we created our ALB, we only added a listener for HTTP:80.  Select this from the dropdown as the value for **Listener**. For **Target Group Name**, enter a value that will make sense to you later, like `containers-workshop-ecs-target`.  For **Path Pattern**, the value should be `/*`. In the **Evaluation order**, add the number `1`.
 
 Finally, **Health check path**, use the value `/`.
 
@@ -215,17 +215,17 @@ Since we will not use Auto Scaling in this tutorial, in the `Set Auto Scaling` s
 
 ## 6. Testing our service deployments from the console and the ALB
 
-You can see service level events from the ECS console.  This includes deployment events. You can test that of your service deployed, and registered properly with the ALB by looking at the service's **Events** tab:
+You can see service level events from the ECS console. This includes deployment events. You can test that of your service deployed, and registered properly with the ALB by looking at the service's **Events** tab:
 
 ![deployment event](/03-DeployEcsCluster/images/steady_state_service.png)
 
-We can also test from the ALB itself.  To find the DNS A record for your ALB, navigate to the EC2 Console > **Load Balancers** > **Select your Load Balancer**.  Under **Description**, you can find details about your ALB, including a section for **DNS Name**.  You can enter this value in your browser, and append the endpoint of your service, to see your ALB and ECS Cluster in action:
+We can also test from the ALB itself. To find the DNS A record for your ALB, navigate to the EC2 Console > **Load Balancers** > **Select your Load Balancer**. Under **Description**, you can find details about your ALB, including a section for **DNS Name**. You can enter this value in your browser, and append the endpoint of your service, to see your ALB and ECS Cluster in action:
 
 ![alb web test](/03-DeployEcsCluster/images/alb_app_response.png)
 
-You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container:  `/app` requests go to our app service.
+You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container `/app` requests go to our app service.
 
 
 ## 7. That's a wrap!
 
-Congratulations!  You've deployed an ECS Cluster with a working endpoints.  
+Congratulations! You've deployed an ECS Cluster with a working endpoints.  

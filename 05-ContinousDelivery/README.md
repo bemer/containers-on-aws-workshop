@@ -36,7 +36,7 @@ Otherwise click **Create repository**.
 
 ![CodeCommit create repository](/05-ContinousDelivery/images/codecommit_create_repository.png)
 
-In **Respoitory name** type a name for your respository. For example: `containers-workshop-repository`. Leave **Description** blank and click in **Create repository**.
+In **Respoitory name** type `containers-workshop-repository`. Leave **Description** blank and click in **Create repository**.
 
 ![CodeCommit create repository](/05-ContinousDelivery/images/codecommit_create_repository_II.png)
 
@@ -56,12 +56,12 @@ The output should be something like:
     $ warning: You appear to have cloned an empty repository.
     $ Admin:~/environment $
 
-Aditionally you'll also need to type the following commands with your email and a username. This is just to identity who commited a new change to the repository:
+Aditionally you'll also need to type the following commands with your email and a username. This is just to identify who commited a new change to the repository:
 
     $ git config --global user.email "YOUREMAIL@HERE.COM"
     $ git config --global user.name "USERNAME"
 
-Now we need to copy our application to the CodeCommit repository. First, go to the folder where your application resides
+At this point, you should have two folders: `containers-on-aws-workshop` and `containers-workshop-repository`. Now we need to copy our application to the CodeCommit repository. First, go to the folder where your application resides
 
     $ cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/
 
@@ -69,7 +69,7 @@ Copy everything to the folder that was created when you cloned the empty reposit
 
     $ cp -r * /home/ec2-user/environment/containers-workshop-repository/
 
-Go to the folder where we will synchronize with the CodeCommit repository
+Go to the folder where we will synchronize (push) with the CodeCommit repository
 
     $ cd /home/ec2-user/environment/containers-workshop-repository/
 
@@ -109,7 +109,7 @@ We can also list the files through the CodeCommit interface:
 
 ## 3. Creating a Build stage
 
-Before we create our CodeBuild environment, we need to upload the YAML file with all the build commands and specifications. This file will be read by the CodeBuild everytime a new build must be done.
+Before we create our CodeBuild environment, we need to upload the YAML file with all the build commands and specifications. This file will be read by CodeBuild everytime a new build must be done.
 
 In Clou9, click in **File > New File**
 
@@ -151,7 +151,7 @@ Save the file by selecting **File > Save** in Cloud9. Name it as `buildspec.yml`
 
 ![Save the buildspec.yml file](/05-ContinousDelivery/images/buildspec_save.png)
 
-Your folder should have an `app` folder, a `buildspec.yml` file and a `Dockerfile` file. Let's push to our repository
+At this point, your repository folder should contain an `app` folder, a `buildspec.yml` file and a `Dockerfile` file. Let's push to our repository
 
     $ git add buildspec.yml
     $ git commit -m "Adding the build specifications file"
@@ -161,7 +161,7 @@ The `buildpsec.yml` shoudld be listed now
 
 ![List buildspec](/05-ContinousDelivery/images/buildspec_list.png)
 
-Now we have everything that we need to create our Build environment. In the AWS Management Console, click in Services, type in the search field `Build` and then select **CodeBuild** from the drop down list
+Now we have everything that we need to create our Build environment. In the AWS Management Console, click in **Services**, type in the search field `Build` and then select **CodeBuild** from the drop down list
 
 ![CodeBuild](/05-ContinousDelivery/images/codebuild.png)
 
@@ -189,7 +189,10 @@ Change only what's defined below:
 
 Expand **Show advanced settings**
 
-**Environment variables**: let's create 2 env vars - in `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
+**Environment variables**: let's create two env vars: 
+
+In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. 
+In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
 Click **Continue** and then click in **Save**. Your build project should be listed now:
 
@@ -223,7 +226,7 @@ For **Action** select the following actions: `ecr:GetDownloadUrlForLayer`, `ecr:
 
 Click in **Save all**
 
-Next step, we need to change de IAM role associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search filed type `iam` and select **IAM** from the drop down list
+Next step, we need to change de IAM role associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search field type `iam` and select **IAM** from the drop down list
 
 ![Select IAM](/05-ContinousDelivery/images/iam.png)
 
@@ -259,15 +262,15 @@ For **Branch** select `master`. Leave everything else with the default configura
 
 ![CodeBuild list project](/05-ContinousDelivery/images/codebuild_test_project.png)
 
-The build phase migh take a while to finish. Once its completed, you should see all the **Phase details** as `Succeeded`.
+The build phase might take a while to finish. Once its completed, you should see all the **Phase details** as `Succeeded`.
 
 ![CodeBuild Status Succeeded](/05-ContinousDelivery/images/codebuild_succeeded.png)
 
 ## 4. Configuring a Continous Delivery pipeline
 
-Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are done, we need a tool to orchestrate and connect all of them. To do this we will use AWS CodePipeline.
+Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are done, we need a tool to orchestrate and connect all of them. To achieve this we will use AWS CodePipeline.
 
-AWS CodePipeline already has the concepts of Stages (Source, Build, Test, Deploy, Approval, Invoke). All we need to do is to create a pipeline, and for each stage, choose the corelated service. For example, when configuring the Source stage, we will choose our CodeCommit respository. And so on...
+AWS CodePipeline already has the concepts of Stages (Source, Build, Test, Deploy, Approval, Invoke). All we need to do is to create a pipeline, and for each stage, choose the correlated service. For example, when configuring the Source stage, we will choose our CodeCommit respository. And so on...
 
 Le'ts start with the Source Stage:
 
@@ -311,7 +314,7 @@ For **Project name** select `containers-workshop-build` and click in **Next step
 
 ![CodePipeline Build Stage](/05-ContinousDelivery/images/codepipeline_create_build_ii.png)
 
-Finally, it's time do configure the last stage of our pipeline: the Deploy Stage.
+Finally, it's time to configure the last stage of our pipeline: the Deploy Stage.
 
 For **Deployment provider** select **Amazon ECS**
 
@@ -335,7 +338,7 @@ Click in **Next step**
 
 Click in **Create pipeline**.
 
-You should see now that AWS CodePiepline will atomatically start the pipeline.
+You should see now that AWS CodePiepline will automatically start the pipeline.
 
 ![CodePipeline Running](/05-ContinousDelivery/images/codepipeline_running.png)
 
@@ -367,7 +370,7 @@ Now let's commit our change to the CodeCommit repository. Go to the Terminal tab
     $ git push
 
 
-Watch the CodePipeline being executed. You will see in a minute or so, the Source stage chaging to `In Progress`. Wait until the Staging source is done.
+Watch the CodePipeline being executed. You will see in a minute or so, the Source stage changing to `In Progress`. Wait until the Staging source is done.
 
 
 ![CodePipeline final run](/05-ContinousDelivery/images/codepipeline_final_test.png)

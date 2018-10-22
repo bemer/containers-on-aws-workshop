@@ -16,7 +16,7 @@
 
 This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository. If you are going to execute this lab in the Clou9 environment, you can jump to [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image).
 
->This Docker image will have a very simple web application written in Python that you can find in the `/app` directory.
+>This Docker image will have a very simple web application that you can find in the `00-Application/app` directory.
 
 In this tutorial, we assume that you completed the [Setup Environment tutorial](/01-SetupEnvironment) and:
 
@@ -61,7 +61,7 @@ In this step, we are going to build a *Docker image* with a simple web applicati
 
     $ cd containers-on-aws-workshop/00-Application/
 
-Take a look on the contents of this directory. You will see that there is directory called `app/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `00-Application` directory:
+Take a look on the contents of this directory. You will see that there is a directory called `app/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `00-Application` directory:
 
     $ docker build -t containers-workshop-app .
 
@@ -85,7 +85,7 @@ If the container builds successfully, the output should end with something like 
 
 To run your container:
 
-     $  docker run -d -p 80:80 containers-workshop-app
+     $  docker run -d -p 8080:80 containers-workshop-app
 
 To check if your container is running:
 
@@ -94,17 +94,17 @@ To check if your container is running:
 This should return a list of all the currently running containers.  In this example,  it should just return a single container, the one that we just started:
 
     CONTAINER ID        IMAGE                     COMMAND             CREATED                  STATUS              PORTS                          NAMES
-    1255ca3087f5        containers-workshop-app   "node server.js"    Less than a second ago   Up 1 second         0.0.0.0:80->80/tcp, 8080/tcp   nifty_snyder
+    1255ca3087f5        containers-workshop-app   "node server.js"    Less than a second ago   Up 1 second         0.0.0.0:80->8080/tcp, 8080/tcp   nifty_snyder
 
 
 
-To test the actual container output, you can access it using your web browser with the following address:
+To test the application, you can use the Cloud9 `Preview Running Application` feature. In Cloud9, click in `Preview` > `Preview Running Application`
 
-    http://localhost/
+![Preview Running Application](/02-CreatingDockerImage/images/preview_application.png)
 
 If everything went fine, you should see your web application:
 
-![web application](https://github.com/bemer/containers-on-aws-workshop/blob/new-application/02-CreatingDockerImage/images/web_application.png)
+![Web Application](/02-CreatingDockerImage/images/web_application.png)
 
 
 

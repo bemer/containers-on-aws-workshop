@@ -35,13 +35,13 @@ In this screen, give your policy the name `containers-workshop-ecs-scaling-polic
 
 >NOTE: We are using a lower value here because we will be generating load using just one EC2 instance. In a real world scenario, you might want to use a higher value to scale your application.
 
-Leave the other parameters with the default values and them click in `Save`:
+Leave the other parameters with the default values and then click in `Save`:
 
 ![number of tasks](/06-AutoScaling/images/ecs_scaling_policy.png)
 
-After saving the policy, click in `Next step`, review your configurations and them click in `Update Service`.
+After saving the policy, click in `Next step`, review your configurations and then click in `Update Service`.
 
-You can check the `Auto Scaling` configurations of your service by clicking in the service `containers-workshop-ecs-service` under your cluster, and them selecting the tab `Auto Scaling`:
+You can check the `Auto Scaling` configurations of your service by clicking in the service `containers-workshop-ecs-service` under your cluster, and then selecting the tab `Auto Scaling`:
 
 ![service auto scaling](/06-AutoScaling/images/service_auto_scaling.png)
 
@@ -49,9 +49,9 @@ You can check the `Auto Scaling` configurations of your service by clicking in t
 
 Now that we have our Service Auto Scaling configured, we need to generate load in order to scale the number of running tasks in our cluster. To do so, we will be using an open source tool called `Locust`. You can find more information about Locust in [their documentation](https://docs.locust.io/en/stable/).
 
-Since the objective of this workshop is teach you how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance and install and configure Locust in it. So, in the Management Console, go to the CloudFormation interface and click in `Create Stack`. You should use the template `load_test_instance.json` present in this workshop.
+Since the goal of this workshop is understaing how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance and install and configure Locust in it. So, in the Management Console, go to the CloudFormation interface and click in `Create Stack`. You should use the template `load_test_instance.json` present in this workshop.
 
-In the following screen, provide a name to you stack such as `containers-workshop-load-testing`. For the `HTTP Location` parameter, you can add you public IP Address or just leave it as the default.
+In the following screen, type `containers-workshop-load-testing`. For the `HTTP Location` parameter, you can add you public IP Address or just leave it as the default.
 
 Since we will be generating a large ammount of load, it's recommended that you use a large instance type. We are setting the default as `m5.xlarge`.
 
@@ -61,7 +61,7 @@ Under `Load Balancer URL`, you should add the hostname of your Load Balancer. Th
 
 ![load testing cfn](/06-AutoScaling/images/load_test_cfn.png)
 
-Them, click in `Next` and in the Options screen, click in `Next` again. Under the Review screen, validate your configurations and click in `Create`.
+Then, click in `Next` and in the Options screen, click in `Next` again. Under the Review screen, validate your configurations and click in `Create`.
 
 After creating your new Stack, you should see a URL that point to you EC2 instance with the Locust installed:
 
@@ -79,6 +79,6 @@ This will start to simulate 20000 users accessing your application. You can foll
 
 ## 4. Scaling your environment
 
-After generating load against your application, you should be able to see it scaling after a few seconds. Go to you `containers-workshop-ecs-cluster` and click in the service `containers-workshop-ecs-service`. By clicking in the service `containers-workshop-ecs-service` and going to the tab `Events` you will find the message saying that the desired count of tasks was changed:
+After generating load against your application, you should be able to see it scaling after a few seconds. Go to you `containers-workshop-ecs-cluster` and click in the service `containers-workshop-ecs-service`. By clicking in the service `containers-workshop-ecs-service` and going to the tab `Events` you will find the message saying that the desired count of tasks have changed:
 
 ![scaling message](/06-AutoScaling/images/scaling_message.png)
