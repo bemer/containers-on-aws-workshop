@@ -15,7 +15,7 @@ This section describes the hardware and software needed for this workshop, and h
 ## 1. First Notes
 
 This workshop can be executed both on a Cloud9 environment or in your own computer. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
-m
+
 If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
@@ -75,7 +75,6 @@ In order to clone this repository, you can use the following command:
 
 After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
->NOTE: This step needs to be executed if you are using a Clou9 environment or if you are running this workshop in your computer or in an EC2 instance.
 
 
 ## 6. Running on your own computer
@@ -178,8 +177,14 @@ Deploy | Region |
 [🚀][eu-west-1-without-cloud9] | EU (Ireland)
 [🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)
 
-After creating your VPC, you should be good to go to the next chapter.
 
+### 6.7 Cloning the workshop repository
+
+In order to clone this repository, you can use the following command:
+
+    $ git clone https://github.com/bemer/containers-on-aws-workshop.git
+
+After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
 
 [us-east-1-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
