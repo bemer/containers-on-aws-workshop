@@ -10,7 +10,7 @@
 * [4. Creating the Task Definition](/03-DeployEcsCluster#4-creating-the-task-definition)
 * [5. Creating the Service](/03-DeployEcsCluster#5-creating-the-service)
 * [6. Testing our service deployments from the console and the ALB](/03-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb)
-* [7. That's a wrap!](/03-DeployEcsCluster#7-thats-a-wrap)
+* [7. That's a wrap](/03-DeployEcsCluster#7-thats-a-wrap)
 
 
 ## 1. Tutorial overview
