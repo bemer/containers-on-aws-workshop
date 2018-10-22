@@ -16,7 +16,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 This workshop can be executed both on a Cloud9 environment or in your own computer. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
-If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
+If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#6-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
 ## 2. The VPC Structure
