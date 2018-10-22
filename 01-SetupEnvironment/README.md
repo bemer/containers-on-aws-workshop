@@ -43,9 +43,9 @@ Deploy | Region |
 
 [🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)
 
-In the ClouFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
+In the CloudFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
-The the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provisions a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
+Wait till the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provision a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
 
 ![CloudFormation Output](/01-SetupEnvironment/images/cloudformation_output.png)
 
@@ -174,11 +174,15 @@ The output should look like:
 After completing the setup of your computer, you must create the VPC infrastrutcture in order to execute your containers. You can do this by using one of the templates below, according to the region you are using:
 
 Deploy | Region |
-:---: |
+
 [🚀][us-east-1-without-cloud9] | US East (N. Virginia)
+
 [🚀][us-east-2-without-cloud9] | US East (Ohio)
+
 [🚀][us-west-2-without-cloud9] | US West (Oregon)
+
 [🚀][eu-west-1-without-cloud9] | EU (Ireland)
+
 [🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)
 
 
