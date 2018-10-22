@@ -6,11 +6,11 @@ Hello and welcome to the Containers On AWS Workshop! Please, read the instructio
 
 ## 1) It's all about containers!
 
-We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till finally deploying them on AWS container services like Elastic Container Services (ECS).
+We will walk you through the very basics of containers: from installing and configuring Docker in your own machine, running containers locally, till deploying them on AWS container services like Elastic Container Services (ECS). FInally, we will walk you through how to implement a Conrtinous Delivery pipeline for oyur container and help you configure Auto Scaling for your containerized app.
 
 ## 2) If you are using a Windows machine
 
-We are working on a content for running this workshop using a Windows machine. Meanwhile, please, we strongly recommend you spinning up an EC2 instance running Amazon Linux or a Cloud9 instance. 
+We strongly recommend you spinning up an EC2 instance running Amazon Linux or a Cloud9 instance. 
 
 If you choose Cloud9, all you have to do is jump to [03-CreateVPC](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC).
 
@@ -21,14 +21,14 @@ If you want to run on a EC2 instance, the following links will guide you through
 
 ## 3) We strongly recommend you running this workshop in the following order:
 
-* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/01-SetupEnvironment)
+* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)
 
-* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/02-CreatingDockerImage)
+* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
 
-* [3. Creating A VPC for the Workshop](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/03-CreateVPC)
+* [3. Deploying An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-DeployEcsCluster)
 
-* [4. Running An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/04-DeployEcsCluster)
+* [4. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployFargate)
 
-* [5. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/05-DeployFargate)
+* [5. Creating a Continous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-ContinousDelivery)
 
-* [6. Creating a Continous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/new-application/06-CDECS)
+* [6. Configuring Service Auto Scaling on Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/06-AutoScaling)
