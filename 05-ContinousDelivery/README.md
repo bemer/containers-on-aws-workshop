@@ -3,14 +3,14 @@
 * [1. Tutorial overview](/05-ContinousDelivery#1-tutorial-overview)
 * [2. Creating a Source stage](/05-ContinousDelivery#2-creating-a-source-stage)
 * [3. Creating a Build stage](/05-ContinousDelivery#3-creating-a-build-stage)
-* [4. Configuring a Continous Delivery pipeline](/05-ContinousDelivery#4-configuring-a-continous-delivery-pipeline)
+* [4. Configuring a Continuous Delivery pipeline](/05-ContinousDelivery#4-configuring-a-continous-delivery-pipeline)
 * [5. Testing our pipeline](/05-ContinousDelivery#5-testing-our-pipeline)
 
 ## 1. Tutorial overview
 
-So far we've been deploying our containers into ECS manually. On a production environment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continous Delivery (CD).
+So far we've been deploying our containers into ECS manually. On a production environment, changes that happens on code or on the container image itself should be builded, tested and deployed, all automatically. This process is commonly known as Continuous Delivery (CD).
 
-To support us on this task, we must create a Continous Delivery pipeline that will orchestrate different stages of our pipeline. For this workshop our pipeline will have three stages:
+To support us on this task, we must create a Continuous Delivery pipeline that will orchestrate different stages of our pipeline. For this workshop our pipeline will have three stages:
 
 **a) a Source stage**: the Git repository branch where all the changes should be promoted to a production environment. We will use AWS CodeCommit as the Git repository;
 
@@ -18,7 +18,7 @@ To support us on this task, we must create a Continous Delivery pipeline that wi
 
 **c) a Deployment stage**: automatically deploys the new version of our application that is on Amazon ECR into Amazon ECS. The Amazon ECS itself will be responsible for deploying it without any downtime;
 
-Since we already have the Deployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continous Delivery pipeline.
+Since we already have the Deployment stage working, we only need to create the Source stage and the Build stage, and later, figure out how to connect all those stages to finally form an actual Continuous Delivery pipeline.
 
 Let's begin with the Source stage.
 
@@ -169,7 +169,7 @@ If this is your first time using CodeBuild, click in **Get started**
 
 ![CodeBuild get started](/05-ContinousDelivery/images/codebuild_get_started.png)
 
-Otherwise, click in **Create project**
+Otherwise, click in **Create build project**
 
 ![CodeBuild create project](/05-ContinousDelivery/images/codebuild_create_project.png)
 
@@ -194,7 +194,7 @@ Expand **Show advanced settings**
 In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. 
 In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
-Click **Continue** and then click in **Save**. Your build project should be listed now:
+Click **Create Build Project**. Your build project should be listed now:
 
 ![CodeBuild list project](/05-ContinousDelivery/images/codebuild_list_project.png)
 
@@ -266,7 +266,7 @@ The build phase might take a while to finish. Once its completed, you should see
 
 ![CodeBuild Status Succeeded](/05-ContinousDelivery/images/codebuild_succeeded.png)
 
-## 4. Configuring a Continous Delivery pipeline
+## 4. Configuring a Continuous Delivery pipeline
 
 Now that our Source (CodeCommit), Build (CodeBuild) and Deploy (ECS) stages are done, we need a tool to orchestrate and connect all of them. To achieve this we will use AWS CodePipeline.
 
@@ -286,7 +286,7 @@ Otherwise click in **Create pipeline**
 
 ![CodePipeline create](/05-ContinousDelivery/images/codepipeline_create.png)
 
-In **Pipeline name** type `containers-workshop-pipeline` and click in **Next step**
+In **Pipeline name** type `containers-workshop-pipeline` and click in **Next**
 
 ![CodePipeline Next Step](/05-ContinousDelivery/images/codepipeline_next.png)
 
@@ -298,45 +298,33 @@ For **Repository name** select the respository created for this workshop `contai
 
 For **Branch name** select `master`
 
-Click in **Next step**
+Click in **Next**
 
 ![CodePipeline Source Stage](/05-ContinousDelivery/images/codepipeline_repository_ii.png)
 
 We are now configuring the Buid Stage:
 
-For **Build provider** select **CodeBuild** and click in **Next step**
+For **Build provider** select **CodeBuild**
 
-![CodePipeline Build Stage](/05-ContinousDelivery/images/codepipeline_create_build.png)
-
-In **Configure your project** choose the option **Select an existing build project**.
-
-For **Project name** select `containers-workshop-build` and click in **Next step**
+For **Project name** select `containers-workshop-build` and click in **Next**
 
 ![CodePipeline Build Stage](/05-ContinousDelivery/images/codepipeline_create_build_ii.png)
 
 Finally, it's time to configure the last stage of our pipeline: the Deploy Stage.
 
-For **Deployment provider** select **Amazon ECS**
-
-![CodePipeline Deploy Stage](/05-ContinousDelivery/images/codepipeline_deploy.png)
+For **Deploy provider** select **Amazon ECS**
 
 For **Cluster name** select `containers-workshop-ecs-cluster`
 
 For **Service name** select `containers-workshop-ecs-service`
 
-For **Image filename** type `imagedefinitions.json`
+For **Image definitions file** type `imagedefinitions.json`
 
-Click in **Next step**
+Click in **Next**
 
 ![CodePipeline Deploy Stage](/05-ContinousDelivery/images/codepipeline_deploy_ii.png)
 
-In **AWS Service Role**, for **Role name**. You will be redirected to another page. Click in **Allow**
-
-![CodePipeline Deploy Stage](/05-ContinousDelivery/images/codepipeline_iam.png)
-
-Click in **Next step**
-
-Click in **Create pipeline**.
+Review your configurations and click in **Create pipeline**.
 
 You should see now that AWS CodePiepline will automatically start the pipeline.
 
