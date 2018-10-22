@@ -40,7 +40,7 @@ You will then be asked to input information about your new cluster. In the *Conf
 * EC2 instance type: `t2.micro`
 
 ### Networking
-* VPC: Select the VPC `containers-workshop-vpc` created in the [Create VPC tutorial](/03-CreateVPC)
+* VPC: Select the VPC `containers-workshop-vpc` created in the [01-Setup Environments](/01-SetupEnvironment)
 * Subnets: Select the `containers-workshop-private-subnet-az1` and `containers-workshop-private-subnet-az2` subnets in your VPC
 
 And then click in **Create**.
