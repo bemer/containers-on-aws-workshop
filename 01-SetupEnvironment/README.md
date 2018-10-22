@@ -14,9 +14,9 @@ This section describes the hardware and software needed for this workshop, and h
 
 ## 1. First Notes
 
-This workshop can be executed on a Cloud9 environment, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
-
-If you still want to run this lab on your own computer, please execute the steps until `3. VPC Setup` and them jump to [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
+This workshop can be executed both on a Cloud9 environment or in your own computer. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
+m
+If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#5-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
 ## 2. The VPC Structure
@@ -27,29 +27,21 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ![VPC structure](/01-SetupEnvironment/images/containers-on-aws-workshop-vpc.png)
 
-## 3. VPC Setup
+## 3. Infrastructure Setup (with Cloud9)
 
-1. To make things easier, we will deploy our VPC using CloudFormation. In the [Management Console](https://console.aws.amazon.com/console/home?region=us-east-1#), in the search field, type `CloudFormation` and select **CloudFormation**;
+In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Clou9.
 
-2. Click **Create Stack**;
+Deploy | Region |
+:---: |
+[🚀][us-east-1-with-cloud9] | US East (N. Virginia)
+[🚀][us-east-2-with-cloud9] | US East (Ohio)
+[🚀][us-west-2-with-cloud9] | US West (Oregon)
+[🚀][eu-west-1-with-cloud9] | EU (Ireland)
+[🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)
 
-3. Select `Specify an Amazon S3 template URL`;
+In the ClouFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
-4. Insert the following URL on the field:
-
-`https://s3.amazonaws.com/containers-on-aws-workshop-vpc/vpc_pub_priv.yaml`
-
-5. Click **Next**;
-
-6. For *Stack name*, use the name `containers-workshop-insfrastructure`. For everything else leave with the default values. Click **Next**;
-
-7. Leave everything as the default values and click **Next**;
-
-8. Click **Create**;
-
-9. Wait for the **Status** to be *CREATE_COMPLETE*. This process may take 5 to 10 minutes to be completed;
-
-10. Click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provisions a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
+The the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provisions a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
 
 ![CloudFormation Output](/01-SetupEnvironment/images/cloudformation_output.png)
 
@@ -174,6 +166,29 @@ The output should look like:
     For more examples and ideas, visit:mM
      https://docs.docker.com/engine/userguide/
 
-     | ![back to index](/01-SetupEnvironment/images/back_to_index.png)  | Second Header |
-     | ------------- | ------------- |
-     | Content Cell  | Content Cell  |
+### 6.6 Creating the VPC
+
+After completing the setup of your computer, you must create the VPC infrastrutcture in order to execute your containers. You can do this by using one of the templates below, according to the region you are using:
+
+Deploy | Region |
+:---: |
+[🚀][us-east-1-without-cloud9] | US East (N. Virginia)
+[🚀][us-east-2-without-cloud9] | US East (Ohio)
+[🚀][us-west-2-without-cloud9] | US West (Oregon)
+[🚀][eu-west-1-without-cloud9] | EU (Ireland)
+[🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)
+
+After creating your VPC, you should be good to go to the next chapter.
+
+
+
+[us-east-1-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
+[us-east-2-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
+[us-west-2-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
+[eu-west-1-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
+[ap-southeast-1-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
+[us-east-1-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
+[us-east-2-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
+[us-west-2-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
+[eu-west-1-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
+[ap-southeast-1-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
