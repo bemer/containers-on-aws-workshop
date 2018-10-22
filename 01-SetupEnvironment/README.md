@@ -34,9 +34,13 @@ In order to deploy the infrastructure to your account, you can use one of the fo
 Deploy | Region |
 :---: |
 [🚀][us-east-1-with-cloud9] | US East (N. Virginia)
+
 [🚀][us-east-2-with-cloud9] | US East (Ohio)
+
 [🚀][us-west-2-with-cloud9] | US West (Oregon)
+
 [🚀][eu-west-1-with-cloud9] | EU (Ireland)
+
 [🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)
 
 In the ClouFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
