@@ -6,7 +6,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 * [1. First Notes](/01-SetupEnvironment#1-first-notes)
 * [2. The VPC Structure](/01-SetupEnvironment#2-the-vpc-structure)
-* [3. VPC Setup](/01-SetupEnvironment#3-vpc-setup)
+* [3. Infrastructure Setup (with Cloud9)](/01-SetupEnvironment#3-infrastructure-setup-with-cloud9)
 * [4. Understanding the Cloud9 Interface](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
 * [5. Cloning the workshop repository](/01-SetupEnvironment#5-cloning-the-workshop-repository)
 * [6. Running on your own computer](/01-SetupEnvironment#6-running-on-your-own-computer)
@@ -31,13 +31,13 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Clou9.
 
-Deploy | Region |
-:---: |
-[🚀][us-east-1-with-cloud9] | US East (N. Virginia)
-[🚀][us-east-2-with-cloud9] | US East (Ohio)
-[🚀][us-west-2-with-cloud9] | US West (Oregon)
-[🚀][eu-west-1-with-cloud9] | EU (Ireland)
-[🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)
+|Deploy | Region |
+|:---:|:---:|
+|[🚀][us-east-1-with-cloud9] | US East (N. Virginia)|
+|[🚀][us-east-2-with-cloud9] | US East (Ohio)|
+|[🚀][us-west-2-with-cloud9] | US West (Oregon)|
+|[🚀][eu-west-1-with-cloud9] | EU (Ireland)|
+|[🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
 
 In the ClouFormation screen, add you name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
@@ -169,13 +169,13 @@ The output should look like:
 
 After completing the setup of your computer, you must create the VPC infrastrutcture in order to execute your containers. You can do this by using one of the templates below, according to the region you are using:
 
-Deploy | Region |
-:---: |
-[🚀][us-east-1-without-cloud9] | US East (N. Virginia)
-[🚀][us-east-2-without-cloud9] | US East (Ohio)
-[🚀][us-west-2-without-cloud9] | US West (Oregon)
-[🚀][eu-west-1-without-cloud9] | EU (Ireland)
-[🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)
+| Deploy | Region |
+|:---:|:---:|
+|[🚀][us-east-1-without-cloud9] | US East (N. Virginia)|
+|[🚀][us-east-2-without-cloud9] | US East (Ohio)|
+|[🚀][us-west-2-without-cloud9] | US West (Oregon)|
+|[🚀][eu-west-1-without-cloud9] | EU (Ireland)|
+|[🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)|
 
 
 ### 6.7 Cloning the workshop repository
