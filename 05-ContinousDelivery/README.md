@@ -378,4 +378,4 @@ Watch the CodePipeline being executed. You will see in a minute or so, the Sourc
 ![CodePipeline final run](/05-ContinousDelivery/images/codepipeline_final_test.png)
 
 
-Go to your app URL and see the new title!
+Go to your app URL and see the new text!
