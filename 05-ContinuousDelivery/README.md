@@ -1,6 +1,6 @@
 # 5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS
 
-
+![CI/CD](/05-ContinuousDelivery/images/ci_cd.png)
 
 ## Quick jump:
 
