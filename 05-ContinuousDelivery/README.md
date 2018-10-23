@@ -324,7 +324,7 @@ For **Service name** select `containers-workshop-ecs-service`
 
 For **Image filename** type `imagedefinitions.json`
 
-Click in **Next step**
+Click in **Next**
 
 ![CodePipeline Deploy Stage](/05-ContinuousDelivery/images/codepipeline_deploy_ii.png)
 
