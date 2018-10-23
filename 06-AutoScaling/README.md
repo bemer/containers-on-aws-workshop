@@ -85,6 +85,6 @@ After generating load against your application, you should be able to see it sca
 
 <br>
 
-[![back to menu](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]
+[![back to menu](/images/back_to_menu.png)][back-to-menu]
 
 [back-to-menu]: https://github.com/bemer/containers-on-aws-workshop

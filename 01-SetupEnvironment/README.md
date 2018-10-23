@@ -77,7 +77,9 @@ After cloning the repository, you will see that a new folder called `containers-
 
 After provisioning the infrastructure and cloning the repository within your Cloud9 environment, you can go to the next chapter: [3. Deploying An ECS Cluster](/03-DeployEcsCluster).
 
+<br>
 
+[![back to menu](/images/back_to_menu.png)][back-to-menu]
 
 ## 6. Running on your own computer
 
@@ -190,7 +192,7 @@ After cloning the repository, you will see that a new folder called `containers-
 
 <br>
 
-[![back to menu](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/01-SetupEnvironment/images/continue_workshop.png)][continue-workshop]
+[![back to menu](/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/images/continue_workshop.png)][continue-workshop]
 
 [back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
 [continue-workshop]: /02-CreatingDockerImage
