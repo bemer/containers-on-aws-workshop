@@ -10,7 +10,7 @@ We will walk you through the very basics of containers: from installing and conf
 
 ## 2) If you are using a Windows machine
 
-We strongly recommend you spinning up a Cloud9 enviroment. Optionally, you can spin up an EC2 instance with Amazon Linux. 
+We strongly recommend you spinning up a Cloud9 enviroment. Optionally, you can spin up an EC2 instance with Amazon Linux.
 
 If you choose Cloud9, all you have to do is jump to [01-SetupEnvironment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment).
 
@@ -21,14 +21,9 @@ If you want to run on a EC2 instance, the following links will guide you through
 
 ## 3) We strongly recommend you running this workshop in the following order:
 
-* [1. Setup Environments](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment)
-
-* [2. Creating Your Docker Image](https://github.com/bemer/containers-on-aws-workshop/tree/master/02-CreatingDockerImage)
-
-* [3. Deploying An ECS Cluster](https://github.com/bemer/containers-on-aws-workshop/tree/master/03-DeployEcsCluster)
-
-* [4. Deploying An Application with AWS Fargate](https://github.com/bemer/containers-on-aws-workshop/tree/master/04-DeployFargate)
-
-* [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/05-ContinousDelivery)
-
-* [6. Configuring Service Auto Scaling on Amazon ECS](https://github.com/bemer/containers-on-aws-workshop/tree/master/06-AutoScaling)
+* [1. Setup Environments](/01-SetupEnvironment)
+* [2. Creating Your Docker Image](/02-CreatingDockerImage)
+* [3. Deploying An ECS Cluster](/03-DeployEcsCluster)
+* [4. Deploying An Application with AWS Fargate](/04-DeployFargate)
+* [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](/05-ContinousDelivery)
+* [6. Configuring Service Auto Scaling on Amazon ECS](/06-AutoScaling)
