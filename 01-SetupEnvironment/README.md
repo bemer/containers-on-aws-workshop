@@ -191,7 +191,7 @@ After cloning the repository, you will see that a new folder called `containers-
 
 [![back to meny](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/01-SetupEnvironment/images/continue_workshop.png)][continue-workshop]
 
-[back-to-menu]: /
+[back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
 [continue-workshop]: /02-CreatingDockerImage
 
 [us-east-1-with-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-with-cloud9.yaml
