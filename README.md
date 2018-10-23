@@ -10,9 +10,9 @@ We will walk you through the very basics of containers: from installing and conf
 
 ## 2. If you are using a Windows machine
 
-We strongly recommend you spinning up a Cloud9 enviroment. Optionally, you can spin up an EC2 instance with Amazon Linux.
+We strongly recommend you spinning up a Cloud9 environment. Optionally, you can spin up an EC2 instance with Amazon Linux.
 
-If you choose Cloud9, all you have to do is jump to [01-SetupEnvironment](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-SetupEnvironment).
+If you choose Cloud9, all you have to do is jump to [01-EnvironmentSetup](https://github.com/bemer/containers-on-aws-workshop/tree/master/01-EnvironmentSetup).
 
 If you want to run on a EC2 instance, the following links will guide you through the instance creation process and how to access it:
 
@@ -21,7 +21,7 @@ If you want to run on a EC2 instance, the following links will guide you through
 
 ## 3. We strongly recommend you running this workshop in the following order:
 
-* [1. Setup Environments](/01-SetupEnvironment)
+* [1. Environment Setup](/01-EnvironmentSetup)
 * [2. Creating Your Docker Image](/02-CreatingDockerImage)
 * [3. Deploying An ECS Cluster](/03-DeployEcsCluster)
 * [4. Deploying An Application with AWS Fargate](/04-DeployFargate)
@@ -34,4 +34,4 @@ You can start the Containers on AWS workshop by clicking in the following link:
 
 [![start workshop](/images/start_workshop.png)][start_workshop]
 
-[start_workshop]: /01-SetupEnvironment
+[start_workshop]: /01-EnvironmentSetup

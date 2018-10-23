@@ -1,22 +1,22 @@
-# Setup Environments
+# Environment Setup
 
 This section describes the hardware and software needed for this workshop, and how to configure them. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
 
 **Quick jump:**
 
-* [1. First Notes](/01-SetupEnvironment#1-first-notes)
-* [2. The VPC Structure](/01-SetupEnvironment#2-the-vpc-structure)
-* [3. Infrastructure Setup (with Cloud9)](/01-SetupEnvironment#3-infrastructure-setup-with-cloud9)
-* [4. Understanding the Cloud9 Interface](/01-SetupEnvironment#4-understanding-the-cloud9-interface)
-* [5. Cloning the workshop repository](/01-SetupEnvironment#5-cloning-the-workshop-repository)
-* [6. Running on your own computer](/01-SetupEnvironment#6-running-on-your-own-computer)
+* [1. First Notes](/01-EnvironmentSetup#1-first-notes)
+* [2. The VPC Structure](/01-EnvironmentSetup#2-the-vpc-structure)
+* [3. Infrastructure Setup (with Cloud9)](/01-EnvironmentSetup#3-infrastructure-setup-with-cloud9)
+* [4. Understanding the Cloud9 Interface](/01-EnvironmentSetup#4-understanding-the-cloud9-interface)
+* [5. Cloning the workshop repository](/01-EnvironmentSetup#5-cloning-the-workshop-repository)
+* [6. Running on your own computer](/01-EnvironmentSetup#6-running-on-your-own-computer)
 
 
 ## 1. First Notes
 
 This workshop can be executed both on a Cloud9 environment or in your own computer. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. This environment already comes with Git, Docker, AWS CLI and all the necessary tools that you'll need to run this lab.
 
-If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-SetupEnvironment#6-running-on-your-own-computer), otherwise, continue with the following steps.
+If you still want to run this lab using your own computer instead of using the Cloud9 interface, jump to the step [6. Running on your own computer](/01-EnvironmentSetup#6-running-on-your-own-computer), otherwise, continue with the following steps.
 
 
 ## 2. The VPC Structure
@@ -25,7 +25,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 > NOTE: If you are running this workshop on a large group of people, you can optionally create just one VPC for the entire workshop, instead of one VPC per workshop participant. This is just to prevent you hitting some VPC limits for your AWS account, like number of VPCs per region and number of Elastic IPs per region.
 
-![VPC structure](/01-SetupEnvironment/images/containers-on-aws-workshop-vpc.png)
+![VPC structure](/01-EnvironmentSetup/images/containers-on-aws-workshop-vpc.png)
 
 ## 3. Infrastructure Setup (with Cloud9)
 
@@ -33,17 +33,17 @@ In order to deploy the infrastructure to your account, you can use one of the fo
 
 |Deploy | Region |
 |:---:|:---:|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-1-with-cloud9] | US East (N. Virginia)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-2-with-cloud9] | US East (Ohio)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-west-2-with-cloud9] | US West (Oregon)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][eu-west-1-with-cloud9] | EU (Ireland)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-1-with-cloud9] | US East (N. Virginia)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-2-with-cloud9] | US East (Ohio)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-west-2-with-cloud9] | US West (Oregon)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][eu-west-1-with-cloud9] | EU (Ireland)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
 
 In the CloudFormation screen, add your name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
 Wait till the status of the stack be changed to `CREATE_COMPLETE`, click in the **Outputs** tab and take note of all the values in the **Value** colunm. If you are using the template that provision a Cloud9 instance, you will have the `Cloud9URL` option. You can click in this URL to access your Cloud9 instance:
 
-![CloudFormation Output](/01-SetupEnvironment/images/cloudformation_output.png)
+![CloudFormation Output](/01-EnvironmentSetup/images/cloudformation_output.png)
 
 ## 4. Understanding the Cloud9 Interface
 
@@ -51,21 +51,21 @@ AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets y
 
 This is the main interface presented by Cloud9 and the first thing you will see when clicking in the CloudFormation output URL:
 
-![Cloud9 Main Screen](/01-SetupEnvironment/images/cloud9_main_screen.png)
+![Cloud9 Main Screen](/01-EnvironmentSetup/images/cloud9_main_screen.png)
 
 All the commands presented in the workshop, such as `docker build`, `aws ecr get-login` and so on, should be executed in the terminal window:
 
-![Cloud9 Terminal](/01-SetupEnvironment/images/cloud9_terminal.png)
+![Cloud9 Terminal](/01-EnvironmentSetup/images/cloud9_terminal.png)
 
 >NOTE: You can arrange the size of the windows inside the Cloud9 interface.
 
 On the left side of the screen, you will have a list of all files:
 
-![Cloud9 Files](/01-SetupEnvironment/images/cloud9_files.png)
+![Cloud9 Files](/01-EnvironmentSetup/images/cloud9_files.png)
 
 On the top window, you have a text editor, where you can make all the changes in the files. If you just click twice in any file on the *files** menu, you will be able to edit it:
 
-![Cloud9 Editor](/01-SetupEnvironment/images/cloud9_editor.png)
+![Cloud9 Editor](/01-EnvironmentSetup/images/cloud9_editor.png)
 
 ## 5. Cloning the workshop repository
 
@@ -177,11 +177,11 @@ After completing the setup of your computer, you must create the VPC infrastrutc
 
 | Deploy | Region |
 |:---:|:---:|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-1-without-cloud9] | US East (N. Virginia)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-2-without-cloud9] | US East (Ohio)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-west-2-without-cloud9] | US West (Oregon)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][eu-west-1-without-cloud9] | EU (Ireland)|
-|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-1-without-cloud9] | US East (N. Virginia)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-2-without-cloud9] | US East (Ohio)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-west-2-without-cloud9] | US West (Oregon)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][eu-west-1-without-cloud9] | EU (Ireland)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)|
 
 
 ### 6.7 Cloning the workshop repository
