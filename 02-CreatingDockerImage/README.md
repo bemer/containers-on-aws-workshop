@@ -145,6 +145,8 @@ When the wizard finishes, make sure to download and save your access key and sec
 
 ## 4. Configuring the AWS CLI
 
+**This step is only needed if you are doing the workshop using your own computer. If you are using the Cloud9 environment, you can go ahead to the step [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)**
+
 If you've never configured the AWS CLI, the easiest way is by running the command:
 
     $ aws configure
