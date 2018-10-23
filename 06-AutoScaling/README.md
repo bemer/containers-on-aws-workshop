@@ -1,3 +1,7 @@
+# Configuring Service Auto Scaling on Amazon ECS
+
+![auto scaling](/06-AutoScaling/images/auto_scaling.png)
+
 ## Quick jump:
 
 * [1. Tutorial overview](/06-AutoScaling#1-tutorial-overview)
