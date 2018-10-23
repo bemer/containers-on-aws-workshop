@@ -1,3 +1,7 @@
+# 5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS
+
+
+
 ## Quick jump:
 
 * [1. Tutorial overview](/05-ContinuousDelivery#1-tutorial-overview)
@@ -193,9 +197,9 @@ Change only what's defined below:
 
 Expand **Show advanced settings**
 
-**Environment variables**: let's create two env vars: 
+**Environment variables**: let's create two env vars:
 
-In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. 
+In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI.
 In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
 Click **Continue** and then click in **Create build project**. Your build project should be listed now:
@@ -371,3 +375,10 @@ Watch the CodePipeline being executed. You will see in a minute or so, the Sourc
 
 
 Go to your app URL and see the new text!
+
+<br>
+
+[![back to menu](/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/images/continue_workshop.png)][continue-workshop]
+
+[back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
+[continue-workshop]: /06-AutoScaling
