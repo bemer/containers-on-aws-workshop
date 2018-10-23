@@ -304,13 +304,11 @@ Click in **Next**
 
 We are now configuring the Buid Stage:
 
-For **Build provider** select **CodeBuild** and click in **Next step**
+For **Build provider** select **CodeBuild**
 
 ![CodePipeline Build Stage](/05-ContinuousDelivery/images/codepipeline_create_build.png)
 
-In **Configure your project** choose the option **Select an existing build project**.
-
-For **Project name** select `containers-workshop-build` and click in **Next step**
+For **Project name** select `containers-workshop-build` and click in **Next**
 
 ![CodePipeline Build Stage](/05-ContinuousDelivery/images/codepipeline_create_build_ii.png)
 
