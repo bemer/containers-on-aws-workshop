@@ -187,7 +187,7 @@ Change only what's defined below:
 
 **Runtime version**: `aws/codebuild/docker:17.09.0`
 
-**Service role**: select `New service role`. For `Role name` type `codebuild-containers-workshop-build-service-role`
+**Service role**: make sure `New service role` is selected. In `Role name`, if the role name is not already filled, type `codebuild-containers-workshop-build-service-role`
 
 >NOTE: take note of your role name because you will need to modify its permissions later on
 
@@ -286,7 +286,7 @@ Otherwise click in **Create pipeline**
 
 ![CodePipeline create](/05-ContinuousDelivery/images/codepipeline_create.png)
 
-In **Pipeline name** type `containers-workshop-pipeline` and click in **Next step**
+In **Pipeline name** type `containers-workshop-pipeline` and click in **Next**
 
 ![CodePipeline Next Step](/05-ContinuousDelivery/images/codepipeline_next.png)
 
@@ -298,7 +298,7 @@ For **Repository name** select the respository created for this workshop `contai
 
 For **Branch name** select `master`
 
-Click in **Next step**
+Click in **Next**
 
 ![CodePipeline Source Stage](/05-ContinuousDelivery/images/codepipeline_repository_ii.png)
 
