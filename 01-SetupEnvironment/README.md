@@ -188,8 +188,9 @@ In order to clone this repository, you can use the following command:
 
 After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
+<br>
 
-[![back to meny](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/01-SetupEnvironment/images/continue_workshop.png)][continue-workshop]
+[![back to menu](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![continue workshop](/01-SetupEnvironment/images/continue_workshop.png)][continue-workshop]
 
 [back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
 [continue-workshop]: /02-CreatingDockerImage
