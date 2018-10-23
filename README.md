@@ -28,8 +28,6 @@ If you want to run on a EC2 instance, the following links will guide you through
 * [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](/05-ContinuousDelivery)
 * [6. Configuring Service Auto Scaling on Amazon ECS](/06-AutoScaling)
 
-<br>
-
 ## 4. Enough of jibber jabber...
 
 You can start the Containers on AWS workshop by clicking in the following link:
