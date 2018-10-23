@@ -298,7 +298,7 @@ For **Repository name** select the respository created for this workshop `contai
 
 For **Branch name** select `master`
 
-Click in **Next step**
+Click in **Next**
 
 ![CodePipeline Source Stage](/05-ContinuousDelivery/images/codepipeline_repository_ii.png)
 
