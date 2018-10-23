@@ -189,7 +189,7 @@ Change only what's defined below:
 
 **Service role**: select `New service role`. For `Role name` type `codebuild-containers-workshop-build-service-role`
 
->NOTE: take not of your role name because you will need to modify its permissions later on
+>NOTE: take note of your role name because you will need to modify its permissions later on
 
 Expand **Show advanced settings**
 
