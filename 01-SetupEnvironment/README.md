@@ -33,11 +33,11 @@ In order to deploy the infrastructure to your account, you can use one of the fo
 
 |Deploy | Region |
 |:---:|:---:|
-|[🚀][us-east-1-with-cloud9] | US East (N. Virginia)|
-|[🚀][us-east-2-with-cloud9] | US East (Ohio)|
-|[🚀][us-west-2-with-cloud9] | US West (Oregon)|
-|[🚀][eu-west-1-with-cloud9] | EU (Ireland)|
-|[🚀][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-1-with-cloud9] | US East (N. Virginia)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-2-with-cloud9] | US East (Ohio)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-west-2-with-cloud9] | US West (Oregon)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][eu-west-1-with-cloud9] | EU (Ireland)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][ap-southeast-1-with-cloud9] | Asia Pacific (Singapore)|
 
 In the CloudFormation screen, add your name under the resource naming. This is going to add your name in front of the names to all the resources created, so in case you are running the workshop with someone else in the same account, you will be able to know your resources.
 
@@ -171,11 +171,11 @@ After completing the setup of your computer, you must create the VPC infrastrutc
 
 | Deploy | Region |
 |:---:|:---:|
-|![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)[us-east-1-without-cloud9] | US East (N. Virginia)|
-|[🚀][us-east-2-without-cloud9] | US East (Ohio)|
-|[🚀][us-west-2-without-cloud9] | US West (Oregon)|
-|[🚀][eu-west-1-without-cloud9] | EU (Ireland)|
-|[🚀][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-1-without-cloud9] | US East (N. Virginia)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-east-2-without-cloud9] | US East (Ohio)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][us-west-2-without-cloud9] | US West (Oregon)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][eu-west-1-without-cloud9] | EU (Ireland)|
+|[![launch stach](/01-SetupEnvironment/images/launch_stack_button.png)][ap-southeast-1-without-cloud9] | Asia Pacific (Singapore)|
 
 
 ### 6.7 Cloning the workshop repository
