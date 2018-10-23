@@ -326,12 +326,6 @@ For **Image filename** type `imagedefinitions.json`
 
 Click in **Next**
 
-![CodePipeline Deploy Stage](/05-ContinuousDelivery/images/codepipeline_deploy_ii.png)
-
-In **AWS Service Role**, for **Role name**. You will be redirected to another page. Click in **Allow**
-
-![CodePipeline Deploy Stage](/05-ContinuousDelivery/images/codepipeline_iam.png)
-
 Click in **Next step**
 
 Click in **Create pipeline**.
