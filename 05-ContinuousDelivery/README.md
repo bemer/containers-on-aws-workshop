@@ -169,7 +169,7 @@ If this is your first time using CodeBuild, click in **Get started**
 
 ![CodeBuild get started](/05-ContinuousDelivery/images/codebuild_get_started.png)
 
-Otherwise, click in **Create project**
+Otherwise, click in **Create build project**
 
 ![CodeBuild create project](/05-ContinuousDelivery/images/codebuild_create_project.png)
 
