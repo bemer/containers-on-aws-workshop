@@ -187,6 +187,10 @@ Change only what's defined below:
 
 **Runtime version**: `aws/codebuild/docker:17.09.0`
 
+**Service role**: select `New service role`. For `Role name` type `codebuild-containers-workshop-build-service-role`
+
+>NOTE: take not of your role name because you will need to modify its permissions later on
+
 Expand **Show advanced settings**
 
 **Environment variables**: let's create two env vars: 
@@ -194,7 +198,7 @@ Expand **Show advanced settings**
 In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI. 
 In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
-Click **Continue** and then click in **Save**. Your build project should be listed now:
+Click **Continue** and then click in **Create build project**. Your build project should be listed now:
 
 ![CodeBuild list project](/05-ContinuousDelivery/images/codebuild_list_project.png)
 
@@ -230,13 +234,9 @@ Next step, we need to change de IAM role associated with our CodeBuild environme
 
 ![Select IAM](/05-ContinuousDelivery/images/iam.png)
 
-On the left side menu, click in **Roles**. This will list all the roles in your account. We need to find what is the role associated with our CodeBuild.
+On the left side menu, click in **Roles**. This will list all the roles in your account.
 
-Go to your CodeBuild project and click in **Edit project**. Scroll down until you find **Service role**. In **Role name** you can find the role associated (e.g.: `codebuild-containers-workshop-build-service-role`)
-
-![Find the IAM role](/05-ContinuousDelivery/images/codebuild_find_iam_role.png)
-
-Go back to the IAM roles list and type the role name in the search field. Click in the IAM role that appears.
+Type the role name in the search field. Click in the IAM role that appears.
 
 ![IAM filter role](/05-ContinuousDelivery/images/iam_filter_role.png)
 
