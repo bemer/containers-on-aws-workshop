@@ -79,7 +79,9 @@ After provisioning the infrastructure and cloning the repository within your Clo
 
 <br>
 
-[![back to menu](/images/back_to_menu.png)][back-to-menu]
+[![continue workshop](/images/continue_workshop.png)][continue-workshop]
+
+<br>
 
 ## 6. Running on your own computer
 
