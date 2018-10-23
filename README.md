@@ -25,5 +25,5 @@ If you want to run on a EC2 instance, the following links will guide you through
 * [2. Creating Your Docker Image](/02-CreatingDockerImage)
 * [3. Deploying An ECS Cluster](/03-DeployEcsCluster)
 * [4. Deploying An Application with AWS Fargate](/04-DeployFargate)
-* [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](/05-ContinousDelivery)
+* [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](/05-ContinuousDelivery)
 * [6. Configuring Service Auto Scaling on Amazon ECS](/06-AutoScaling)
