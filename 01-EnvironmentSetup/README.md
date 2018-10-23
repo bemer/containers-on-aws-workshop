@@ -1,6 +1,9 @@
 # Environment Setup
 
+![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
+
 This section describes the hardware and software needed for this workshop, and how to configure them. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
+
 
 **Quick jump:**
 
