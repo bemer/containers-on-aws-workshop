@@ -82,3 +82,7 @@ This will start to simulate 20000 users accessing your application. You can foll
 After generating load against your application, you should be able to see it scaling after a few seconds. Go to you `containers-workshop-ecs-cluster` and click in the service `containers-workshop-ecs-service`. By clicking in the service `containers-workshop-ecs-service` and going to the tab `Events` you will find the message saying that the desired count of tasks have changed:
 
 ![scaling message](/06-AutoScaling/images/scaling_message.png)
+
+[![back to meny](/01-SetupEnvironment/images/back_to_menu.png)][back-to-menu]
+
+[back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
