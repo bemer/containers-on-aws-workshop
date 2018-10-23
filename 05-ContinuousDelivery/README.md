@@ -330,8 +330,6 @@ For **Image filename** type `imagedefinitions.json`
 
 Click in **Next**
 
-Click in **Next step**
-
 Click in **Create pipeline**.
 
 You should see now that AWS CodePiepline will automatically start the pipeline.
