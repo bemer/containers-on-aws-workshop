@@ -13,7 +13,7 @@
 
 ## 1. Tutorial overview
 
-This tutorial will guide you through the creation of an ECS Cluster and the deployment of the container with a simple Python application created in the previous lab.
+This tutorial will guide you through the creation of an ECS Cluster and the deployment of the container with a simple application created in the previous lab.
 
 In order to run this tutorial, you must have completed the following steps:
 
