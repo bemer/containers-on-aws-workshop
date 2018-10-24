@@ -213,15 +213,15 @@ Since we will not use Auto Scaling in this tutorial, in the `Set Auto Scaling` s
 
 ## 6. Testing our service deployments from the console and the ALB
 
-You can see service level events from the ECS console. This includes deployment events. You can test that of your service deployed, and registered properly with the ALB by looking at the service's **Events** tab:
+You can see service level events from the ECS console. This includes deployment events. You can see if your service was deployed and registered properly with the ALB by looking at the service's **Events** tab:
 
 ![deployment event](/03-DeployEcsCluster/images/steady_state_service.png)
 
-We can also test from the ALB itself. To find the DNS A record for your ALB, navigate to the EC2 Console > **Load Balancers** > **Select your Load Balancer**. Under **Description**, you can find details about your ALB, including a section for **DNS Name**. You can enter this value in your browser, and append the endpoint of your service, to see your ALB and ECS Cluster in action:
+We can also test from the ALB itself. To find the DNS A record for your ALB, navigate to the EC2 Console > **Load Balancers** > **Select your Load Balancer**. Under **Description**, you can find details about your ALB, including a section for **DNS Name**. Enter this value in your browser:
 
 ![alb web test](/03-DeployEcsCluster/images/alb_app_response.png)
 
-You can see that the ALB routes traffic appropriately based on the path we specified when we registered the container `/app` requests go to our app service.
+You can see that the ALB routes traffic appropriately based on the path (`/`) we specified when we registered the container
 
 <br>
 
