@@ -196,6 +196,8 @@ You can keep the default **AZ Balanced Spread** for the Task Placement Policy. T
 
 Click in **Next**.
 
+Under **Service discovery (optional)** uncheck **Enable service discovery integration**.
+
 Now, under `Load balancing`, select `Application Load Balancer`. Let's configure the integration between the ECS Service and the Application Load Balancer, so we will be able to access the application using the ALB. Select `Create new role` under `Service IAM role` and under`Container to load balance`, select the container `containers-workshop-app:0:80`. Click in **Add to load balancer**:
 
 ![add to ALB](/03-DeployEcsCluster/images/add_container_to_alb.png)
