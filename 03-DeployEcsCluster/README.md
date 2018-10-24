@@ -110,7 +110,7 @@ In the EC2 service dashboard, you will see all the information about your instan
 
 ![ec2 security group](/03-DeployEcsCluster/images/ec2_security_group.png)
 
-In this screen, with the Security Group selected, click in the tab **Inbound** and then in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and in the field `Source` start typing `sg-`. You will see a list with all the security groups created in your AWS account. Select the security group `containers-workshop-alb-sg` previouly created and click in **Save**:
+In this screen, with the Security Group selected, click in the tab **Inbound** and then in **Edit**. Here, we will have a rule previously create allowing traffic in the port 80 from anywhere. Let's change this rule, in order to allow all traffic coming from the ALB security group to our EC2 instance. Start changing the `Type` to `All Traffic` and in the field `Source` start typing `sg-`. You will see a list with all the security groups created in your AWS account. Select the security group `containers-workshop-alb-sg` previously created and click in **Save**:
 
 ![security group configuration](/03-DeployEcsCluster/images/sg_configuration.png)
 
