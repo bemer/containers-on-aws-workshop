@@ -339,7 +339,7 @@ You should see now that AWS CodePiepline will automatically start the pipeline.
 
 The whole process should take around 10 minutes. All three stages should be completed as `Succeeded`.
 
->NOTE: If your pipeline fails, one of the potential reasons could be a permission issue. Check if the IAM Role created by your CodePipeline has ECS full permissions by going to Services > IAM > Roles. Type in the search bar the name of the role and click on it. In **Permissions policies** check if the policy attached to it has "ecs:*". If not, click in **Attach policies** and search for `AmazonECS_FullAccess`. Select it and click **Attach policy**.
+>NOTE: If your pipeline fails, one of the potential reasons could be a permission issue. Check if the IAM Role created by your CodePipeline has ECS full permissions by going to Services > IAM > Roles. Type in the search bar the name of the role and click on it. In **Permissions policies** check if the policy attached to it has "ecs:*". If not, click in **Attach policies** and search for `AmazonECS_FullAccess`. Select it and click in **Attach policy**.
 
 
 ![CodePipeline Finished](/05-ContinuousDelivery/images/codepipeline_succeeded.png)
