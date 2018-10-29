@@ -62,25 +62,25 @@ The output should be something like:
 
 Aditionally you'll also need to type the following commands with your email and a username. This is just to identify who commited a new change to the repository:
 
-    $ git config --global user.email "YOUREMAIL@HERE.COM"
-    $ git config --global user.name "USERNAME"
+    git config --global user.email "YOUREMAIL@HERE.COM"
+    git config --global user.name "USERNAME"
 
 At this point, you should have two folders: `containers-on-aws-workshop` and `containers-workshop-repository`. Now we need to copy our application to the CodeCommit repository. First, go to the folder where your application resides
 
-    $ cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/
+    cd /home/ec2-user/environment/containers-on-aws-workshop/00-Application/
 
 Copy everything to the folder that was created when you cloned the empty repository from CodeCommit
 
-    $ cp -r * /home/ec2-user/environment/containers-workshop-repository/
+    cp -r * /home/ec2-user/environment/containers-workshop-repository/
 
 Go to the folder where we will synchronize (push) with the CodeCommit repository
 
-    $ cd /home/ec2-user/environment/containers-workshop-repository/
+    cd /home/ec2-user/environment/containers-workshop-repository/
 
 Now let's push our application to the repository
 
-    $ git add .
-    $ git commit -m "My first commit"
+    git add .
+    git commit -m "My first commit"
 
 The output should be something like:
 
@@ -96,7 +96,7 @@ The output should be something like:
 
 Finally
 
-    $ git push origin master
+    git push origin master
 
 The output should be something like:
 
@@ -157,9 +157,9 @@ Save the file by selecting **File > Save** in Cloud9. Name it as `buildspec.yml`
 
 At this point, your repository folder should contain an `app` folder, a `buildspec.yml` file and a `Dockerfile` file. Let's push to our repository
 
-    $ git add buildspec.yml
-    $ git commit -m "Adding the build specifications file"
-    $ git push origin master
+    git add buildspec.yml
+    git commit -m "Adding the build specifications file"
+    git push origin master
 
 The `buildpsec.yml` shoudld be listed now
 
@@ -338,13 +338,13 @@ You should see now that AWS CodePiepline will automatically start the pipeline.
 
 Thow whole process should take around 10 minutes. All three stages should be completed as `Succeeded`.
 
->NOTE: If your pipeline fails, one of the potencial reasons could be a permission issue. Check if the IAM Role created by your CodePipeline has ECS full permissions by going to Services > IAM > Roles. Type in the search bar the name of the role and click on it. In **Permissions policies** check if the policy attached to it has "ecs:*". If not, click in **Attach policies** and search for `AmazonECS_FullAccess`. Select it and click **Attach policy**.
+>NOTE: If your pipeline fails, one of the potential reasons could be a permission issue. Check if the IAM Role created by your CodePipeline has ECS full permissions by going to Services > IAM > Roles. Type in the search bar the name of the role and click on it. In **Permissions policies** check if the policy attached to it has "ecs:*". If not, click in **Attach policies** and search for `AmazonECS_FullAccess`. Select it and click **Attach policy**.
 
 
 ![CodePipeline Finished](/05-ContinuousDelivery/images/codepipeline_succeeded.png)
 
 
-If you go to the URL of your app you won't see any changes beucase we didn't change anything. So now, let's do exactly that. Let's change something on our app to see the modification being deployed automatically.
+If you go to the URL of your app you won't see any changes because we didn't change anything. So now, let's do exactly that. Let's change something on our app to see the modification being deployed automatically.
 
 ## 5. Testing our pipeline
 
