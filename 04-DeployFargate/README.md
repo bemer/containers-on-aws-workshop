@@ -43,7 +43,11 @@ In the **Task Definition Name** type `containers-workshop-fargate-task-def`. For
 
 ![task configuration](/04-DeployFargate/images/task_configuration.png)
 
-Under **Task execution role** choose `ecsTaskEcecutionRole`, if that role is not listed, choose `Create new role`. Under **Task memory (GB)** select `0.5GB`. For **Task CPU (vCPU)** select `0.25 vCPU`. Click in **Add container**:
+Under **Task execution role** choose `ecsTaskEcecutionRole`, if that role is not listed, choose `Create new role`.
+
+Under **Task memory (GB)** select `0.5GB`. For **Task CPU (vCPU)** select `0.25 vCPU`.
+
+Click in **Add container**:
 
 ![task size](/04-DeployFargate/images/task_size.png)
 
