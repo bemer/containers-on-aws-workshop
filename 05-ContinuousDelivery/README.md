@@ -200,6 +200,7 @@ Expand **Show advanced settings**
 **Environment variables**: let's create two env vars:
 
 In `Name` type `REPOSITORY_URI`, in `Value` type your ECR URI.
+
 In `Name` type `AWS_DEFAULT_REGION`, in `Value` type the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
 Click **Continue** and then click in **Create build project**. Your build project should be listed now:
