@@ -28,7 +28,7 @@ Let's begin with the Source stage.
 
 ## 2. Creating a Source stage
 
-In the AWS Console Management, type on the search field `Commit` and select **CodeCommit** from the drop down list.
+In the AWS Management Console, type on the search field `Commit` and select **CodeCommit** from the drop down list.
 
 ![CodeCommit](/05-ContinuousDelivery/images/codecommit.png)
 
@@ -50,9 +50,9 @@ Now follow the steps that appear in **Steps to clone your repository**
 
 ![CodeCommit clone respository](/05-ContinuousDelivery/images/codecommit_clone_repository.png)
 
-    $ git config --global credential.helper '!aws codecommit credential-helper $@'
-    $ git config --global credential.UseHttpPath true
-    $ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
+    git config --global credential.helper '!aws codecommit credential-helper $@'
+    git config --global credential.UseHttpPath true
+    git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
 
 The output should be something like:
 
@@ -337,6 +337,8 @@ You should see now that AWS CodePiepline will automatically start the pipeline.
 ![CodePipeline Running](/05-ContinuousDelivery/images/codepipeline_running.png)
 
 Thow whole process should take around 10 minutes. All three stages should be completed as `Succeeded`.
+
+>NOTE: If your pipeline fails, one of the potencial reasons could be a permission issue. Check if the IAM Role created by your CodePipeline has ECS full permissions by going to Services > IAM > Roles. Type in the search bar the name of the role and click on it. In **Permissions policies** check if the policy attached to it has "ecs:*". If not, click in **Attach policies** and search for `AmazonECS_FullAccess`. Select it and click **Attach policy**.
 
 
 ![CodePipeline Finished](/05-ContinuousDelivery/images/codepipeline_succeeded.png)
