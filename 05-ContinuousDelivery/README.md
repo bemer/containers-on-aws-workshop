@@ -363,10 +363,10 @@ Save it (Ctrl+S or Command+S)
 
 Now let's commit our change to the CodeCommit repository. Go to the Terminal tab and type
 
-    $ cd /home/ec2-user/environment/containers-workshop-repository/app
-    $ git add index.html
-    $ git commit -m "Changing the text"
-    $ git push
+    cd /home/ec2-user/environment/containers-workshop-repository/app
+    git add index.html
+    git commit -m "Changing the text"
+    git push
 
 
 Watch the CodePipeline being executed. You will see in a minute or so, the Source stage changing to `In Progress`. Wait until the Staging source is done.
