@@ -110,6 +110,8 @@ If everything went fine, you should see your web application:
 
 ## 3. Setting up the IAM roles
 
+**This step is only needed if you are doing the workshop using your own computer. If you are using the Cloud9 environment, you can go ahead to the step [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)**
+
 In order to work with the AWS CLI, you'll need an IAM role with the proper permissions set up.  To do this, we'll create both an IAM Group, and an IAM user.
 
 To create the group, navigate to the [IAM console](https://console.aws.amazon.com/iam/home?region=us-east-1#/home), and select **Groups** > **Create New Group**.  Name the group "**containers-workshop-group**".  From the list of managed policies, add the following policies:
@@ -146,6 +148,7 @@ When the wizard finishes, make sure to download and save your access key and sec
 ## 4. Configuring the AWS CLI
 
 **This step is only needed if you are doing the workshop using your own computer. If you are using the Cloud9 environment, you can go ahead to the step [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)**
+
 
 If you've never configured the AWS CLI, the easiest way is by running the command:
 

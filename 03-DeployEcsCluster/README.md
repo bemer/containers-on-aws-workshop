@@ -144,10 +144,11 @@ Let's add now the information about this task definition. Name your task `contai
 
 ![create task def](/03-DeployEcsCluster/images/create_task_def.png)
 
-
 In the **Task execution IAM role** select `Create new role` and under **Task size** add `128` in the **Task memory (MiB)** field:
 
 ![create task iam](/03-DeployEcsCluster/images/create_task_iam.png)
+
+>NOTE: If this is not your first ECS Cluster, you should already have an IAM Role created. In this case, you should select the previously created IAM Role.
 
 
 The next step is to add the information about our container. Click in the **Add container** button, under **Container Definitions**. The name of the container will be `containers-workshop-app`. In the **Image** field, add the URI that you got before, pointing to your image.
