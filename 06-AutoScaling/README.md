@@ -30,7 +30,9 @@ Now, in the `Configure service` screen, just click in **Next step**. Click in `N
 Under `Service Auto Scaling`, select the option `Configure Service Auto Scaling to adjust your service’s desired count`. Now, use the following values on the fields:
 
 **Minimum number of tasks**: 1
+
 **Desired number of tasks**: 1
+
 **Maximum number of tasks**: 5
 
 ![number of tasks](/06-AutoScaling/images/number_of_tasks.png)
