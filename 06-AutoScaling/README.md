@@ -57,11 +57,20 @@ You can check the `Auto Scaling` configurations of your service by clicking in t
 
 Now that we have our Service Auto Scaling configured, we need to generate load in order to scale the number of running tasks in our cluster. To do so, we will be using an open source tool called `Locust`. You can find more information about Locust in [their documentation](https://docs.locust.io/en/stable/).
 
-Since the focus of this workshop is understaing how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance, install and configure Locust in it. 
+Since the focus of this workshop is understanding how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance, install and configure Locust in it.
 
-In the AWS Management Console, go to Services > CloudFormation. Click in `Create Stack`. You'll need to upload the file `load_test_instance.json`. You can first download the file directly from the Cloud9 enviroment by right-clicking on the file `load_test_instance.json` and select Download. Save it and then upload it using the option `Upload a template to Amazon S3`.  
+You can use one of the following templates to provision the load testing stack in your account. We recommend using the same region that you used to create your ECS cluster and load balancer.
 
-In the following screen, type `containers-workshop-load-testing`. For the `HTTP Location` parameter, you can add you public IP Address or just leave it as the default.
+|Deploy | Region |
+|:---:|:---:|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-1-load-testing] | US East (N. Virginia)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-east-2-load-testing] | US East (Ohio)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][us-west-2-load-testing] | US West (Oregon)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][eu-west-1-load-testing] | EU (Ireland)|
+|[![launch stach](/01-EnvironmentSetup/images/launch_stack_button.png)][ap-southeast-1-load-testing] | Asia Pacific (Singapore)|
+
+
+When provisioning the template, you will be asked to input some information. For the `HTTP Location` parameter, you can add you public IP Address or just leave it as the default.
 
 Since we will be generating a large ammount of load, it's recommended that you use a large instance type. We are setting the default as `m5.xlarge`.
 
@@ -98,3 +107,10 @@ After generating load against your application, you should be able to see it sca
 [![back to menu](/images/back_to_menu.png)][back-to-menu]
 
 [back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
+
+
+[us-east-1-load-testing]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-load-testing&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/load_test_instance.json
+[us-east-2-load-testing]: https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=containers-workshop-load-testing&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/load_test_instance.json
+[us-west-2-load-testing]: https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=containers-workshop-load-testing&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/load_test_instance.json
+[eu-west-1-load-testing]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=containers-workshop-load-testing&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/load_test_instance.json
+[ap-southeast-1-load-testing]: https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=containers-workshop-load-testing&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/load_test_instance.json
