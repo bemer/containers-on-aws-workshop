@@ -32,7 +32,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ## 3. Infrastructure Setup (with Cloud9)
 
-In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Clou9.
+In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Cloud9.
 
 |Deploy | Region |
 |:---:|:---:|
