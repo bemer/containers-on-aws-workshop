@@ -78,7 +78,7 @@ In order to clone this repository, you can use the following command:
 
 After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
-After provisioning the infrastructure and cloning the repository within your Cloud9 environment, you can go to the next chapter: [3. Deploying An ECS Cluster](/03-DeployEcsCluster).
+After provisioning the infrastructure and cloning the repository within your Cloud9 environment, you can go to the next chapter: [2. Creating your Docker image](/02-CreatingDockerImage).
 
 <br>
 
