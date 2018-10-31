@@ -59,7 +59,9 @@ Now that we have our Service Auto Scaling configured, we need to generate load i
 
 Since the focus of this workshop is understanding how to run containers on AWS, we will provide you a CloudFormation template that will create an EC2 instance, install and configure Locust in it.
 
-You can use one of the following templates to provision the load testing stack in your account. We recommend using the same region that you used to create your ECS cluster and load balancer.
+You can use one of the following templates to provision the load testing stack in your account.  
+
+>NOTE: You must deploy this CloudFormation template in the same region where you created your VPC otherwise it will not work.
 
 |Deploy | Region |
 |:---:|:---:|
