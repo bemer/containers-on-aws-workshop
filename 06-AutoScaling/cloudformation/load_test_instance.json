@@ -176,8 +176,9 @@
     "EC2Instance" : {
       "Type" : "AWS::EC2::Instance",
       "Properties" : {
+        "SubnetId": { "Fn::ImportValue" : "containers-workshop-public-subnet" },
         "InstanceType" : { "Ref" : "InstanceType" },
-        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
+        "SecurityGroupIds" : [ { "Fn::GetAtt" : [ "InstanceSecurityGroup", "GroupId" ] } ],
         "KeyName" : { "Ref" : "KeyName" },
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
@@ -214,6 +215,7 @@
     "InstanceSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
+        "VpcId" : { "Fn::ImportValue" : "containers-workshop-vpc" },
         "GroupDescription" : "Enable HTTP access via port 80",
         "SecurityGroupIngress" : [ {
           "IpProtocol" : "tcp",

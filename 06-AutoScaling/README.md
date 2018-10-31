@@ -74,7 +74,7 @@ When provisioning the template, you will be asked to input some information. For
 
 Since we will be generating a large ammount of load, it's recommended that you use a large instance type. We are setting the default as `m5.xlarge`.
 
-If you have a keypair created in the region where you are running this workshop, you can select it under `KeyName`. However, instance SSH access is not nedded.
+In order to provision the EC2 instance, you will need to have a keypar created under your EC2 console. If you are using a new account and don't have a keypar created, you can follow [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to learn how to create it.
 
 Under `Load Balancer URL`, you should add the hostname of your Load Balancer. This is the same name that you used to access your application in the step [04-Deploy ECS Cluster](/04-DeployEcsCluster#6-testing-our-service-deployments-from-the-console-and-the-alb).
 

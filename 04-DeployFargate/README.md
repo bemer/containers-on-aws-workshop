@@ -23,7 +23,7 @@ After concluding this tutorial, you will have an application running in AWS Farg
 
 We will create a new cluster just for the Fargate tasks, however, a single ECS cluster supports both EC2 and Fargate tasks.
 
-Let's create a new cluster to deploy our containers. In your AWS account Management Console, navigate to the [ECS Console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters).
+Let's create a new cluster to deploy our containers. In your AWS account Management Console, navigate to the [ECS Console](https://console.aws.amazon.com/ecs/).
 
 Click in **Create cluster** and in the following screen select the **Networking only** cluster template. Click in **Next step**:
 
@@ -83,7 +83,15 @@ A Fargate task can take around 30 seconds to a minute before changing its status
 
 ![running task](/04-DeployFargate/images/running_task.png)
 
-To test your app, click in the Task and find the **Public IP**. Copy and paste it in your browser. The final URL should look like this: http://34.229.126.241
+To test your app, you need to get the public IP associated with your task. In order to do so, in you Fargate Cluster, click in `Tasks`. You should see your task with the status running:
+
+![Fargate tasks screen](/04-DeployFargate/images/fargate_tasks_screen.png)
+
+Click in your Task ID (the first field of the screen) and you will be redirected to the Task Details page. You will find the public IP under the `Network` section:
+
+![Fargate public ip](/04-DeployFargate/images/fargate_public_ip.png)
+
+Copy and paste the IP address in your browser. The final URL should look like this: http://34.229.126.241
 
 ![final Fargate](/04-DeployFargate/images/final_fargate.png)
 

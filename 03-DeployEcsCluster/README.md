@@ -23,7 +23,7 @@ In order to run this tutorial, you must have completed the following steps:
 
 ## 2. Creating the Cluster
 
-Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
+Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
 
 ![clusters screen](/03-DeployEcsCluster/images/clusters_screen.png)
 
@@ -66,7 +66,7 @@ Now that we've created our cluster, we need an [Application Load Balancer (ALB)]
 
 To create the ALB:
 
-Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1), and select **Load Balancers** from the left-hand menu.  Click in **Create Load Balancer**. Inside the `Application Load Balancer`, click in **Create**:
+Navigate to the [EC2 Service Console](https://console.aws.amazon.com/ec2), and select **Load Balancers** from the left-hand menu.  Click in **Create Load Balancer**. Inside the `Application Load Balancer`, click in **Create**:
 
 ![choose ALB](/03-DeployEcsCluster/images/select_alb.png)
 
@@ -131,12 +131,12 @@ When working with ECS to run our applications, there are a few concepts that we 
 
 A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports needs to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
 
-The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](/02-CreatingDockerImage) tutorial. To get the image URI, navigate to the [ECR page](https://console.aws.amazon.com/ecs/home?region=us-east-1#/repositories). You will see the repository named `containers-workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
+The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](/02-CreatingDockerImage) tutorial. To get the image URI, navigate to the [ECS page](https://console.aws.amazon.com/ecs) and click in `Repositories`. You will see the repository named `containers-workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
 
 ![image uri](/03-DeployEcsCluster/images/image_uri.png)
 
 
-To create a Task Definition, in the [Task Definitions](https://console.aws.amazon.com/ecs/home?region=us-east-1#/taskDefinitions) screen on the ECS console menu, click in **Create new Task Definition**. Select EC2 as the *Launch type compatibility* and click in **Next step**:
+To create a Task Definition, in the [ECS Page](https://console.aws.amazon.com/ecs) click in the `Task Definitions` menu, and then click in **Create new Task Definition**. Select EC2 as the *Launch type compatibility* and click in **Next step**:
 
 ![type compatibility](/03-DeployEcsCluster/images/task_compatibility.png)
 
@@ -177,7 +177,7 @@ Now that we have the description of everything we need to run our application in
 
 In ECS, a `Service` allows you to run and maintain a specified number (the "desired count") of instances of a task definition simultaneously in an Amazon ECS cluster. If any of your tasks should fail or stop for any reason, the Amazon ECS service scheduler launches another instance of your task definition to replace it and maintain the desired count of tasks in the service. You can find more information about ECS Services in the [ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
-Navigate back to the [Clusters screen](https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters) on the ECS console, and click in the cluster name `containers-workshop-ecs-cluster` previously created.
+Navigate back to the [Clusters screen](https://console.aws.amazon.com/ecs/) on the ECS console, and click in the cluster name `containers-workshop-ecs-cluster` previously created.
 
 >If you don't have a cluster named **containers-workshop-ecs-cluster**, create one following the procedures in  [Creating the cluster](/03-DeployEcsCluster#2-creating-the-cluster).
 

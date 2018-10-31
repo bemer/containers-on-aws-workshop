@@ -231,6 +231,13 @@ Resources:
             VpcId: !Ref VPC
 
 Outputs:
+    Subnet:
+        Description: A public subnet where the load generator instance will be placed.
+        Value: !Ref PublicSubnet1
+        Export:
+          Name: containers-workshop-public-subnet
     VPC:
-        Description: A reference to the created VPC
+        Description: The VPC created to the workshop.
         Value: !Ref VPC
+        Export:
+          Name: containers-workshop-vpc
