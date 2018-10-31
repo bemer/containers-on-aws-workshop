@@ -208,8 +208,25 @@
            "EOF\n",
            "export LB_URL=http://",{ "Ref" : "LoadBalancerURL" },"/\n",
            "/usr/local/bin/locust -f /home/ec2-user/locustfile.py --host=$LB_URL --web-port=80 &\n",
+           "# Signal the status from cfn-init\n",
+           "/opt/aws/bin/cfn-signal -e $? ",
+           "         --stack ",
+           {
+           "Ref": "AWS::StackName"
+           },
+           "         --resource EC2Instance ",
+           "         --region ",
+           {
+           "Ref": "AWS::Region"
+           },
+           "\n",
            "echo 'file created' > /tmp/file-created.txt\n"
-        ]]}}      }
+        ]]}}      },
+        "CreationPolicy": {
+          "ResourceSignal": {
+            "Timeout": "PT5M"
+          }
+        }
     },
 
     "InstanceSecurityGroup" : {

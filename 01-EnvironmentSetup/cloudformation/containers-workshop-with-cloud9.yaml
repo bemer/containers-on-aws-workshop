@@ -72,6 +72,7 @@ Resources:
     VPC:
         Type: AWS::EC2::VPC
         Properties:
+            EnableDnsHostnames: 'true'
             CidrBlock: !Ref VpcCIDR
             Tags:
                 - Key: Name
@@ -243,9 +244,6 @@ Outputs:
     Cloud9URL:
         Description: URL used to access the Cloud9 environment
         Value: !Join [ "", ["https://", !Ref "AWS::Region", ".console.aws.amazon.com/cloud9/ide/", !Ref "Cloud9Instance", "?region=", !Ref "AWS::Region"] ]
-    VPC:
-        Description: A reference to the created VPC
-        Value: !Ref VPC
     Subnet:
         Description: A public subnet where the load generator instance will be placed.
         Value: !Ref PublicSubnet1
