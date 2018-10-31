@@ -32,7 +32,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ## 3. Infrastructure Setup (with Cloud9)
 
-In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Clou9.
+In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Cloud9.
 
 |Deploy | Region |
 |:---:|:---:|
@@ -78,7 +78,7 @@ In order to clone this repository, you can use the following command:
 
 After cloning the repository, you will see that a new folder called `containers-on-aws-workshop` will be created. All the content will be available inside this folder.
 
-After provisioning the infrastructure and cloning the repository within your Cloud9 environment, you can go to the next chapter: [3. Deploying An ECS Cluster](/03-DeployEcsCluster).
+After provisioning the infrastructure and cloning the repository within your Cloud9 environment, you can go to the next chapter: [2. Creating your Docker image](/02-CreatingDockerImage).
 
 <br>
 

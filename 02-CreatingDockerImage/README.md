@@ -18,7 +18,7 @@ This tutorial is going to drive you through the process of creating your first D
 
 >This Docker image will have a very simple web application that you can find in the `00-Application/app` directory.
 
-In this tutorial, we assume that you completed the [Setup Environment tutorial](/01-SetupEnvironment) and:
+In this tutorial, we assume that you completed the [Setup Environment tutorial](/01-EnvironmentSetup) and:
 
 * [Have a working AWS account](<https://aws.amazon.com>)
 * [Have a working Github account](<https://www.github.com>)
