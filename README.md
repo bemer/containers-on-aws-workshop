@@ -4,7 +4,7 @@
 
 Hello and welcome to the Containers On AWS Workshop! Please, read the instructions bellow carefully.
 
-## 1. It's all about containers
+## 1. It's all about containers!
 
 We will walk you through the very basics of containers: from installing and configuring Docker, running containers locally, deploying them on AWS container services like Elastic Container Services (ECS), till implementing a Continuous Delivery pipeline for your container and help you configure Auto Scaling for your containerized app.
 
