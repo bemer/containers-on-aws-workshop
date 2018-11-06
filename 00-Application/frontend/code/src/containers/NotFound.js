@@ -1,7 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import "./NotFound.css";
 
-export default () =>
-  <div className="NotFound">
-    <h3>Sorry, page not found!</h3>
-  </div>;
+export default class NotFoundContainer extends Component {
+
+  render() {
+    return (
+      <div className="NotFound" data-text="Oh no! Our spaghetti code not found this. We will prepare soon!">
+        <spaguetti>
+          <fork></fork>
+          <meat></meat>
+          <pasta></pasta>
+          <plate></plate>
+        </spaguetti>
+      </div>
+    );
+  }
+}

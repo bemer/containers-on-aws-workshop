@@ -1,4 +1,120 @@
-.NotFound {
-  padding-top: 100px;
+@import url("https://fonts.googleapis.com/css?family=VT323");
+:root{
+  --width: 280px;
+  --height: 180px;
+}
+
+.NotFound{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'VT323';
+  color: #1E4B6D;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, .3);
+}
+
+.NotFound:after{
+  content: attr(data-text);
+  display: block;
+  margin-top: calc(var(--height) / 10 + 15px);
+  font-size: 28pt;
   text-align: center;
+}
+
+spaguetti{
+  width: var(--width);
+  height: var(--height);
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, .2));
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+plate{
+  width: 100%;
+  height: calc(var(--height) / 2.5);
+  background: #CAD7E4;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 50px 50px;
+  z-index: 4;
+}
+
+plate:before{
+  content: '404 Spaghetti Error';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgba(0, 0, 0, .2);
+  text-align: center;
+}
+
+plate:after{
+  content: '';
+  width: calc(var(--width) / 2);
+  height: calc(var(--height) / 10);
+  background: #B5C3D0;
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+}
+
+pasta{
+  width: calc(var(--width) / 4);
+  height: calc(var(--width) / 4);
+  border: 5px solid #DEA631;
+  background: #EED269;
+  border-radius: 50%;
+  position: absolute;
+  bottom: calc(calc(var(--height) / 2.5) / 3); right: 10px;
+  box-shadow: calc(-1 * calc(var(--width) / 4) - 60px) 10px 1px 10px #EED269, calc(-1 * calc(var(--width) / 4) - 60px) 10px 0 15px #DEA631;
+  z-index: 2;
+}
+
+pasta:before{
+  content: '';
+  width: calc(var(--width) / 4);
+  height: calc(var(--width) / 4);
+  border: 5px solid #DEA631;
+  background: #EED269;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -5px; right: 60px;
+  box-shadow: calc(-1 * calc(var(--width) / 4) - 30px) 10px 1px 1px #EED269, calc(-1 * calc(var(--width) / 4) - 30px) 10px 0 5px #DEA631;
+}
+
+pasta:after{
+  content: '';
+  width: calc(var(--width) / 3);
+  height: calc(var(--width) / 4);
+  border: 5px solid #DEA631;
+  background: #EED269;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -15px; right: 100px;
+  box-shadow: calc(var(--width) / 4) 10px 1px 1px #EED269, calc(var(--width) / 4) 10px 0 5px #DEA631;
+}
+
+meat{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #B64C19;
+  position: absolute;
+  bottom: calc(var(--height) / 2.5); right: 64px;
+  box-shadow: -150px -2px 0 0 #B64C19, -50px -7px 0 0 #B64C19, -100px 8px 0 0 #B64C19;
+  z-index: 3;
+}
+
+fork{
+  width: 20px;
+  height: calc(var(--height) - 30px);
+  background: #D3D3D3;
+  border-right: 3px solid #B7B7B7;
+  border-radius: 50px 50px 0 0;
+  position: absolute;
+  bottom: 25%; left: 75%;
+  transform: translate(-75%, 0%) rotate(25deg);
 }
