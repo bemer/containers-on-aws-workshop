@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Chicken from 'components/Chicken'
 import Pasta from 'components/Pasta'
 import Title from 'components/Title'
+import './Vote.css'
 
 export default class VoteContainer extends Component {
   constructor(props) {
@@ -21,9 +22,6 @@ export default class VoteContainer extends Component {
     if (text === 'Pasta') {
       this.setState({ isChicken: !this.state.isChicken })
     }
-    console.log(this.state.isChicken)
-    console.log(this.state.isPasta)
-    console.log(text)
     event.preventDefault()
   }
 
