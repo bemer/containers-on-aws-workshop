@@ -1,4 +1,5 @@
 from flask import Flask, json
+from flask_cors import CORS
 from datetime import datetime
 import os
 import uuid
@@ -7,6 +8,8 @@ from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 dynamo = boto3.resource('dynamodb')
 table = dynamo.Table(os.environ['apiTable'])
 
@@ -66,7 +69,6 @@ def chickenVote():
   if data['ResponseMetadata']['HTTPStatusCode'] == 200:
     return responseGenerator(data['ResponseMetadata']['HTTPStatusCode'], 
                             {'StatusCode': data['ResponseMetadata']['HTTPStatusCode'],
-                            'Count': data['Count'],
                             'msg': 'Your vote was counted!'})
   else:
     return responseGenerator(data['ResponseMetadata']['HTTPStatusCode'], 
