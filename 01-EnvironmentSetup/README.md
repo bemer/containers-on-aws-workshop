@@ -34,6 +34,8 @@ Since you can run the workshop with a Cloud9 environment (recommended) or locall
 
 <br>
 
+Or, if you want, you can go back to the main menu:
+
 [![back to menu](/images/back_to_menu.png)][back-to-menu]
 
 
