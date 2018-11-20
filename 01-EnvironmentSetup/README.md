@@ -9,6 +9,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 * [1. First Notes](/01-EnvironmentSetup#1-first-notes)
 * [2. The VPC Structure](/01-EnvironmentSetup#2-the-vpc-structure)
+* [3. Choose Your Deployment Option]()
 
 ## 1. First Notes
 
@@ -25,7 +26,7 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 
 ![VPC structure](/01-EnvironmentSetup/images/containers-on-aws-workshop-vpc.png)
 
-## 3. Choose your deployment
+## 3. Choose Your Deployment Option
 
 Since you can run the workshop with a Cloud9 environment (recommended) or locally with you own computer, you can now choose where you want to run the workshop:
 
