@@ -6,15 +6,15 @@ This section describes the hardware and software needed for this workshop, and h
 
 **Quick jump:**
 
-* [1. Running on your own computer](/01-EnvironmentSetup#1-first-notes)
-* [2. Hardware & Software](/01-EnvironmentSetup#2-the-vpc-structure)
-* [3. Install Docker]()
-* [4. Install AWS CLI]()
-* [5. Install git]()
-* [6. Creating the VPC]()
-* [7. Cloning the workshop repository]()
-* [8. Setting up the IAM roles]()
-* [9. Configuring the AWS CLI]()
+* [1. Running on your own computer](/01-EnvironmentSetup/RunningLocally#1-running-on-your-own-computer)
+* [2. Hardware & Software](/01-EnvironmentSetup/RunningLocally#2-hardware--software)
+* [3. Install Docker](01-EnvironmentSetup/RunningLocally#3-install-docker)
+* [4. Install AWS CLI](01-EnvironmentSetup/RunningLocally#4-install-aws-cli)
+* [5. Install git](01-EnvironmentSetup/RunningLocally#5-install-git)
+* [6. Creating the VPC](01-EnvironmentSetup/RunningLocally#6-creating-the-vpc)
+* [7. Cloning the workshop repository](01-EnvironmentSetup/RunningLocally#7-cloning-the-workshop-repository)
+* [8. Setting up the IAM roles](01-EnvironmentSetup/RunningLocally#8-setting-up-the-iam-roles)
+* [9. Configuring the AWS CLI](01-EnvironmentSetup/RunningLocally#9-configuring-the-aws-cli)
 
 
 ## 1. Running on your own computer
