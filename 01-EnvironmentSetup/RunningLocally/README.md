@@ -1,8 +1,20 @@
-# Environment Setup
+# Running the Workshop ocally
 
 ![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
 
 This section describes the hardware and software needed for this workshop, and how to configure them. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
+
+**Quick jump:**
+
+* [1. Running on your own computer](/01-EnvironmentSetup#1-first-notes)
+* [2. Hardware & Software](/01-EnvironmentSetup#2-the-vpc-structure)
+* [3. Install Docker]()
+* [4. Install AWS CLI]()
+* [5. Install git]()
+* [6. Creating the VPC]()
+* [7. Cloning the workshop repository]()
+* [8. Setting up the IAM roles]()
+* [9. Configuring the AWS CLI]()
 
 
 ## 1. Running on your own computer
@@ -33,15 +45,7 @@ During this workshop we will interact with some AWS API's. Having the latest ver
 Instructions to install the AWS CLI are available here: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
 
 
-### 5. Install git
-
-To better execute the workshop, you will need to clone this repository and having `git` installed is needed to perform this action.
-
-Download and install here: https://git-scm.com/downloads
-You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
-
-
-### 6. Installing Docker on an EC2 instance running Amazon Linux
+### 4.1. Installing Docker on an EC2 instance running Amazon Linux
 
 If you don't want to use a Cloud9 environment and don't have a Linux computer, you can also use an EC2 instance to run the steps in this workshop.
 
@@ -92,6 +96,16 @@ The output should look like:
 
     For more examples and ideas, visit:mM
      https://docs.docker.com/engine/userguide/
+
+
+### 5. Install git
+
+To better execute the workshop, you will need to clone this repository and having `git` installed is needed to perform this action.
+
+Download and install here: https://git-scm.com/downloads
+You can have more information about git here: https://git-scm.com/book/en/v1/Getting-Started
+
+
 
 ### 6. Creating the VPC
 
