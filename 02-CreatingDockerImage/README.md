@@ -233,16 +233,16 @@ To login to ECR, copy this output and execute it as a linux command. The output 
     Login Succeeded
 
 
->NOTE: If you are running it in a linux terminal, you can just run the command like this `$(aws ecr get-login --no-include-email --region us-east-1)` which will tell your shell to execute the output of the first command.  
+>NOTE: If you are running it in a linux terminal, you can just run the command like this `$(aws ecr get-login --no-include-email)` which will tell your shell to execute the output of the first command.  
 
 If you are unable to login to ECR, check your IAM user group permissions.
 
 Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
 
-    $ docker tag containers-workshop-frontend:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-frontend:latest
-    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-frontend:latest
+    $ docker tag containers-workshop-frontend:latest XXXXXXXXX.dkr.ecr.<aws-region>.amazonaws.com/containers-workshop-frontend:latest
+    $ docker push XXXXXXXXX.dkr.ecr.<aws-region>.amazonaws.com/containers-workshop-frontend:latest
 
->NOTE: Remember to replace the `XXXXXXXXX` with your account ID. This information will be presented to you in the ECR screen with the Docker push commands.
+>NOTE: Remember to replace the `XXXXXXXXX` with your account ID and `<aws-region>` with your region information. This information will be presented to you in the ECR screen with the Docker push commands.
 
 > Why `:latest`?  This is the actual image tag.  In most production environments, you'd tag images for different schemes:  for example, you might tag the most up-to-date image with `:latest`, and all other versions of the same container with a commit SHA from a CI job.  If you push an image without a specific tag, it will default to `:latest`, and untag the previous image with that tag.  For more information on Docker tags, see the Docker [documentation](https://docs.docker.com/engine/getstarted/step_six/).
 
