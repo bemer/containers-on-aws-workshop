@@ -26,7 +26,7 @@ If you want to run on a EC2 instance, the following links will guide you through
 ## 4. We strongly recommend you running this workshop in the following order:
 
 * [1. Environment Setup](/01-EnvironmentSetup)
-* [2. Creating Your Docker Image](/02-CreatingDockerImage)
+* [2. Creating Your Docker Image](/02-CreatingFrontendDockerImage)
 * [3. Deploying An ECS Cluster](/03-DeployEcsCluster)
 * [4. Deploying An Application with AWS Fargate](/04-DeployFargate)
 * [5. Creating a Continuous Delivery Pipeline with Code services and Amazon ECS](/05-ContinuousDelivery)

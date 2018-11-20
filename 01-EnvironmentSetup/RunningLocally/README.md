@@ -219,7 +219,7 @@ This should output something like:
 
 
 [back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
-[continue-workshop]: /02-CreatingDockerImage
+[continue-workshop]: /02-CreatingFrontendDockerImage
 
 [us-east-1-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml
 [us-east-2-without-cloud9]: https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=containers-workshop-insfrastructure&templateURL=https://s3.amazonaws.com/containers-on-aws-workshop-vpc/containers-workshop-without-cloud9.yaml

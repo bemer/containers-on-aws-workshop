@@ -18,7 +18,7 @@ This tutorial will guide you through the creation of an ECS Cluster and the depl
 In order to run this tutorial, you must have completed the following steps:
 
 * [Setup Environment](/01-SetupEnvironment)
-* [Creating your Docker image](/02-CreatingDockerImage)
+* [Creating your Docker image](/02-CreatingFrontendDockerImage)
 
 
 ## 2. Creating the Cluster
@@ -131,7 +131,7 @@ When working with ECS to run our applications, there are a few concepts that we 
 
 A `Task Definition` is where you will specify your task. Things like the Docker Image version, the amount of CPU and memory that each container will need, what ports needs to be mapped, data volumes, environment variables and other informations are going to be specified in the Task Definition.
 
-The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](/02-CreatingDockerImage) tutorial. To get the image URI, navigate to the [ECS page](https://console.aws.amazon.com/ecs) and click in `Repositories`. You will see the repository named `containers-workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
+The first thing that we will need, is the information about the image that we want to use. In this case, we are going to use the image created in the [Creating Your Docker Image](/02-02-CreatingFrontendDockerImage) tutorial. To get the image URI, navigate to the [ECS page](https://console.aws.amazon.com/ecs) and click in `Repositories`. You will see the repository named `containers-workshop-app`. In this screen, you will also see that there is a `Repository URI`. Take note of this URI:
 
 ![image uri](/03-DeployEcsCluster/images/image_uri.png)
 

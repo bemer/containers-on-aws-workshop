@@ -1,18 +1,18 @@
-# Creating your Docker image
+# Creating the Frontend Docker image
 
-![container](/02-CreatingDockerImage/images/container.png)
+![container](/02-CreatingFrontendDockerImage/images/container.png)
 
 
 ## Quick jump:
 
-* [1. Tutorial overview](/02-CreatingDockerImage#1-tutorial-overview)
-* [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image)
-* [3. Creating the image repository with ECR](/02-CreatingDockerImage#3-creating-the-image-repository-with-ecr)
-* [4. Pushing our tested images to ECR](/02-CreatingDockerImage#4-pushing-our-tested-images-to-ecr)
+* [1. Tutorial overview](/02-CreatingFrontendDockerImage#1-tutorial-overview)
+* [2. Creating your first image](/02-CreatingFrontendDockerImage#2-creating-your-first-image)
+* [3. Creating the image repository with ECR](/02-CreatingFrontendDockerImage#3-creating-the-image-repository-with-ecr)
+* [4. Pushing our tested images to ECR](/02-CreatingFrontendDockerImage#4-pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
 
-This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository. If you are going to execute this lab in the Clou9 environment, you can jump to [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image).
+This tutorial is going to drive you through the process of creating your first Docker image, running this image locally and pushing it to a image repository. If you are going to execute this lab in the Cloud9 environment, you can jump to [2. Creating your first image](/02-CreatingFrontendDockerImage#2-creating-your-first-image).
 
 >This Docker image will have a very simple web application that you can find in the `00-Application/app` directory.
 
@@ -29,7 +29,7 @@ To check if you have the AWS CLI installed and configured:
 This should return something like:
 
     $ aws --version
-    aws-cli/1.14.9 Python/2.7.13 Linux/4.9.81-35.56.amzn1.x86_64 botocore/1.8.13
+    aws-cli/1.15.83 Python/2.7.14 Linux/4.14.72-68.55.amzn1.x86_64 botocore/1.10.82
 
 > Note that to run this tutorial, you need to have the most recent version of AWS CLI installed.
 
@@ -39,23 +39,23 @@ To check if you have Docker installed:
 
 This should return something like:
 
-    Docker version 17.12.0-ce, build 3dfb8343b139d6342acfd9975d7f1068b5b1c3d3
+    Docker version 18.06.1-ce, build e68fc7a215d7133c34aa18e3b72b4a21fd0c6136
 
->If you after running the `docker -v` command you don't get this output, please follow the install instructions in [this link](/01-SetupEnvironment#install-docker).
+>If you after running the `docker -v` command you don't get this output, please follow the install instructions in [this link](/01-SetupEnvironment).
 
 If you have completed these steps, you are good to go!
 
-## 2. Creating your first image
+## 2. Creating the frontend Docker image
 
 The following steps should be executed on your own computer or Cloud9 instance, if you chose it.
 
-If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment#5-cloning-the-workshop-repository) chapter, do it now using the following command:
+If you haven't executed the `git clone` command present in the [Setup Environment](/01-SetupEnvironment) chapter, do it now using the following command:
 
     $ git clone https://github.com/bemer/containers-on-aws-workshop.git
 
-Now we are going to build and test our containers locally.  If you've never worked with Docker before, there are a few basic commands that we'll use in this workshop, but you can find a more thorough list in the [Docker "Getting Started" documentation](https://docs.docker.com/engine/getstarted/).
+Now we are going to build an image and test it locally. If you've never worked with Docker before, there are a few basic commands that we'll use in this workshop, but you can find a more thorough list in the [Docker "Getting Started" documentation](https://docs.docker.com/engine/getstarted/).
 
-In this step, we are going to build a *Docker image* with the frontend application. The application that we will be using is available on the directory `00-Application/frontend` inside the project folder. In this case, lets's navigate to the `00-Application/frontend` directory:
+In this step, we are going to build a *Docker image* with the frontend of our application. The application that we will be using is available on the directory `00-Application/frontend` inside the project folder. Lets's navigate to the `00-Application/frontend` directory:
 
     $ cd containers-on-aws-workshop/00-Application/frontend
 
@@ -102,11 +102,11 @@ This should return a list of all the currently running containers.  In this exam
 
 To test the application, you can use the Cloud9 `Preview Running Application` feature. In Cloud9, click in `Preview` > `Preview Running Application`
 
-![Preview Running Application](/02-CreatingDockerImage/images/preview_application.png)
+![Preview Running Application](/02-CreatingFrontendDockerImage/images/preview_application.png)
 
 If everything went fine, you should see your web application:
 
-![Web Application](/02-CreatingDockerImage/images/web_application.png)
+![Web Application](/02-CreatingFrontendDockerImage/images/web_application.png)
 
 
 
@@ -118,11 +118,11 @@ To create a repository, navigate to the [ECS console](https://console.aws.amazon
 
 Name your first repository **containers-workshop-frontend**:
 
-![create ecr repository](/02-CreatingDockerImage/images/creating_repository.png)
+![create ecr repository](/02-CreatingFrontendDockerImage/images/creating_repository.png)
 
 Once you've created the repository, it will display a list of commands that you will need to use to push your Docker images. These commands will be like this:
 
-![push commands](/02-CreatingDockerImage/images/push_commands.png)
+![push commands](/02-CreatingFrontendDockerImage/images/push_commands.png)
 
 ## 4. Pushing our tested images to ECR
 
