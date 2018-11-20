@@ -1,4 +1,4 @@
-# Environment Setup
+# Environment Setup with Cloud9
 
 ![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
 
