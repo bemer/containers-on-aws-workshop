@@ -24,3 +24,22 @@ For this workshop, we are going to use a VPC with public and private subnets. Al
 > NOTE: If you are running this workshop on a large group of people, you can optionally create just one VPC for the entire workshop, instead of one VPC per workshop participant. This is just to prevent you hitting some VPC limits for your AWS account, like number of VPCs per region and number of Elastic IPs per region.
 
 ![VPC structure](/01-EnvironmentSetup/images/containers-on-aws-workshop-vpc.png)
+
+## 3. Choose your deployment
+
+Since you can run the workshop with a Cloud9 environment (recommended) or locally with you own computer, you can now choose where you want to run the workshop:
+
+
+[![run with cloud9](/images/run_with_cloud9.png)][run-with-cloud9]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![run locally](/images/run_locally.png)][run-locally]
+
+<br>
+
+[![back to menu](/images/back_to_menu.png)][back-to-menu]
+
+
+
+
+
+[back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
+[run-with-cloud9]: /01-EnvironmentSetup/RunningWithCloud9
+[run-locally]: /01-EnvironmentSetup/RunningLocally
