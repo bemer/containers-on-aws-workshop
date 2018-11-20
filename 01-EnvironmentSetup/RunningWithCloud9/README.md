@@ -57,7 +57,7 @@ After provisioning the infrastructure and cloning the repository within your Clo
 
 
 
-[back-to-menu]: /
+[back-to-menu]: https://github.com/bemer/containers-on-aws-workshop
 [continue-workshop]: /02-CreatingDockerImage
 
 
