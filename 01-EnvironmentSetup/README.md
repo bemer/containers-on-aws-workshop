@@ -9,7 +9,7 @@ This section describes the hardware and software needed for this workshop, and h
 
 * [1. First Notes](/01-EnvironmentSetup#1-first-notes)
 * [2. The VPC Structure](/01-EnvironmentSetup#2-the-vpc-structure)
-* [3. Choose Your Deployment Option]()
+* [3. Choose Your Deployment Option](01-EnvironmentSetup#3-choose-your-deployment-option)
 
 ## 1. First Notes
 
