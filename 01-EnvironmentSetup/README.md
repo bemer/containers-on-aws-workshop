@@ -32,7 +32,6 @@ Since you can run the workshop with a Cloud9 environment (recommended) or locall
 
 [![run with cloud9](/images/run_with_cloud9.png)][run-with-cloud9]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   [![run locally](/images/run_locally.png)][run-locally]
 
-<br>
 
 Or, if you want, you can go back to the main menu:
 
