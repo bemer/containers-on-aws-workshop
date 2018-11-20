@@ -57,45 +57,49 @@ If you haven't executed the `git clone` command present in the [Setup Environmen
 
 Now we are going to build and test our containers locally.  If you've never worked with Docker before, there are a few basic commands that we'll use in this workshop, but you can find a more thorough list in the [Docker "Getting Started" documentation](https://docs.docker.com/engine/getstarted/).
 
-In this step, we are going to build a *Docker image* with a simple web application. The application that we will be using is available on the directory `00-Application` inside the project folder. In this case, lets's navigate to the `00-Application` directory:
+In this step, we are going to build a *Docker image* with the frontend application. The application that we will be using is available on the directory `00-Application/frontend` inside the project folder. In this case, lets's navigate to the `00-Application/frontend` directory:
 
-    $ cd containers-on-aws-workshop/00-Application/
+    $ cd containers-on-aws-workshop/00-Application/frontend
 
-Take a look on the contents of this directory. You will see that there is a directory called `app/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `00-Application` directory:
+Take a look on the contents of this directory. You will see that there is a directory called `code/` and also a file named `Dockerfile`. We will be using this `Dockerfile` to package our web application. In order to do that, run the following command inside the `frontend` directory:
 
-    $ docker build -t containers-workshop-app .
+    $ docker build -t containers-workshop-frontend .
 
 This should output steps that look something like this:
 
-    Sending build context to Docker daemon  9.295MB
-    Step 1/9 : FROM node:alpine
-     ---> 5ce79d7a9aad
-    Step 2/9 : COPY app/ /app
-     ---> 5db182714408
-    Step 3/9 : WORKDIR /app
-    Removing intermediate container 0fed50590e13
-     ---> 8b89b65c5c67
-    Step 4/9 : RUN npm install --global gulp && npm install gulp
-     ---> Running in f86ae7a1e8bb
+    Sending build context to Docker daemon  6.875MB
+    Step 1/12 : FROM node:11.1.0 as build-deps
+    ---> e893e87c6b5c
+    Step 2/12 : RUN mkdir /usr/src/app
+    ---> Running in 23713e0f15cc
+    Removing intermediate container 23713e0f15cc
+    ---> 920862581cb3
+    Step 3/12 : WORKDIR /usr/src/app
+    ---> Running in 25d3a7a96c09
+    Removing intermediate container 25d3a7a96c09
+    ---> 70b34d8d8b35
+    Step 4/12 : ENV PATH /usr/src/app/node_modules/.bin:$PATH
+    ---> Running in 6be3942d1d4a
 
 If the container builds successfully, the output should end with something like this:
 
-    Successfully built 0c50204fc662
-    Successfully tagged containers-workshop-app:latest
+  Successfully built 1612d3ffdb32
+  Successfully tagged containers-workshop-frontend:latest
 
-To run your container:
+>NOTE: For this build process, we are using the multi-stage build approach. This consists in using one container to generate you application and then copy the generated app to another image, in order to make it smaller. You can get more information about multi-stage builds in [this link](https://docs.docker.com/develop/develop-images/multistage-build/).
 
-     $  docker run -d -p 8080:80 containers-workshop-app
+Now that you created your docker image, you can use the following command to run the *containers-workshop-frontend* container:
 
-To check if your container is running:
+     $  docker run -d -p 8080:80 containers-workshop-frontend
+
+To check if your container is running, use the following command:
 
      $ docker ps
 
 This should return a list of all the currently running containers.  In this example,  it should just return a single container, the one that we just started:
 
-    CONTAINER ID        IMAGE                     COMMAND             CREATED                  STATUS              PORTS                          NAMES
-    1255ca3087f5        containers-workshop-app   "node server.js"    Less than a second ago   Up 1 second         0.0.0.0:80->8080/tcp, 8080/tcp   nifty_snyder
-
+    CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                  NAMES
+    1c0511ee397d        containers-workshop-frontend   "nginx -g 'daemon of…"   13 seconds ago      Up 12 seconds       0.0.0.0:8080->80/tcp   musing_leakey
 
 
 To test the application, you can use the Cloud9 `Preview Running Application` feature. In Cloud9, click in `Preview` > `Preview Running Application`
@@ -201,7 +205,7 @@ Before we can build and push our images, we need somewhere to push them to.  In 
 
 To create a repository, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1), and select **Repositories**.  From there, click in the **Get Started**.
 
-Name your first repository **containers-workshop-app**:
+Name your first repository **containers-workshop-frontend**:
 
 ![create ecr repository](/02-CreatingDockerImage/images/creating_repository.png)
 
@@ -229,14 +233,14 @@ To login to ECR, copy this output and execute it as a linux command. The output 
     Login Succeeded
 
 
->NOTE: If you are running it in a linux terminal, you can just run the command like this `aws ecr get-login --region us-east-1 --no-include-email` which will tell your shell to execute the output of the first command.  
+>NOTE: If you are running it in a linux terminal, you can just run the command like this `$(aws ecr get-login --no-include-email --region us-east-1)` which will tell your shell to execute the output of the first command.  
 
 If you are unable to login to ECR, check your IAM user group permissions.
 
 Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
 
-    $ docker tag containers-workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
-    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
+    $ docker tag containers-workshop-frontend:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-frontend:latest
+    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-frontend:latest
 
 >NOTE: Remember to replace the `XXXXXXXXX` with your account ID. This information will be presented to you in the ECR screen with the Docker push commands.
 
@@ -245,7 +249,7 @@ Now, let's tag our image locally and them push our image to the ECR repository. 
 
 This step will take some minutes. When the command finishes, you should see something like this:
 
-    The push refers to a repository [XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app]
+    The push refers to a repository [XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-frontend]
     9ef5219507db: Pushed
     b3d18e8f520f: Pushed
     a83b4d2ff3a0: Pushed
@@ -254,17 +258,17 @@ This step will take some minutes. When the command finishes, you should see some
     b3968bc26fbd: Pushed
     aa4e47c45116: Pushed
     788ce2310e2f: Pushed
-    latest: digest: sha256:38588bb240b57d123522ab3d23cec642907a99f1379445fbea27dafc58608 size: 1988
+    latest: digest: sha256:38588bb240b57d123522ab3d23cec642907a99f1379445fbea27dafc58608 size: 1364
 
 
 You can see your pushed images by viewing the repository in the AWS Console.  Alternatively, you can use the CLI:
 
-    $ aws ecr list-images --repository-name=containers-workshop-app --region us-east-1
+    $ aws ecr list-images --repository-name=containers-workshop-frontend
     {
         "imageIds": [
             {
                 "imageTag": "latest",
-                "imageDigest": "sha256:38588bb240b57d123522ab3d23107cec6438d7a99f1379445fbea27dafc58608"
+                "imageDigest": "sha256:858b195919d9fd98dbf9ac9a4e80d4f3452ff4499ac2a1927f903f"
             }
         ]
     }

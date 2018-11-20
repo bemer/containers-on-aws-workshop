@@ -19,7 +19,7 @@ RUN npm install react-scripts@1.1.1 -g --silent
 RUN npm run-script build
 
 #################################
-# Stage 1 - the web environment #
+# Stage 2 - the web environment #
 #################################
 
 # base image
