@@ -1,6 +1,6 @@
 # Environment Setup with Cloud9
 
-![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
+![environment setup](/01-EnvironmentSetup/images/cloud9_logo.png)
 
 This section describes how to provision the infrastructure needed to run this workshop, including a Clou9 instance. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
 
