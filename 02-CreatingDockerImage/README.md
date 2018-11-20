@@ -7,10 +7,8 @@
 
 * [1. Tutorial overview](/02-CreatingDockerImage#1-tutorial-overview)
 * [2. Creating your first image](/02-CreatingDockerImage#2-creating-your-first-image)
-* [3. Setting up the IAM Roles](/02-CreatingDockerImage#3-setting-up-the-iam-roles)
-* [4. Configuring the AWS CLI](/02-CreatingDockerImage#4-configuring-the-aws-cli)
-* [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)
-* [6. Pushing our tested images to ECR](/02-CreatingDockerImage#6-pushing-our-tested-images-to-ecr)
+* [3. Creating the image repository with ECR](/02-CreatingDockerImage#3-creating-the-image-repository-with-ecr)
+* [4. Pushing our tested images to ECR](/02-CreatingDockerImage#4-pushing-our-tested-images-to-ecr)
 
 ## 1. Tutorial overview
 
@@ -112,94 +110,7 @@ If everything went fine, you should see your web application:
 
 
 
-## 3. Setting up the IAM roles
-
-**This step is only needed if you are doing the workshop using your own computer. If you are using the Cloud9 environment, you can go ahead to the step [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)**
-
-In order to work with the AWS CLI, you'll need an IAM role with the proper permissions set up.  To do this, we'll create both an IAM Group, and an IAM user.
-
-To create the group, navigate to the [IAM console](https://console.aws.amazon.com/iam/home?region=us-east-1#/home), and select **Groups** > **Create New Group**.  Name the group "**containers-workshop-group**".  From the list of managed policies, add the following policies:
-
-* AmazonEC2ContainerRegistryFullAccess
-* AmazonEC2ContainerServiceFullAccess
-
-This is how your group permissions should like after the creation:
-
-![IAM group permissions](/02-CreatingDockerImage/images/iam_group_permissions.png)
-
-Once you've created your group, you need to create a new user and attach this new user to this group. In order to do so, on the IAM console, click in **Users** on the left side of the screen, and them click in the button **Add user**.
-
-The user name will be **containers-workshop-user**. Don't forget to select the **Programmatic access** and the **AWS Management Console access** in the `Access type` just like in the following picture:
-
-![creating user](/02-CreatingDockerImage/images/creating_user.png)
-
-Now, click in **Next: permissions** and in the **Add user to group** screen, select the group `containers-workshop-group` that we created before:
-
-![add user to group](/02-CreatingDockerImage/images/add_user_to_group.png)
-
->NOTE: If you already have more groups created in your account, you can use the `Search` on the IAM console to find the group that you created before, just like in the picture.
-
-Click in **Next: Review** and check if is everything fine with your user creation. The screen should be similar to this one:
-
-![review user creation](/02-CreatingDockerImage/images/review_user_creation.png)
-
-In this screen, click in **Create user**.
-
-When the wizard finishes, make sure to download and save your access key and secret key.  You'll need them in the next step.
-
->NOTE: The Secret access key is presented only once, during the user creation. If you loose this information, you will need to create a new Access and Secret keys in order to authenticate with this user.
-
-## 4. Configuring the AWS CLI
-
-**This step is only needed if you are doing the workshop using your own computer. If you are using the Cloud9 environment, you can go ahead to the step [5. Creating the image repository with ECR](/02-CreatingDockerImage#5-creating-the-image-repository-with-ecr)**
-
-
-If you've never configured the AWS CLI, the easiest way is by running the command:
-
-    $ aws configure
-
-This should drop you into a setup wizard. In this wizard, complete each field with the informations generated in the user creation step:
-
-    $ aws configure
-    AWS Access Key ID [****************K2JA]:
-    AWS Secret Access Key [****************Oqx+]:
-    Default region name [us-east-1]:
-    Default output format [json]:
-
-If you already have a profile setup with the AWS CLI, you can also add a new profile to your credentials file. In order to add another profile, edit your credentials (usually located in *~/.aws/credentials*) and add a new profile called "**containers-workshop**". After adding this new profile, your credentials file will be like this:
-
-    [default]
-    aws_access_key_id = AKIABCDMYKEYEXAMPLE1
-    aws_secret_access_key = CAFESECRETACCESSKEYEXAMPLE001
-
-    [containers-workshop]
-    aws_access_key_id = AKIABCDMYKEYEXAMPLE2
-    aws_secret_access_key = CAFESECRETACCESSKEYEXAMPLE002
-
-
-You can test that your IAM user has the correct permissions, and that your CLI is setup to connect to your AWS account by running the command to obtain an ECR authentication token.  This will allow us to pull the Docker image to our repository in the next step:
-
-    $ aws ecr get-login --region YOUR_REGION_HERE --no-include-email
-
-This should output something like:
-
-    $ docker login -u AWS -p AQECAHhwm0YaISJeRtJm5n1G6uqeekXuoXXPe5UFce9Rq8/14wAAAy0wggMpBgkqhkiG9w0BBwagggMaM
-    IIDFgIBADCCAw8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM+76slnFaYrrZwLJyAgEQgIIC4LJKIDmvEDtJyr7jO661//6sX6cb2je
-    D/RP0IA03wh62YxFKqwRMk8gjOAc89ICxlNxQ6+cvwjewi+8/W+9xbv5+PPWfwGSAXQJSHx3IWfrbca4WSLXQf2BDq0CTtDc0+payiDdsX
-    dR8gzvyM7YWIcKzgcRVjkcjfLJpXemQ9liPWe4HKp+D57zCcBvgUk131xCiwPzbmGTZ+xtE1GPK0tgNH3t9N5+XA2BYYhXQzkTGISVGGL6
-    Wo1tiERz+WA2aRKE+Sb+FQ7YDDRDtOGj4MwZakdMnOZDcwu3uUfrURXdJVddTEdS3jfo3d7yVWhmXPet+3qwkISstIxG+V6IIzQyhtq3BX
-    W/I7pwZB9ln/mDNlJVRh9Ps2jqoXUXg/j/shZxBPm33LV+MvUqiEBhkXa9cz3AaqIpc2gXyXYN3xgJUV7OupLVq2wrGQZWPVoBvHPwrt/D
-    KsNs28oJ67L4kTiRoufye1KjZQAi3FIPtMLcUGjFf+ytxzEPuTvUk4Xfoc4A29qp9v2j98090Qx0CHD4ZKyj7bIL53jSpeeFDh9EXubeqp
-    XQTXdMzBZoBcC1Y99Kk4/nKprty2IeBvxPg+NRzg+1e0lkkqUu31oZ/AgdUcD8Db3qFjhXz4QhIZMGFogiJcmo=
-    https://XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com
-
-
-> The '-e' option has been deprecated in the `docker login` command and was removed in docker version 17.06 and later. You must specify --no-include-email if you're using docker version 17.06 or later. The default behavior is to include the '-e' flag in the 'docker login' output.
-
->NOTE: If you already had the credentials file and just added a new profile in it, don't forget to use the `--profile container-workshop` in the end of the command. This is needed because every time that you run a command using the awscli, it is going to use the `default` profile, so if we want to use a different one, we need to specify when running the command.
-
-
-## 5. Creating the image repository with ECR
+## 3. Creating the image repository with ECR
 
 Before we can build and push our images, we need somewhere to push them to.  In this case, we're going to create just one repository in [ECR](https://aws.amazon.com/ecr/).
 
@@ -213,7 +124,7 @@ Once you've created the repository, it will display a list of commands that you 
 
 ![push commands](/02-CreatingDockerImage/images/push_commands.png)
 
-## 6. Pushing our tested images to ECR
+## 4. Pushing our tested images to ECR
 
 Now that we've tested our images locally, we need to tag them again, and push them to ECR.  This will allow us to use them in `Task definitions` that can be deployed to an ECS cluster.  
 

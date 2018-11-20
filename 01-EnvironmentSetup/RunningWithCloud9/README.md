@@ -1,3 +1,17 @@
+# Environment Setup
+
+![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
+
+This section describes how to provision the infrastructure needed to run this workshop, including a Clou9 instance. This workshop is designed for a BYOL (Brying Your Own Laptop) style hands-on-lab.
+
+**Quick jump:**
+
+
+* [1. Infrastructure Setup (with Cloud9)](/01-EnvironmentSetup/RunningWithCloud9#1-infrastructure-setup-with-cloud9)
+* [2. Understanding the Cloud9 Interface](/01-EnvironmentSetup/RunningWithCloud9#2-understanding-the-cloud9-interface)
+* [3. Cloning the workshop repository](/01-EnvironmentSetup/RunningWithCloud9#3-cloning-the-workshop-repository)
+
+
 ## 1. Infrastructure Setup (with Cloud9)
 
 In order to deploy the infrastructure to your account, you can use one of the following links according to the region you with to use. These are the regions that currently support Fargate and Cloud9.
