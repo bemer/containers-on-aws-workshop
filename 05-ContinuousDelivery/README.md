@@ -215,25 +215,33 @@ If we try and test our build now, it will fail. There are two reasons for that:
 
 Let's fix these.
 
-First, let's change de ECR repository permisions. In the AWS Management Console, click in **Services** > in the search field type `ecs` and select **Elastic Container Service** from the drop down list
+First, let's change the ECR repository permisions. In the AWS Management Console, click in **Services** > in the search field type `ecr` and select **ECR** from the drop down list
 
-![select ECS](/05-ContinuousDelivery/images/ecs_select.png)
+![select ECR](/05-ContinuousDelivery/images/ecr_select.png)
 
-On the left side menu, click in **Repositories** and then click in the ECR repository that we are using (`containers-workshop-app`)
+Expand the left side menu and click in **Repositories**. Click in the ECR repository that we are using (`containers-workshop-app`)
 
-Click in the tab **Permissions** and click in **Add**
+On the left side menu, click **Permissions** and click in **Edit**
 
 ![ECR add permissions](/05-ContinuousDelivery/images/ecr_add_permissions.png)
 
-For **Sid** type `Codebuild permission`
+Click in **Add statement**
 
-For **Principal** type `codebuild.amazonaws.com`
+For **Statement name** type `Codebuild permission`
 
-For **Action** select the following actions: `ecr:GetDownloadUrlForLayer`, `ecr:PutImage`, `ecr:CompleteLayerUpload`, `ecr:BatchGetImage`, `ecr:InitiateLayerUpload`, `ecr:BatchCheckLayerAvailability`, `ecr:UploadLayerPart`
+For **Effect** select `Allow`
+
+For **Service principal - optional** type `codebuild.amazonaws.com`
+
+For **Actions** select the following actions: `ecr:GetDownloadUrlForLayer`, `ecr:PutImage`, `ecr:CompleteLayerUpload`, `ecr:BatchGetImage`, `ecr:InitiateLayerUpload`, `ecr:BatchCheckLayerAvailability`, `ecr:UploadLayerPart`
 
 ![ECR actions](/05-ContinuousDelivery/images/ecr_actions.png)
 
-Click in **Save all**
+Click in **Save**
+
+You permissions should look exactly like this:
+
+![ECR permissions](/05-ContinuousDelivery/images/ecr_review_permissions.png)
 
 Next step, we need to change de IAM role associated with our CodeBuild environment. In the AWS Management Console, go to **Services** > in the search field type `iam` and select **IAM** from the drop down list
 
