@@ -199,13 +199,20 @@ This should output something like:
 
 Before we can build and push our images, we need somewhere to push them to.  In this case, we're going to create just one repository in [ECR](https://aws.amazon.com/ecr/).
 
-To create a repository, navigate to the [ECS console](https://console.aws.amazon.com/ecs/home?region=us-east-1), and select **Repositories**.  From there, click in the **Get Started**.
+To create a repository, navigate to the [ECR console](https://console.aws.amazon.com/ecr). If this is the first time that you are accessing the ECR console, you will see the **Get Started** button in the top right corner. Click in it:
+
+![get started ecr](/02-CreatingDockerImage/images/getting_started_ecr.png)
+
 
 Name your first repository **containers-workshop-app**:
 
 ![create ecr repository](/02-CreatingDockerImage/images/creating_repository.png)
 
-Once you've created the repository, it will display a list of commands that you will need to use to push your Docker images. These commands will be like this:
+Once you've created the repository, you will be redirected to the ECR main screen. You will be able to see your newly created repository:
+
+![ecr main screen](/02-CreatingDockerImage/images/ecr_main_screen.png)
+
+Now, access your repository by clicking in its name. Now, click in the button **View push commands** in the top right corner. It will display a list of commands that you will need to use to push your Docker images. These commands will be like this:
 
 ![push commands](/02-CreatingDockerImage/images/push_commands.png)
 
@@ -213,11 +220,11 @@ Once you've created the repository, it will display a list of commands that you 
 
 Now that we've tested our images locally, we need to tag them again, and push them to ECR.  This will allow us to use them in `Task definitions` that can be deployed to an ECS cluster.  
 
-You'll need your push commands that you saw during registry creation.  If you've misplaced your push commands, you can find them again by going back to the repository (**ECS Console** > **Repositories** > Select the repository you want to see the commands for > **View Push Commands**.
+You'll need your push commands that you saw during registry creation.  If you've misplaced your push commands, you can find them again by going back to the repository (**ECR Console** > **Repositories** > Select the repository you want to see the commands for > **View Push Commands**.
 
 The first thing that we need to do, is authenticate our Docker client to the ECR. To do this, we need get the `docker login` command with the repository informations. To get this informations, run the following command:
 
-    $ aws ecr get-login --no-include-email --region us-east-1
+    $ aws ecr get-login --no-include-email
 
 The output of this command is the `docker login` command that we wil need to run. It is going to be similar to:
 
@@ -229,7 +236,7 @@ To login to ECR, copy this output and execute it as a linux command. The output 
     Login Succeeded
 
 
->NOTE: If you are running it in a linux terminal, you can just run the command like this `aws ecr get-login --region us-east-1 --no-include-email` which will tell your shell to execute the output of the first command.  
+>NOTE: If you are running it in a linux terminal, you can just run the command like this `aws ecr get-login --no-include-email` which will tell your shell to execute the output of the first command.  
 
 If you are unable to login to ECR, check your IAM user group permissions.
 
