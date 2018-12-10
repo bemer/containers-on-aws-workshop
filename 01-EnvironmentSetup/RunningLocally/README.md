@@ -1,4 +1,4 @@
-# Running the Workshop ocally
+# Running the Workshop Locally
 
 ![environment setup](/01-EnvironmentSetup/images/environment_setup.png)
 

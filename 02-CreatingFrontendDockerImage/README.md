@@ -6,7 +6,7 @@
 ## Quick jump:
 
 * [1. Tutorial overview](/02-CreatingFrontendDockerImage#1-tutorial-overview)
-* [2. Creating your first image](/02-CreatingFrontendDockerImage#2-creating-your-first-image)
+* [2. Creating the frontend Docker image](/02-CreatingFrontendDockerImage#2-creating-your-first-image)
 * [3. Creating the image repository with ECR](/02-CreatingFrontendDockerImage#3-creating-the-image-repository-with-ecr)
 * [4. Pushing our tested images to ECR](/02-CreatingFrontendDockerImage#4-pushing-our-tested-images-to-ecr)
 
