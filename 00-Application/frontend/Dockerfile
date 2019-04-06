@@ -13,9 +13,10 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install/cache app dependencies and build de app
-ADD code/ /usr/src/app/
-RUN npm install --silent
-RUN npm install react-scripts@1.1.1 -g --silent
+#ADD code/ /usr/src/app/
+ADD code/ /usr/src/app
+RUN npm install
+RUN npm install react-scripts@1.1.1 -g
 RUN npm run-script build
 
 #################################

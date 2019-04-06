@@ -31,4 +31,4 @@ COPY src /app
 WORKDIR /app
 
 # start the api
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "main:app"]
