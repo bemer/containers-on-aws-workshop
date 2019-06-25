@@ -189,6 +189,10 @@ Change only what's defined below:
 
 **Operating system**: `Ubuntu`
 
+**Runtime(s)**: `Standard`
+
+**Image**: `aws/codebuild/standard:1.0`
+
 **Privileged**: Check this checkbox
 
 **Service role**: make sure `New service role` is selected. In `Role name`, if the role name is not already filled, type `codebuild-containers-workshop-build-service-role`
