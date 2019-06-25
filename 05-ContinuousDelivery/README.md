@@ -185,17 +185,17 @@ Change only what's defined below:
 
 **Repository**: `containers-workshop-repository`
 
+**Environment image**: `Managed image`
+
 **Operating system**: `Ubuntu`
 
-**Runtime**: `Docker`
-
-**Runtime version**: `aws/codebuild/docker:17.09.0`
+**Privileged**: Check this checkbox
 
 **Service role**: make sure `New service role` is selected. In `Role name`, if the role name is not already filled, type `codebuild-containers-workshop-build-service-role`
 
 >NOTE: take note of your role name because you will need to modify its permissions later on
 
-Expand **Show advanced settings**
+Expand **Additional configuration**
 
 **Environment variables**: let's create two env vars:
 
