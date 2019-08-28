@@ -266,7 +266,7 @@ This step will take some minutes. When the command finishes, you should see some
 
 You can see your pushed images by viewing the repository in the AWS Console.  Alternatively, you can use the CLI:
 
-    $ aws ecr list-images --repository-name=containers-workshop-app --region us-east-1
+    $ aws ecr list-images --repository-name=containers-workshop-app
     {
         "imageIds": [
             {
