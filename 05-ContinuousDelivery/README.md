@@ -54,7 +54,7 @@ Now follow the steps that appear in **Steps to clone your repository**
     git config --global credential.UseHttpPath true
     git clone https://git-codecommit.YOUR_REGION_HERE.amazonaws.com/v1/repos/containers-workshop-repository
 
->NOTE: Remember to replace `YOUR_REGION_HERE` with the region you are using.
+>NOTE: Remember to replace `YOUR_REGION_HERE` with the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
 The output should be something like:
 
