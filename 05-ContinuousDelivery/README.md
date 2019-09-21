@@ -52,7 +52,9 @@ Now follow the steps that appear in **Steps to clone your repository**
 
     git config --global credential.helper '!aws codecommit credential-helper $@'
     git config --global credential.UseHttpPath true
-    git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
+    git clone https://git-codecommit.YOUR_REGION_HERE.amazonaws.com/v1/repos/containers-workshop-repository
+
+>NOTE: Remember to replace `YOUR_REGION_HERE` with the region you are using.
 
 The output should be something like:
 
@@ -130,7 +132,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/containers-workshop-app
+      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.YOUR_REGION_HERE.amazonaws.com/containers-workshop-app
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:

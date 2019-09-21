@@ -234,10 +234,10 @@ If you are unable to login to ECR, check your IAM user group permissions.
 
 Now, let's tag our image locally and them push our image to the ECR repository. Use the following commands:
 
-    $ docker tag containers-workshop-app:latest XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
-    $ docker push XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/containers-workshop-app:latest
+    $ docker tag containers-workshop-app:latest XXXXXXXXX.dkr.ecr.YOUR_REGION_HERE.amazonaws.com/containers-workshop-app:latest
+    $ docker push XXXXXXXXX.dkr.ecr.YOUR_REGION_HERE.amazonaws.com/containers-workshop-app:latest
 
->NOTE: Remember to replace the `XXXXXXXXX` with your account ID. This information will be presented to you in the ECR screen with the Docker push commands.
+>NOTE: Remember to replace `XXXXXXXXX` with your account ID and `YOUR_REGION_HERE` with the region you are using. This information will be presented to you in the ECR screen with the Docker push commands.
 
 > Why `:latest`?  This is the actual image tag.  In most production environments, you'd tag images for different schemes:  for example, you might tag the most up-to-date image with `:latest`, and all other versions of the same container with a commit SHA from a CI job.  If you push an image without a specific tag, it will default to `:latest`, and untag the previous image with that tag.  For more information on Docker tags, see the Docker [documentation](https://docs.docker.com/engine/getstarted/step_six/).
 
