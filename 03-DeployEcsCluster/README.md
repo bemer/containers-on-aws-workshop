@@ -23,7 +23,7 @@ In order to run this tutorial, you must have completed the following steps:
 
 ## 2. Creating the Cluster
 
-Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs). This URL will redirect you to the ECS interface on N. Virginia region. If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
+Once you've signed into your AWS account, navigate to the [ECS console](https://console.aws.amazon.com/ecs). If this is your fist time using ECS, you will see the *Clusters* screen without any clusters in it:
 
 ![clusters screen](/03-DeployEcsCluster/images/clusters_screen.png)
 

@@ -52,7 +52,9 @@ Now follow the steps that appear in **Steps to clone your repository**
 
     git config --global credential.helper '!aws codecommit credential-helper $@'
     git config --global credential.UseHttpPath true
-    git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/containers-workshop-repository
+    git clone https://git-codecommit.YOUR_REGION_HERE.amazonaws.com/v1/repos/containers-workshop-repository
+
+>NOTE: Remember to replace `YOUR_REGION_HERE` with the region code where your ECR repository resides (e.g. `us-east-1` for N. Virginia, `us-east-2` for Ohio...).
 
 The output should be something like:
 
@@ -119,7 +121,7 @@ In Cloud9, click in **File > New File**
 
 ![Cloud9 new file](/05-ContinuousDelivery/images/cloud9_new_file.png)
 
-Paste the following code in the new file, and change the `REPOSITORY_URI` with the URI of your ECR repository
+Paste the following code in the new file:
 
 ```
 version: 0.2
@@ -130,7 +132,6 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/containers-workshop-app
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
